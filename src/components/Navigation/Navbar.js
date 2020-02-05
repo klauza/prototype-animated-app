@@ -6,10 +6,35 @@ const Navbar = () => {
     <div style={navStyle}>
       <div>NAVBAR</div>
       <div>
-        <NavLink exact to="/">Home</NavLink>
-        <NavLink exact to="/page-one">Page 1</NavLink>
-        <NavLink exact to="/page-two">Page 2</NavLink>
-        <NavLink exact to="/page-three">Page 3</NavLink>
+
+        <NavLink exact 
+          to={{
+            pathname: "/",
+            state: 0
+          }}
+        >Home</NavLink>
+
+        <NavLink exact 
+          to={{
+            pathname: "/page-one",
+            state: 1
+          }}
+        >Page 1</NavLink>
+
+        <NavLink exact 
+          to={{
+            pathname: "/page-two",
+            state: 2
+          }}
+        >Page 2</NavLink>
+
+        <NavLink exact 
+          to={{
+            pathname: "/page-three",
+            state: 3
+          }}
+        >Page 3</NavLink>
+
       </div>
     </div>
   )
