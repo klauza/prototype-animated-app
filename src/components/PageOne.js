@@ -21,7 +21,7 @@ const PageOne = () => {
   })
   // const fade = useSpring({ from: { opacity: 0 }, opacity: 1 });
 
-  console.log(fade);
+  // console.log(fade);
 
   return (
     <AbsoluteWrapper>

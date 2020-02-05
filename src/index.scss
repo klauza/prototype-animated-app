@@ -3,6 +3,7 @@
 #root{
   display: flex; flex-direction: column;
   min-height: 100vh;
+  background: #000;
 }
 
 body {
@@ -12,8 +13,11 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow: hidden;
+  // overflow: hidden;
   position: relative;
+}
+body, html{
+  overflow: hidden;
 }
 
 /* NavLinks */
