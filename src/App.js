@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import history from './history';
-import { Switch, Route, __RouterContext } from 'react-router-dom';
+import { __RouterContext } from 'react-router-dom';
 import Swipe from 'react-easy-swipe';
 
 // pages
@@ -24,14 +24,32 @@ function App() {
     setLoc2(loc1);
   }
 
+  const enterState = function(){
+    if(location.pathname === '/'){
+      setLoc1(0);
+    }
+    if(location.pathname === '/page-one'){
+      setLoc1(1);
+    }
+    if(location.pathname === '/page-two'){
+      setLoc1(2);
+    }
+    if(location.pathname === '/page-three'){
+      setLoc1(3);
+    }
+  }
 
   React.useMemo(()=>{
     updateState();
   }, [location])
 
+  React.useMemo(()=>{
+    enterState();
+  }, [])
+
+  console.log(loc1);
   
   const onSwipeMove = (position, event) => {
-    // console.log(position.x);
     if(!swipePrevent){
 
       if(position.x < -75){
@@ -64,7 +82,7 @@ function App() {
         
         
       } else 
-      if(position.x > 0){
+      if(position.x > 75){
 
         if(loc1 === 3){
           blockFromSwipe();
@@ -90,6 +108,8 @@ function App() {
         }
       }
 
+    } else {
+      return
     }
   }
   
