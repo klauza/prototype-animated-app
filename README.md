@@ -1,10 +1,1 @@
-React templating project
-
-Technology:
-
-- ReactJS
-
-Main packages:
-
-- react-spring
-- styled-components
+Current 2020 portfolio ©Klauza
