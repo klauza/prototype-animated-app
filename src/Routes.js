@@ -1,13 +1,16 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom';
 import { useTransition, animated } from 'react-spring';
-import NotFound from './components/NotFound/NotFound';
 
 // pages
-import Home from './components/Home';
+import Home from './components/Home/Home';
 import PageOne from './components/PageOne';
 import PageTwo from './components/PageTwo';
-import PageThree from './components/PageThree';
+import PageThree from './components/PageThree/PageThree';
+
+// not found
+import NotFound from './components/NotFound/NotFound';
+
 
 const Routes = ({loc1, loc2, location }) => {
 

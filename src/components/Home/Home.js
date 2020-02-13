@@ -1,9 +1,9 @@
 import React, {useRef} from 'react';
-import { AbsoluteWrapper } from './reusable';
+import { AbsoluteWrapper } from '../reusable';
 import Swipe from 'react-easy-swipe';
 import styled from 'styled-components';
 import { useSpring, animated } from 'react-spring'
-import ModalForm from './ModalForm';
+import ModalForm from '../ModalForm';
 
 
 const ExternalWrapper = styled.div``;
@@ -12,11 +12,11 @@ const Wrapper = styled.div`
   color: #fff;
 
 
-
   .body-top{
-    height: 85vh;
+    /* height: 85vh; */
+    width: 100%;
     opacity: 1;
-
+    /* position: absolute; */
     background: grey;
     /* transition: all 500ms ease; */
 
@@ -26,7 +26,7 @@ const Wrapper = styled.div`
     align-content: center;
     align-items: center;
 
-    pointer-events: none;
+    /* pointer-events: none; */
     &__developer{
       /* transition: opacity 1000ms ease; */
     }
@@ -35,16 +35,12 @@ const Wrapper = styled.div`
 
     }
   }
-
-  .body-bottom{
-    height: 15vh;
-    background: #000;
-  }
 `;
 
 const AboutMe = styled.div`
+  background: lightcyan;
   display: flex; flex-direction: column;
-
+  height: 100vh;
   .block-1{
     border: 1px solid #fff;
     background: orange;
@@ -73,12 +69,12 @@ const Home = () => {
   const [blockSwipe, setBlockSwipe] = React.useState(false);
 
   const props = useSpring({ 
-    height: open ? "85vh" : "0"
+    height: open ? "100vh" : "0"
     // config: { duration: 250 } 
   });
 
   const propsTwo = useSpring({
-    transform: secondOpen ? "translateY(-50px)" : "translateY(0px)",
+    transform: secondOpen ? "translateY(50px)" : "translateY(0px)",
     opacity: secondOpen ? "1" : "0"
   })
 
@@ -170,17 +166,18 @@ const Home = () => {
                   <p>Portfolio</p>
                   <p>Web Developer</p>
               </animated.div>
-              <animated.div className="body-top__SVG" style={propsOpacity}>SVG</animated.div>
+              <animated.div className="body-top__SVG" style={propsOpacity}>
+                SVG
+                <span>15vh</span> <button onClick={toggleOpen}>Squash</button>
+             
+              </animated.div>
             </animated.div>
 
-            <div className="body-bottom">
-              <span>15vh</span> <button onClick={toggleOpen}>Squash</button>
-            </div>
+            
 
           </Wrapper>
 
           <Wrapper>
-            <div style={{height: '85vh'}}>
 
               <AboutMe>
                 <animated.div style={propsTwo} className="block-1">I am ready for new challenges</animated.div>
@@ -188,7 +185,6 @@ const Home = () => {
                 <animated.button style={propsTwo} onClick={openModalForm}>Ask me anything</animated.button>
               </AboutMe>
 
-            </div>
           </Wrapper>
 
         </ExternalWrapper>
