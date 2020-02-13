@@ -1,10 +1,24 @@
 /* import fonts */
+*, *::before, *::after{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 #root{
   display: flex; flex-direction: column;
   min-height: 100vh;
   background: #000;
+  // overflow: hidden;
 }
+
+// @media(max-width: 768px){
+//   @supports (-webkit-appearance:none) {
+//     #root{
+//       min-height: calc(100vh - 56px);
+//     }
+//   }
+// }
 
 body {
   margin: 0;
@@ -14,10 +28,13 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   // overflow: hidden;
-  position: relative;
+  // height: 100%;
+  // position: relative;
+  // min-height: 100vh;
 }
 body, html{
   overflow: hidden;
+  height: 100%;
 }
 
 /* NavLinks */
