@@ -16,8 +16,9 @@ const Wrapper = styled.div`
   }
 
   .scrollable{
-    height: 100vh;
-    overflow: auto;
+    height: calc( 100vh - 50px); 
+    overflow-y: auto;
+    padding-bottom: 100px;
   }
 `;
 
@@ -35,7 +36,7 @@ const PageTwo = () => {
  return (
     <AbsoluteWrapper>
       <Wrapper>
-        <div ref={scrollableDiv} style={{overflow: 'scroll'}}>
+        <div ref={scrollableDiv} style={{overflowY: 'scroll'}}>
           <h1>Page two</h1>
           <div>Massive content here</div>
           
