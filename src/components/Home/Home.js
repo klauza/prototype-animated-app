@@ -4,13 +4,15 @@ import Swipe from 'react-easy-swipe';
 import styled from 'styled-components';
 import { useSpring, animated } from 'react-spring'
 import ModalForm from '../ModalForm';
+import './circularMenu.scss';
 
 
-const ExternalWrapper = styled.div``;
+const ExternalWrapper = styled.div`
+  position: relative;
+`;
 
 const Wrapper = styled.div`
   color: #fff;
-
 
   .body-top{
     /* height: 85vh; */
@@ -38,6 +40,7 @@ const Wrapper = styled.div`
 `;
 
 const AboutMe = styled.div`
+  color: black;
   background: lightcyan;
   display: flex; flex-direction: column;
   height: 100vh;
@@ -151,14 +154,35 @@ const Home = () => {
     }, 1000)
   }
 
+  const fireCircleMenu = () => {
+    document.getElementById('circularMenu').classList.toggle('active')
+  }
   return (
     <AbsoluteWrapper>
-      <ModalForm modalOpen={modal}/>
 
+      <ModalForm modalOpen={modal}/>
+  
       
       <Swipe onSwipeMove={onSwipeMove}>
         <ExternalWrapper onWheel={(e)=>handleScroll(e)}>
+
+          <div id="circularMenu" className="circular-menu active">
+
+            <a className="floating-btn" onClick={fireCircleMenu}>
+              <i className="fa fa-plus">X</i>
+            </a>
+
+            <menu className="items-wrapper">
+              <a href="#" className="menu-item fa fa-facebook">A</a>
+              <a href="#" className="menu-item fa fa-twitter">B</a>
+              <a href="#" className="menu-item fa fa-google-plus">C</a>
+              <a href="#" className="menu-item fa fa-linkedin">D</a>
+            </menu>
+
+          </div>
+
           <Wrapper>
+          
 
             <animated.div className="body-top" style={props}>
               <animated.div className="body-top__developer" style={propsOpacity}>
@@ -183,6 +207,12 @@ const Home = () => {
                 <animated.div style={propsTwo} className="block-1">I am ready for new challenges</animated.div>
                 <animated.div style={propsTwo} className="block-2">My motivation and current goals</animated.div>
                 <animated.button style={propsTwo} onClick={openModalForm}>Ask me anything</animated.button>
+                <h1>Technology</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum, expedita? Ut id unde dicta, inventore voluptatibus dolor ea, suscipit voluptate rem ab aut molestias molestiae.</p>
+                <h1>Motivation</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam vero beatae sed similique, possimus omnis earum necessitatibus voluptatibus eum quas!</p>
+                <h1>About</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam recusandae error voluptatum laudantium officiis possimus numquam dolorem esse? Nobis, libero?</p>
               </AboutMe>
 
           </Wrapper>
