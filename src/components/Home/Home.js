@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { useSpring, animated } from 'react-spring'
 import ModalForm from '../ModalForm';
 import './circularMenu.scss';
-
+import { isMobile } from 'react-device-detect';
 
 const ExternalWrapper = styled.div`
   position: relative;
@@ -166,7 +166,7 @@ const Home = () => {
       <Swipe onSwipeMove={onSwipeMove}>
         <ExternalWrapper onWheel={(e)=>handleScroll(e)}>
 
-          <div id="circularMenu" className="circular-menu active">
+          <div id="circularMenu" className={`circular-menu ${isMobile ? null : 'active'}`}>
 
             <a className="floating-btn" onClick={fireCircleMenu}>
               <i className="fa fa-plus">X</i>
