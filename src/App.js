@@ -50,6 +50,15 @@ function App() {
   console.log(loc1);
   
   const onSwipeMove = (position, event) => {
+
+    // excluding parts of website we don't want to interfere with while sliding/animating a route
+    if (event.target.classList.contains('swiper-slide')){
+      console.log('break');
+      return
+    };
+
+    //
+
     if(!swipePrevent){
 
       if(position.x < -75){
@@ -132,12 +141,11 @@ function App() {
     <React.Fragment>
    
       <Navbar />
-
       <Swipe onSwipeMove={onSwipeMove}>
         <Routes loc1={loc1} loc2={loc2} location={location} />
       </Swipe>
       
-      <Footer />
+      {/* <Footer /> */}
 
     </React.Fragment>
   );

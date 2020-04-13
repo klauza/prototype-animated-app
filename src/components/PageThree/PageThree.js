@@ -3,6 +3,8 @@ import React from 'react'
 import { AbsoluteWrapper } from '../reusable';
 import styled from 'styled-components';
 
+import TheSlider from './TheSlider';
+
 const Wrapper = styled.div`
   min-height: 100vh;
   color: #fff;
@@ -26,9 +28,8 @@ const PageThree = () => {
     <AbsoluteWrapper>
       <Wrapper>
         <h1>Page three</h1>
-      <div>
-
-      </div>
+        
+        <TheSlider/>
       </Wrapper>
     </AbsoluteWrapper>
   )
