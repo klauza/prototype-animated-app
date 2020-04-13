@@ -1,63 +1,15 @@
 import React, {useRef} from 'react';
 import { AbsoluteWrapper } from '../reusable';
 import Swipe from 'react-easy-swipe';
-import styled from 'styled-components';
 import { useSpring, animated } from 'react-spring'
 import ModalForm from '../ModalForm';
 import './circularMenu.scss';
 import { isMobile } from 'react-device-detect';
+import Hero from './Hero/Hero';
+// CSS
+// import styled from 'styled-components';
+import { ExternalWrapper, Wrapper, AboutMe } from './HomeCSS';
 
-const ExternalWrapper = styled.div`
-  position: relative;
-`;
-
-const Wrapper = styled.div`
-  color: #fff;
-
-  .body-top{
-    /* height: 85vh; */
-    width: 100%;
-    opacity: 1;
-    /* position: absolute; */
-    background: grey;
-    /* transition: all 500ms ease; */
-
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-auto-rows: 500px;
-    align-content: center;
-    align-items: center;
-
-    /* pointer-events: none; */
-    &__developer{
-      /* transition: opacity 1000ms ease; */
-    }
-    &__SVG{
-      /* transition: opacity 1000ms ease; */
-
-    }
-  }
-`;
-
-const AboutMe = styled.div`
-  color: black;
-  background: lightcyan;
-  display: flex; flex-direction: column;
-  height: 100vh;
-  .block-1{
-    border: 1px solid #fff;
-    background: orange;
-    width: auto;
-    height: 50px;
-  }
-  .block-2{
-    border: 1px solid #fff;
-    background: red;
-    width: auto;
-    height: 50px;
-  }
-
-`;
 
 const Home = () => {
 
@@ -166,7 +118,7 @@ const Home = () => {
       <Swipe onSwipeMove={onSwipeMove}>
         <ExternalWrapper onWheel={(e)=>handleScroll(e)}>
 
-          <div id="circularMenu" className={`circular-menu ${isMobile ? null : 'active'}`}>
+          {/* <div id="circularMenu" className={`circular-menu ${isMobile ? null : 'active'}`}>
 
             <a className="floating-btn" onClick={fireCircleMenu}>
               <i className="fa fa-plus">X</i>
@@ -179,27 +131,13 @@ const Home = () => {
               <a href="#" className="menu-item fa fa-linkedin">D</a>
             </menu>
 
-          </div>
+          </div> */}
 
+          {/* HERO */}
           <Wrapper>
-          
-
-            <animated.div className="body-top" style={props}>
-              <animated.div className="body-top__developer" style={propsOpacity}>
-                  <p>KLAUZA</p>
-                  <p>Portfolio</p>
-                  <p>Web Developer</p>
-              </animated.div>
-              <animated.div className="body-top__SVG" style={propsOpacity}>
-                SVG
-                <span>15vh</span> <button onClick={toggleOpen}>Squash</button>
-             
-              </animated.div>
-            </animated.div>
-
-            
-
+            <Hero props={props} propsOpacity={propsOpacity} toggleOpen={toggleOpen} />
           </Wrapper>
+
 
           <Wrapper>
 
