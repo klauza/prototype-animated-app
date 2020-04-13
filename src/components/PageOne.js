@@ -2,7 +2,7 @@ import React from 'react'
 import { AbsoluteWrapper } from './reusable';
 import { useSpring, useTrail, animated } from 'react-spring';
 import styled from 'styled-components';
-import Toggle from './Toggle';
+// import Toggle from './Toggle';
 
 const Wrapper = styled.div`
   min-height: 100vh;

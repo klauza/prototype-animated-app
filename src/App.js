@@ -8,7 +8,7 @@ import Routes from './Routes';
 // nav
 import Navbar from './components/Navigation/Navbar';
 // footer
-import Footer from './components/Footer/Footer';
+// import Footer from './components/Footer/Footer';
 
 
 function App() {
@@ -41,13 +41,15 @@ function App() {
 
   React.useMemo(()=>{
     updateState();
+    //eslint-disable-next-line
   }, [location])
 
   React.useMemo(()=>{
     enterState();
+    //eslint-disable-next-line
   }, [])
 
-  console.log(loc1);
+  // console.log("current page ID: ",loc1);
   
   const onSwipeMove = (position, event) => {
 

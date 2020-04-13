@@ -1,5 +1,6 @@
-import React from 'react'
-import { useSpring, animated } from 'react-spring'
+import React from 'react';
+//eslint-disable-next-line
+import { useSpring, animated } from 'react-spring';
 import { AboutMe } from './AboutCSS';
 
 const About = ({propsTwo, openModalForm}) => {

@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+//eslint-disable-next-line
 import { useSpring, animated } from 'react-spring'
 
 const Hero = ({props, propsOpacity, toggleOpen}) => {

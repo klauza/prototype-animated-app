@@ -1,17 +1,17 @@
-import React, {useRef} from 'react';
+import React from 'react';
 import { AbsoluteWrapper } from '../reusable';
 import Swipe from 'react-easy-swipe';
-import { useSpring, animated } from 'react-spring'
+import { useSpring } from 'react-spring'
 import ModalForm from '../ModalForm';
 import './circularMenu.scss';
-import { isMobile } from 'react-device-detect';
+// import { isMobile } from 'react-device-detect';
 
 // index pages
 import Hero from './Hero/Hero';
 import About from './About/About';
 
 // CSS
-import { ExternalWrapper, Wrapper, AboutMe } from './HomeCSS';
+import { ExternalWrapper, Wrapper } from './HomeCSS';
 
 
 const Home = () => {
@@ -20,10 +20,10 @@ const Home = () => {
   const [secondOpen, setSecondOpen] = React.useState(false);
 
   // Modal form
-  const [modalDelay, setModalDelay] = React.useState(false);
+  // const [modalDelay, setModalDelay] = React.useState(false);
   const [modal, setModal] = React.useState(false);
   // scrolling
-  const [index, setIndex] = React.useState(0);
+  // const [index, setIndex] = React.useState(0);
   const [blockSwipe, setBlockSwipe] = React.useState(false);
 
   const props = useSpring({ 
@@ -109,9 +109,10 @@ const Home = () => {
     }, 1000)
   }
 
-  const fireCircleMenu = () => {
-    document.getElementById('circularMenu').classList.toggle('active')
-  }
+  // const fireCircleMenu = () => {
+  //   document.getElementById('circularMenu').classList.toggle('active')
+  // }
+
   return (
     <AbsoluteWrapper>
 
