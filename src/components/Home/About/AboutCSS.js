@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { useSpring, animated } from 'react-spring';
+import { animated } from 'react-spring';
 
 export const AboutMe = styled(animated.div)`
   color: black;

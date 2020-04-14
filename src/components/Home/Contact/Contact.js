@@ -11,7 +11,7 @@ const Contact = ({props, index, propsContact}) => {
 
   return (
     <div style={{background: 'lightgreen'}}>
-      <ContactMe style={propsContact} i={index===2 && true}>
+      <ContactMe style={propsContact} i={index===2 ? 1 : 0}>
         <animated.div style={animateChildren}>
           <span>CONTACT PAGE</span>
         </animated.div>

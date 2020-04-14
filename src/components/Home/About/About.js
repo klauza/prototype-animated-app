@@ -16,7 +16,7 @@ const About = ({index, propsAbout, openModalForm}) => {
   // })
 
 
-  console.log('index: ', index)
+  // console.log('index: ', index)
   // console.log('About open?: ', isOpen)
   const animateChildren = useSpring({
     // config,
@@ -29,7 +29,7 @@ const About = ({index, propsAbout, openModalForm}) => {
     return (
       <div style={{background: 'purple'}}>
 
-        <AboutMe style={propsAbout} i={index===1 && true}>
+        <AboutMe style={propsAbout} i={index===1 ? 1 : 0}>
           <animated.div style={animateChildren} className="about-animated" >
             <animated.div className="block-1">I am ready for new challenges</animated.div>
             <animated.div className="block-2">My motivation and current goals</animated.div>
