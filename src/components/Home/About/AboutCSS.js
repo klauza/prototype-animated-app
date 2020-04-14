@@ -3,6 +3,8 @@ import { useSpring, animated } from 'react-spring';
 
 export const AboutMe = styled(animated.div)`
   color: black;
+  color: ${props => props.i ? "orange" : "black"};
+  pointer-events: ${props => props.i ? "auto" : "none"};
   
   .about-animated{
     display: flex; flex-direction: column;

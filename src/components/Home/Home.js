@@ -156,7 +156,7 @@ const Home = () => {
           {/* HERO */}
      
             <Hero 
-         
+            index={index}
             propsHero={propsHero} 
             toggleOpen={toggleOpen} />
         
@@ -174,6 +174,7 @@ const Home = () => {
           {/* CONTACT */}
           
             <Contact 
+              index={index}
               propsContact={propsContact}
             />
      

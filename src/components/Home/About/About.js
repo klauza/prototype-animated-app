@@ -29,7 +29,7 @@ const About = ({index, propsAbout, openModalForm}) => {
     return (
       <div style={{background: 'purple'}}>
 
-        <AboutMe style={propsAbout}>
+        <AboutMe style={propsAbout} i={index===1 && true}>
           <animated.div style={animateChildren} className="about-animated" >
             <animated.div className="block-1">I am ready for new challenges</animated.div>
             <animated.div className="block-2">My motivation and current goals</animated.div>
@@ -50,7 +50,7 @@ const About = ({index, propsAbout, openModalForm}) => {
           </Spring>
 
         </AboutMe>
-        
+
       </div>
     )  
 
