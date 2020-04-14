@@ -1,10 +1,14 @@
-import React, {useMemo} from 'react';
+import React from 'react';
 import { AbsoluteWrapper } from '../reusable';
 import Swipe from 'react-easy-swipe';
 import { useSpring } from 'react-spring'
 import ModalForm from '../ModalForm';
 import './circularMenu.scss';
 // import { isMobile } from 'react-device-detect';
+
+// redux
+import { connect } from 'react-redux';
+import { update_Subpage_Id } from '../../actions/routesActions';
 
 // index pages
 import Hero from './Hero/Hero';
@@ -15,7 +19,7 @@ import Contact from './Contact/Contact';
 import { ExternalWrapper } from './HomeCSS';
 
 
-const Home = () => {
+const Home = ({update_Subpage_Id, general: {routes}}) => {
 
   const [open, setOpen] = React.useState(true);
   // const [secondOpen, setSecondOpen] = React.useState(false);
@@ -24,20 +28,19 @@ const Home = () => {
   // const [modalDelay, setModalDelay] = React.useState(false);
   const [modal, setModal] = React.useState(false);
   // scrolling
-  const [index, setIndex] = React.useState(0);  // read index from Redux
+  const [index, setIndex] = React.useState(routes.home);  // read index from Redux
   const [blockSwipe, setBlockSwipe] = React.useState(false);
 
 
+  // const initPage = useSpring({ 
+  //   height: open ? '100vh' : "0vh"
+  //   // config: { duration: 250 } 
+  // });
 
-  const initPage = useSpring({ 
-    height: open ? '100vh' : "0vh"
-    // config: { duration: 250 } 
-  });
-
-  const closePage = useSpring({ 
-    height: "0vh"
-    // config: { duration: 250 } 
-  });
+  // const closePage = useSpring({ 
+  //   height: "0vh"
+  //   // config: { duration: 250 } 
+  // });
 
 
 
@@ -45,7 +48,7 @@ const Home = () => {
   const propsAbout = useSpring({ height: index===1 ? "100vh" : "0vh", opacity: index===1 ? "1" : "0" });
   const propsContact = useSpring({ height: index===2 ? "100vh" : "0vh", opacity: index===2 ? "1" : "0" });
   
-  console.log(index);
+  // console.log(index);
 
   const toggleOpen = () => {
     setOpen(!open);
@@ -78,6 +81,9 @@ const Home = () => {
         blockFromSwipe(true); 
         
         setIndex(prevState => prevState+1);
+
+        // set current page
+        update_Subpage_Id({...routes, home: index+1});
       }
      // prev, going up
       if(direction > 0 && index > 0){
@@ -85,6 +91,9 @@ const Home = () => {
         blockFromSwipe(true); 
         
         setIndex(prevState => prevState-1);
+
+        // set current page
+        update_Subpage_Id({...routes, home: index-1});
       }
     } else{
       return;
@@ -101,6 +110,9 @@ const Home = () => {
         blockFromSwipe(true); 
 
         setIndex(prevState => prevState+1);
+
+        // set current page
+        update_Subpage_Id({...routes, home: index+1});
       }
      // prev, going up
       if(position.y > 75 && index > 0){
@@ -108,6 +120,9 @@ const Home = () => {
         blockFromSwipe(true); 
         
         setIndex(prevState => prevState-1);
+
+        // set current page
+        update_Subpage_Id({...routes, home: index-1});
       }
     } else{
       return;
@@ -185,4 +200,7 @@ const Home = () => {
   )
 }
 
-export default Home
+const mapStateToProps = (state) => ({
+  general: state.general
+})
+export default connect(mapStateToProps, {update_Subpage_Id})(Home)

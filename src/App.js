@@ -1,4 +1,8 @@
 import React, { useContext } from 'react';
+
+import { Provider } from 'react-redux';
+import store from './store';
+
 import history from './history';
 import { __RouterContext } from 'react-router-dom';
 import Swipe from 'react-easy-swipe';
@@ -140,7 +144,7 @@ function App() {
 
 
   return (
-    <React.Fragment>
+    <Provider store={store}>
    
       <Navbar />
       <Swipe onSwipeMove={onSwipeMove}>
@@ -149,7 +153,7 @@ function App() {
       
       {/* <Footer /> */}
 
-    </React.Fragment>
+    </Provider>
   );
 }
 
