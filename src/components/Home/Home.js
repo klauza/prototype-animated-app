@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useMemo} from 'react';
 import { AbsoluteWrapper } from '../reusable';
 import Swipe from 'react-easy-swipe';
 import { useSpring } from 'react-spring'
@@ -9,42 +9,49 @@ import './circularMenu.scss';
 // index pages
 import Hero from './Hero/Hero';
 import About from './About/About';
+import Contact from './Contact/Contact';
 
 // CSS
-import { ExternalWrapper, Wrapper } from './HomeCSS';
+import { ExternalWrapper } from './HomeCSS';
 
 
 const Home = () => {
 
   const [open, setOpen] = React.useState(true);
-  const [secondOpen, setSecondOpen] = React.useState(false);
+  // const [secondOpen, setSecondOpen] = React.useState(false);
 
   // Modal form
   // const [modalDelay, setModalDelay] = React.useState(false);
   const [modal, setModal] = React.useState(false);
   // scrolling
-  // const [index, setIndex] = React.useState(0);
+  const [index, setIndex] = React.useState(0);  // read index from Redux
   const [blockSwipe, setBlockSwipe] = React.useState(false);
 
-  const props = useSpring({ 
-    height: open ? "100vh" : "0"
+
+
+  const initPage = useSpring({ 
+    height: open ? '100vh' : "0vh"
     // config: { duration: 250 } 
   });
 
-  const propsTwo = useSpring({
-    transform: secondOpen ? "translateY(50px)" : "translateY(0px)",
-    opacity: secondOpen ? "1" : "0"
-  })
+  const closePage = useSpring({ 
+    height: "0vh"
+    // config: { duration: 250 } 
+  });
 
-  const propsOpacity = useSpring({ opacity: open ? "1" : "0" });
+
+
+  const propsHero = useSpring({ height: index===0 ? "100vh" : "0vh", opacity: index===0 ? "1" : "0" });
+  const propsAbout = useSpring({ height: index===1 ? "100vh" : "0vh", opacity: index===1 ? "1" : "0" });
+  const propsContact = useSpring({ height: index===2 ? "100vh" : "0vh", opacity: index===2 ? "1" : "0" });
   
-
+  console.log(index);
 
   const toggleOpen = () => {
     setOpen(!open);
 
     setTimeout(()=>{
-      setSecondOpen(!secondOpen);
+      // setSecondOpen(!secondOpen);
     }, 500)
   }
 
@@ -65,15 +72,19 @@ const Home = () => {
     }
    
     if(!blockSwipe){
-      // next
-      if(direction < 0 && open){
+      // next, going down
+      if(direction < 0 && index < 2){
         toggleOpen();
         blockFromSwipe(true); 
+        
+        setIndex(prevState => prevState+1);
       }
-     // prev
-      if(direction > 0 && !open){
+     // prev, going up
+      if(direction > 0 && index > 0){
         toggleOpen();
         blockFromSwipe(true); 
+        
+        setIndex(prevState => prevState-1);
       }
     } else{
       return;
@@ -82,16 +93,21 @@ const Home = () => {
 
   // MOBILE SWIPE
   const onSwipeMove = (position, event) => {
+    // console.log(position);
     if(!blockSwipe){
-      // next
-      if(position.y < -75 && open){
+      // next, going down
+      if(position.y < -75 && index < 2){
         toggleOpen();
         blockFromSwipe(true); 
+
+        setIndex(prevState => prevState+1);
       }
-     // prev
-      if(position.y > 75 && !open){
+     // prev, going up
+      if(position.y > 75 && index > 0){
         toggleOpen();
         blockFromSwipe(true); 
+        
+        setIndex(prevState => prevState-1);
       }
     } else{
       return;
@@ -138,21 +154,29 @@ const Home = () => {
           </div> */}
 
           {/* HERO */}
-          <Wrapper>
-            <Hero props={props} propsOpacity={propsOpacity} toggleOpen={toggleOpen} />
-          </Wrapper>
+     
+            <Hero 
+         
+            propsHero={propsHero} 
+            toggleOpen={toggleOpen} />
+        
 
 
           {/* ABOUT */}
-          <Wrapper>
-            <About propsTwo={propsTwo} openModalForm={openModalForm} />
-          </Wrapper>
+      
+            <About 
+            index={index}
+            propsAbout={propsAbout}
+            openModalForm={openModalForm} />
+     
 
 
           {/* CONTACT */}
-          <Wrapper>
-            Contact
-          </Wrapper>
+          
+            <Contact 
+              propsContact={propsContact}
+            />
+     
 
         </ExternalWrapper>
       </Swipe>

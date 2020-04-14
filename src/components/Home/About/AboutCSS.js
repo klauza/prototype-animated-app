@@ -1,21 +1,27 @@
 import styled from 'styled-components';
+import { useSpring, animated } from 'react-spring';
 
-export const AboutMe = styled.div`
+export const AboutMe = styled(animated.div)`
   color: black;
-  background: lightcyan;
-  display: flex; flex-direction: column;
-  height: 100vh;
-  .block-1{
-    border: 1px solid #fff;
-    background: orange;
-    width: auto;
-    height: 50px;
+  
+  .about-animated{
+    display: flex; flex-direction: column;
+    width: 100%;
+  
+    .block-1{
+      border: 1px solid #fff;
+      background: orange;
+      width: auto;
+      height: 50px;
+    }
+    .block-2{
+      border: 1px solid #fff;
+      background: red;
+      width: auto;
+      height: 50px;
+    }
   }
-  .block-2{
-    border: 1px solid #fff;
-    background: red;
-    width: auto;
-    height: 50px;
-  }
+
 
 `;
+// height: 100vh;
