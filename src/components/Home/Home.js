@@ -16,7 +16,7 @@ import About from './About/About';
 import Contact from './Contact/Contact';
 
 // CSS
-import { ExternalWrapper } from './HomeCSS';
+import { ExternalWrapper, AboutButton, ContactButton } from './HomeCSS';
 
 
 const Home = ({update_Subpage_Id, general: {routes}}) => {
@@ -47,6 +47,9 @@ const Home = ({update_Subpage_Id, general: {routes}}) => {
   const propsHero = useSpring({ height: index===0 ? "100vh" : "0vh", opacity: index===0 ? "1" : "0" });
   const propsAbout = useSpring({ height: index===1 ? "100vh" : "0vh", opacity: index===1 ? "1" : "0" });
   const propsContact = useSpring({ height: index===2 ? "100vh" : "0vh", opacity: index===2 ? "1" : "0" });
+
+  const aboutBtnProp = useSpring({ top: index===0 ? "100vh" : index===1 ? "0vh" : "0vh"});
+  const contactBtnProp = useSpring({ top: index===0 ? "100vh" : index===1 ? "100vh" : "0vh"});
   
   // console.log(index);
 
@@ -78,7 +81,7 @@ const Home = ({update_Subpage_Id, general: {routes}}) => {
       // next, going down
       if(direction < 0 && index < 2){
         toggleOpen();
-        blockFromSwipe(true); 
+        blockFromSwipe(); 
         
         setIndex(prevState => prevState+1);
 
@@ -88,7 +91,7 @@ const Home = ({update_Subpage_Id, general: {routes}}) => {
      // prev, going up
       if(direction > 0 && index > 0){
         toggleOpen();
-        blockFromSwipe(true); 
+        blockFromSwipe(); 
         
         setIndex(prevState => prevState-1);
 
@@ -107,7 +110,7 @@ const Home = ({update_Subpage_Id, general: {routes}}) => {
       // next, going down
       if(position.y < -75 && index < 2){
         toggleOpen();
-        blockFromSwipe(true); 
+        blockFromSwipe(); 
 
         setIndex(prevState => prevState+1);
 
@@ -117,7 +120,7 @@ const Home = ({update_Subpage_Id, general: {routes}}) => {
      // prev, going up
       if(position.y > 75 && index > 0){
         toggleOpen();
-        blockFromSwipe(true); 
+        blockFromSwipe(); 
         
         setIndex(prevState => prevState-1);
 
@@ -153,6 +156,8 @@ const Home = ({update_Subpage_Id, general: {routes}}) => {
       <Swipe onSwipeMove={onSwipeMove}>
         <ExternalWrapper onWheel={(e)=>handleScroll(e)}>
 
+
+
           {/* <div id="circularMenu" className={`circular-menu ${isMobile ? null : 'active'}`}>
 
             <a className="floating-btn" onClick={fireCircleMenu}>
@@ -168,30 +173,61 @@ const Home = ({update_Subpage_Id, general: {routes}}) => {
 
           </div> */}
 
+          {/* Bottom nav Home buttons */}
+          <AboutButton style={aboutBtnProp}>
+            <button onClick={()=>{
+              if(index===0 || index===2){
+                console.log('redirecting to About subpage')
+                blockFromSwipe();
+                setIndex(1);
+              }else{
+                console.log('redirecting back to home')
+                blockFromSwipe();
+                setIndex(0);
+              }
+            }}>
+              {index===0 ? "About" : index===1 ? "Home" : "About"}
+            </button>
+          </AboutButton>
+
+          <ContactButton style={contactBtnProp}>
+            <button onClick={()=>{
+              if(index===0 || index===1){
+                console.log('redirecting to Contact subpage')
+                blockFromSwipe(true);
+                setIndex(2);
+              }else{
+                console.log('redirecting back to home')
+                blockFromSwipe(true);
+                setIndex(0);
+              }
+            }}>
+              {index===0 ? "Contact" : index===1 ? "Contact" : "Home"}
+            </button>
+          </ContactButton>
+
+
           {/* HERO */}
-     
-            <Hero 
-            index={index}
-            propsHero={propsHero} 
-            toggleOpen={toggleOpen} />
-        
+          <Hero 
+          index={index}
+          propsHero={propsHero} 
+          toggleOpen={toggleOpen} />
+      
 
 
           {/* ABOUT */}
-      
-            <About 
-            index={index}
-            propsAbout={propsAbout}
-            openModalForm={openModalForm} />
-     
+          <About 
+          index={index}
+          propsAbout={propsAbout}
+          openModalForm={openModalForm} />
+    
 
 
           {/* CONTACT */}
-          
-            <Contact 
-              index={index}
-              propsContact={propsContact}
-            />
+          <Contact 
+            index={index}
+            propsContact={propsContact}
+          />
      
 
         </ExternalWrapper>
