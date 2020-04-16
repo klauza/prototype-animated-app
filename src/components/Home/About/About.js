@@ -6,6 +6,9 @@ import { Container, AboutMe } from './AboutCSS';
 import ModalForm from './ModalForm';
 import AboutTable from './AboutTable';
 
+// import SVG
+import { Cyb, Photo, Web } from '../../../Icons';
+
 const About = ({ index, propsAbout }) => {
 
 // const config = { mass: 5, tension: 2000, friction: 200 }
@@ -35,7 +38,7 @@ const animateChildren = useSpring({
 
 
 
-
+const svgs = [<Cyb/>, <Photo/>, <Web/>];
 
 
 return (
@@ -52,8 +55,8 @@ return (
             <p>I offer services which lead to business improvements.</p>
             <animated.button onClick={openModalForm}>Ask me anything</animated.button>
           </div>
-          <div>
-            <span>SVG</span>
+          <div className="svg-div">
+            {svgs[tableId-1]}
           </div>
         </div>
         

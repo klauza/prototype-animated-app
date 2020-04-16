@@ -24,6 +24,7 @@
     "swiper": "^5.3.7"
   },
   "scripts": {
+    "svgr": "svgr -d src/Icons/ src/svgr",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -43,5 +44,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@svgr/cli": "^5.3.1"
   }
 }

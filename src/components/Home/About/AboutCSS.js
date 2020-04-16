@@ -20,8 +20,15 @@ export const AboutMe = styled(animated.div)`
 
   
     .top-part{
-
+      .svg-div{
+        width: 200px;
+        margin-left: auto;
+        svg{
+          width: 200px; height: 200px;
+        }
+      }
     }
+
     .bot-part{
       display: flex; flex-direction: column;
       
