@@ -7,11 +7,11 @@ const Wrapper = styled.div`
   top: 0;
   z-index: 99;
   width: 100%;
-  background: #000;
+  background: rgba(0,0,0,.1);
 `;
 const Navigation = styled.nav`
   color: #fff;
-  background: #000;
+  background: rgba(0,0,0,0.025);
   height: 50px;
   width: 70%;
   margin: 0 auto;

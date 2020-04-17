@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 //eslint-disable-next-line
 import { useSpring, animated } from 'react-spring';
 import { Spring, config } from 'react-spring/renderprops';
@@ -26,6 +27,8 @@ const Hero = ({index, propsHero, toggleOpen}) => {
                 <p>SUCCESSFULL BUSINESS</p>
                 <p>Whether you already have or want</p>
                 <p>work with me</p>
+                <NavLink exact to={{pathname: "/information", state: -1}}>Information</NavLink>
+                <NavLink exact to={{pathname: "/vision", state: -2}}>Vision</NavLink>
               </div>
             }
           </Spring>

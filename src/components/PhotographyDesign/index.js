@@ -1,5 +1,5 @@
 import React from 'react'
-import { AbsoluteWrapper } from './reusable';
+import { AbsoluteWrapper } from '../reusable';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
@@ -22,7 +22,7 @@ const Wrapper = styled.div`
   }
 `;
 
-const PageTwo = () => {
+const PhotographyDesign = () => {
   const scrollableDiv = React.useRef();
 
   React.useEffect(()=>{
@@ -60,4 +60,4 @@ const PageTwo = () => {
   )
 }
 
-export default PageTwo
+export default PhotographyDesign

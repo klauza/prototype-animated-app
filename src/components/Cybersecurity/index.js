@@ -16,7 +16,7 @@ const Wrapper = styled.div`
   }
 
 `;
-const PageThree = () => {
+const Cybersecurity = () => {
 
 
   React.useEffect(()=>{
@@ -35,4 +35,4 @@ const PageThree = () => {
   )
 }
 
-export default PageThree
+export default Cybersecurity

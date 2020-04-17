@@ -78,7 +78,7 @@ function App() {
         if(loc1 === 0){
           blockFromSwipe();
           history.push({
-            pathname: '/page-one',
+            pathname: '/web-development',
             state: 1
           })
         }
@@ -86,7 +86,7 @@ function App() {
         if(loc1 === 1){
           blockFromSwipe();
           history.push({
-            pathname: '/page-two',
+            pathname: '/photography-design',
             state: 2
           })
         }
@@ -94,7 +94,7 @@ function App() {
         if(loc1 === 2){
           blockFromSwipe();
           history.push({
-            pathname: '/page-three',
+            pathname: '/security',
             state: 3
           })
         }
@@ -108,7 +108,7 @@ function App() {
         if(loc1 === 3){
           blockFromSwipe();
           history.push({
-            pathname: '/page-two',
+            pathname: '/photography-design',
             state: 2
           })
         }
@@ -116,7 +116,7 @@ function App() {
         if(loc1 === 2){
           blockFromSwipe();
           history.push({
-            pathname: '/page-one',
+            pathname: '/web-development',
             state: 1
           })
         }

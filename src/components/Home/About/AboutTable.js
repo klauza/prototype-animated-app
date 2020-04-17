@@ -13,7 +13,7 @@ const AboutTable = ({ tableId, setTableId, update_Subpage_Id, routes }) => {
       table_text: "WWW",
       title: "Web Development",
       contentText: ['www application', 'google My Business implementation'],
-      path: "/page-one"
+      path: "/web-development"
     },
     {
       id: 1,
@@ -21,7 +21,7 @@ const AboutTable = ({ tableId, setTableId, update_Subpage_Id, routes }) => {
       table_text: "Design",
       title: "Photography, design",
       contentText: ["photo editing", "stock photos", "web wireframing", "icons"],
-      path: "/page-two"
+      path: "/photography-design"
     },
     {
       id: 2,
@@ -29,7 +29,7 @@ const AboutTable = ({ tableId, setTableId, update_Subpage_Id, routes }) => {
       table_text: "Security",
       title: "Cybersecurity",
       contentText: ['currently no services available'],
-      path: "/page-three"
+      path: "/security"
     }
   ];
   

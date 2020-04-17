@@ -1,8 +1,7 @@
 import React from 'react'
-import { AbsoluteWrapper } from './reusable';
+import { AbsoluteWrapper } from '../reusable';
 import { useSpring, useTrail, animated } from 'react-spring';
 import styled from 'styled-components';
-// import Toggle from './Toggle';
 
 const Wrapper = styled.div`
   min-height: 100vh;
@@ -29,7 +28,7 @@ const Front = styled(animated.div)`
 
 `;
 
-const PageOne = () => {
+const WebDevelopment = () => {
 
 
   const [toggle, set] = React.useState(false);
@@ -98,4 +97,4 @@ const items = ['Lorem', 'ipsum', 'dolor', 'asd']
   )
 }
 
-export default PageOne
+export default WebDevelopment
