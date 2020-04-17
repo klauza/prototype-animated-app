@@ -18,6 +18,7 @@ import Navbar from './components/Navigation/Navbar';
 function App() {
   const { location } = useContext(__RouterContext);
 
+  const [appFirstStart, setAppFirstStart] = React.useState(true);
   const [loc1, setLoc1] = React.useState(location.state);
   const [loc2, setLoc2] = React.useState(loc1);
 
@@ -48,13 +49,18 @@ function App() {
     //eslint-disable-next-line
   }, [location])
 
+  // fires once on page load
   React.useMemo(()=>{
     enterState();
     //eslint-disable-next-line
   }, [])
 
+  const updateFirstStart = () => {
+    setAppFirstStart(false);
+  }
+
   // console.log("current page ID: ",loc1);
-  
+
   const onSwipeMove = (position, event) => {
 
     // excluding parts of website we don't want to interfere with while sliding/animating a route
@@ -146,9 +152,9 @@ function App() {
   return (
     <Provider store={store}>
    
-      <Navbar />
+      {/* <Navbar /> */}
       <Swipe onSwipeMove={onSwipeMove}>
-        <Routes loc1={loc1} loc2={loc2} location={location} />
+        <Routes updateFirstStart={updateFirstStart} appFirstStart={appFirstStart} loc1={loc1} loc2={loc2} location={location} />
       </Swipe>
       
       {/* <Footer /> */}

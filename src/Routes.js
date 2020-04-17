@@ -1,6 +1,6 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom';
-import { useTransition, animated } from 'react-spring';
+import { config, useTransition, animated } from 'react-spring';
 
 // pages
 import Home from './components/Home/Home';
@@ -12,13 +12,18 @@ import PageThree from './components/PageThree/PageThree';
 import NotFound from './components/NotFound/NotFound';
 
 
-const Routes = ({loc1, loc2, location }) => {
+const Routes = ({updateFirstStart, appFirstStart, loc1, loc2, location }) => {
 
-  
+  React.useMemo(()=>{
+    updateFirstStart();
+    //eslint-disable-next-line
+  }, [])
+
   const transitions = useTransition(location, location => location.pathname, {
-    from: { opacity: 0, transform: `translate(${loc1 > loc2 ? "100%" : "-100%"}, 0)` },
-    enter: { opacity: 1, transform: `translate(0%, 0)` },
-    leave: { opacity: 0, transform: `translate(${loc1 > loc2 ? "-100%" : "100%"}, 0)` }
+    config: { tension: 280, friction: 60 },
+    from: { opacity: 0, transform: `translate(${appFirstStart ? "0%, 0%" : loc1 > loc2 ? "100%, 0%" : "-100%, 0%"})` },
+    enter: { opacity: 1, transform: `translate(0%, 0%)` },
+    leave: { opacity: 0, transform: `translate(${loc1 > loc2 ? "-100%" : "100%"}, 0%)` }
   });
 
   return (<>
