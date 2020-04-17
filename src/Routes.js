@@ -14,7 +14,7 @@ import NotFound from './components/NotFound/NotFound';
 
 const Routes = ({updateFirstStart, appFirstStart, loc1, loc2, location }) => {
 
-  React.useMemo(()=>{
+  React.useEffect(()=>{
     updateFirstStart();
     //eslint-disable-next-line
   }, [])
