@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 //eslint-disable-next-line
-import { useSpring, animated } from 'react-spring';
+import { useTransition, useSpring, animated } from 'react-spring';
 import { Spring, config } from 'react-spring/renderprops'
 import { Container, AboutMe } from './AboutCSS';
 import ModalForm from './ModalForm';
@@ -12,7 +12,7 @@ import { Cyb, Photo, Web } from '../../../Icons';
 const About = ({ index, propsAbout }) => {
 
 const [modal, setModal] = useState(false);
-const [tableId, setTableId] = useState(1);
+const [tableId, setTableId] = useState(0);
 
 const openModalForm = () => {
   // setModalDelay(true);
@@ -21,7 +21,27 @@ const openModalForm = () => {
 
 
 
-const svgs = [<Cyb/>, <Photo/>, <Web/>];
+const svgs = [
+{
+  svg: <Cyb/>,
+  id: 0
+}, 
+{
+  svg: <Photo/>,
+  id: 1
+}, 
+{
+  svg: <Web/>,
+  id: 2
+}
+];
+
+const svgTransitions = useTransition(svgs[tableId], item=>item.id, {
+  from: {opacity: 0, transform: 'scale(1.2)'},
+  enter: {opacity: 1, transform: 'scale(1)'},
+  leave: {opacity: 0, transform: 'scale(0.8)'}
+})
+
 
 const generalAnimation = config.stiff;
 
@@ -63,7 +83,11 @@ return (
             to={{ transform: index===1 ? "translateX(0px)" : "translateX(25px)", opacity: index===1 ? "1" : "0" }}
           >
           {({transform, opacity}) => <div style={{transform, opacity}} className="svg-div">
-            {svgs[tableId-1]}
+            {
+             svgTransitions.map(({ item, props, key }) => { 
+              return <animated.div style={props} key={key} >{item.svg}</animated.div>
+              })
+            }
           </div>}
           </Spring>
 

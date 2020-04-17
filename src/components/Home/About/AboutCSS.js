@@ -19,11 +19,14 @@ export const AboutMe = styled(animated.div)`
 
   
     .top-part{
+      position: relative;
       .svg-div{
         width: 200px;
         margin-left: auto;
         svg{
           width: 200px; height: 200px;
+          position: absolute;
+          top: 0;
         }
       }
     }
@@ -38,6 +41,7 @@ export const AboutMe = styled(animated.div)`
         .table-1, .table-2, .table-3{
           border: 1px solid gray;
           width: 100%;
+          transition: all 0.5s ease;
           &.active{
             background: red;
           }
@@ -48,8 +52,10 @@ export const AboutMe = styled(animated.div)`
         width: 100%; height: 100%;
         padding: 5px;
         background: #d4d4d4;
+        position: relative;
 
         .content-1, .content-2, .content-3{
+          position: absolute;
           color: #000;
           font-size: 2.5em;
         }
