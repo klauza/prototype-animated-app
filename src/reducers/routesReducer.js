@@ -4,7 +4,7 @@ import { UPDATE_SUBPAGE_ID } from '../actions/types';
 const initialState = {
   routes: {
     home: 0,
-    web_dev: 0
+    about: 0
   }
 }
 

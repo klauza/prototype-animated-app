@@ -56,6 +56,15 @@ export const AboutMe = styled(animated.div)`
             background: red;
           }
         }
+
+        .table-content{
+          span{
+            font-size: 16px;
+          }
+          svg{
+            width: 25px; height: 25px;
+          }
+        }
       }
 
       .content{

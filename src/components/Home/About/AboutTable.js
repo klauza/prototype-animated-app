@@ -1,30 +1,32 @@
 import React, { useState } from 'react';
 import { useTransition, animated } from 'react-spring';
 import { NavLink } from 'react-router-dom';
+// import SVG (temp)
+import { Cyb, Photo, Web } from '../../../Icons';
 
-const AboutTable = ({tableId, setTableId}) => {
+const AboutTable = ({ tableId, setTableId, update_Subpage_Id, routes }) => {
 
   const servicesData = [
     {
       id: 0,
-      icon: "icon_1",
-      tablet_pc_text: "WWW",
+      icon: <Cyb/>,
+      table_text: "WWW",
       title: "Web Development",
       contentText: ['www application', 'google My Business implementation'],
       path: "/page-one"
     },
     {
       id: 1,
-      icon: "icon_2",
-      tablet_pc_text: "Design",
+      icon: <Photo/>,
+      table_text: "Design",
       title: "Photography, design",
       contentText: ["photo editing", "stock photos", "web wireframing", "icons"],
       path: "/page-two"
     },
     {
       id: 2,
-      icon: "icon_3",
-      tablet_pc_text: "",
+      icon: <Web/>,
+      table_text: "Security",
       title: "Cybersecurity",
       contentText: ['currently no services available'],
       path: "/page-three"
@@ -32,9 +34,9 @@ const AboutTable = ({tableId, setTableId}) => {
   ];
   
   const transitions = useTransition(servicesData[tableId], item=>item.id, {
-    from: {opacity: 0, transform: 'translate(0px, 50px)'},
-    enter: {opacity: 1, transform: 'translate(0px, 0px)'},
-    leave: {opacity: 0, transform: 'translate(0px, 50px)'}
+    from: {opacity: 0, transform: 'translateX(35px)'},
+    enter: {opacity: 1, transform: 'translateX(0px)'},
+    leave: {opacity: 0, transform: 'translateX(0px)'}
   })
 
 
@@ -44,7 +46,12 @@ const AboutTable = ({tableId, setTableId}) => {
       <div className="tables">
         {servicesData.map((item, i) => 
           {
-            return ( <div key={i} className={`table table-${i+1} ${tableId===i ? "active" : null}`} onClick={()=>{setTableId(i)}}> {i+1} </div>)
+            return ( 
+              <div 
+                key={i} 
+                className={`table table-${i+1} ${tableId===i ? "active" : null}`} 
+                onClick={()=>{setTableId(i); update_Subpage_Id({...routes, about: i});}}
+              >  <div className="table-content"><span>{item.table_text}</span>{item.icon}</div> </div> )
           }
         )}
       </div>

@@ -4,12 +4,16 @@ import { Spring, config } from 'react-spring/renderprops';
 import { Container, AboutMe } from './AboutCSS';
 import AboutTable from './AboutTable';
 
+// redux
+import { connect } from 'react-redux';
+import { update_Subpage_Id } from '../../../actions/routesActions';
+
 // import SVG
 import { Cyb, Photo, Web } from '../../../Icons';
 
-const About = ({ index, propsAbout }) => {
+const About = ({ index, propsAbout, update_Subpage_Id, general: {routes} }) => {
 
-const [tableId, setTableId] = useState(0);
+const [tableId, setTableId] = useState(routes.about); // read from redux
 
 
 const svgs = [
@@ -91,7 +95,7 @@ return (
           to={{ transform: index===1 ? "translateY(0px)" : "translateY(50px)", opacity: index===1 ? "1" : "0" }}
         >
           {props => <div style={props} className="about__content--bottom">
-            <AboutTable tableId={tableId} setTableId={setTableId} />
+            <AboutTable tableId={tableId} setTableId={setTableId} routes={routes} update_Subpage_Id={update_Subpage_Id} />
           </div>}
         </Spring>
 
@@ -104,4 +108,7 @@ return (
 
 }
 
-export default About
+const mapStateToProps = (state) => ({
+  general: state.general
+})
+export default connect(mapStateToProps, {update_Subpage_Id})(About)
