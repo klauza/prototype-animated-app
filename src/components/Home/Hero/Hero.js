@@ -1,30 +1,52 @@
-import React from 'react';
+import React, { useState } from 'react';
 //eslint-disable-next-line
-import { useSpring, animated } from 'react-spring'
+import { useSpring, animated } from 'react-spring';
+import { Spring, config } from 'react-spring/renderprops';
 import { Wrapper } from './HeroCSS';
 
-const Hero = ({props, propsHero, toggleOpen}) => {
+const Hero = ({index, propsHero, toggleOpen}) => {
+
+
+
+  const generalAnimation = config.stiff;
+
   return (
     <div style={{background: 'grey'}}>
-      <Wrapper style={propsHero}>
-        <animated.div className="body-top">
+      <Wrapper style={propsHero} i={index===0 ? 1 : 0}>
+        <div className="body-top" >
 
-          <animated.div className="body-top__developer" 
-          // style={propsHero}
+          <Spring
+            config={generalAnimation}
+            delay={250}
+            from={{ transform: index===0 ? "translateX(-50px)" : "translateX(0px)", opacity: index===0 ? "0" : "1"  }}
+            to={{ transform: index===0 ? "translateX(0px)" : "translateX(-50px)", opacity: index===0 ? "1" : "0" }}
           >
-              <p>KLAUZA</p>
-              <p>Portfolio</p>
-              <p>Web Developer</p>
-          </animated.div>
+            {props => 
+              <div className="body-top__developer" style={props}>
+                <p>SUCCESSFULL BUSINESS</p>
+                <p>Whether you already have or want</p>
+                <p>work with me</p>
+              </div>
+            }
+          </Spring>
 
-          <animated.div className="body-top__SVG" 
-          // style={propsHero}
+
+          <Spring
+            delay={250}
+            config={generalAnimation}
+            from={{ transform: index===0 ? "translateX(50px)" : "translateX(0px)", opacity: index===0 ? "0" : "1"  }}
+            to={{ transform: index===0 ? "translateX(0px)" : "translateX(50px)", opacity: index===0 ? "1" : "0" }}
           >
-            SVG
-            <span>15vh</span> <button onClick={toggleOpen}>Squash</button>
-          </animated.div>
+            {props =>
+              <div className="body-top__SVG" style={props}>
+                <div>
+                  <span>SVG 15vh</span> <button onClick={toggleOpen}>Squash</button>
+                </div>
+              </div>
+            }
+          </Spring>
 
-        </animated.div>
+        </div>
       </Wrapper>
     </div>
   )

@@ -1,20 +1,29 @@
 import React from 'react';
 import { useSpring, animated } from 'react-spring';
+import { Spring, config } from 'react-spring/renderprops';
 import { ContactMe } from './ContactCSS';
 
-const Contact = ({props, index, propsContact}) => {
+const Contact = ({ index, propsContact}) => {
 
-  const animateChildren = useSpring({
-    transform: index===2 ? "translateY(50px)" : "translateY(0px)",
-    opacity: index===2 ? "1" : "0"
-  })
+  const generalAnimation = config.stiff;
+
 
   return (
     <div style={{background: 'lightgreen'}}>
       <ContactMe style={propsContact} i={index===2 ? 1 : 0}>
-        <animated.div style={animateChildren}>
-          <span>CONTACT PAGE</span>
-        </animated.div>
+
+        <Spring
+          config={generalAnimation}
+          delay={250}
+          from={{ transform: index===2 ? "translateX(-50px)" : "translateX(0px)", opacity: index===2 ? "0" : "1"  }}
+          to={{ transform: index===2 ? "translateX(0px)" : "translateX(-50px)", opacity: index===2 ? "1" : "0" }}
+        >
+          {props => 
+            <div style={props}>
+              <span>CONTACT PAGE</span>
+            </div>
+          }
+        </Spring>
       </ContactMe>
     </div>
   )

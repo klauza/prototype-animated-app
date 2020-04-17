@@ -2,7 +2,6 @@ import React from 'react';
 import { AbsoluteWrapper } from '../reusable';
 import Swipe from 'react-easy-swipe';
 import { useSpring } from 'react-spring'
-import ModalForm from '../ModalForm';
 import './circularMenu.scss';
 // import { isMobile } from 'react-device-detect';
 
@@ -26,7 +25,6 @@ const Home = ({update_Subpage_Id, general: {routes}}) => {
 
   // Modal form
   // const [modalDelay, setModalDelay] = React.useState(false);
-  const [modal, setModal] = React.useState(false);
   // scrolling
   const [index, setIndex] = React.useState(routes.home);  // read index from Redux
   const [blockSwipe, setBlockSwipe] = React.useState(false);
@@ -61,10 +59,6 @@ const Home = ({update_Subpage_Id, general: {routes}}) => {
     }, 500)
   }
 
-  const openModalForm = () => {
-    // setModalDelay(true);
-    setModal(!modal);
-  }
 
   // PC SWIPE/mouse-SCROLL
   const handleScroll = (e) => {
@@ -150,7 +144,6 @@ const Home = ({update_Subpage_Id, general: {routes}}) => {
   return (
     <AbsoluteWrapper>
 
-      <ModalForm modalOpen={modal}/>
   
       
       <Swipe onSwipeMove={onSwipeMove}>
@@ -173,7 +166,7 @@ const Home = ({update_Subpage_Id, general: {routes}}) => {
 
           </div> */}
 
-          {/* Bottom nav Home buttons */}
+          {/* Bottom nav Home buttons 
           <AboutButton style={aboutBtnProp}>
             <button onClick={()=>{
               if(index===0 || index===2){
@@ -205,21 +198,22 @@ const Home = ({update_Subpage_Id, general: {routes}}) => {
               {index===0 ? "Contact" : index===1 ? "Contact" : "Home"}
             </button>
           </ContactButton>
-
+*/}
 
           {/* HERO */}
           <Hero 
-          index={index}
-          propsHero={propsHero} 
-          toggleOpen={toggleOpen} />
+            index={index}
+            propsHero={propsHero} 
+            toggleOpen={toggleOpen} 
+          />
       
 
 
           {/* ABOUT */}
           <About 
-          index={index}
-          propsAbout={propsAbout}
-          openModalForm={openModalForm} />
+            index={index}
+            propsAbout={propsAbout} 
+          />
     
 
 

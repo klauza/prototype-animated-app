@@ -11,8 +11,7 @@ export const AboutMe = styled(animated.div)`
   margin: 0 auto;
   padding: 0 2.5px;
 
-  color: ${props => props.i ? "orange" : "black"};
-  // pointer-events: ${props => props.i ? "auto" : "none"};
+  pointer-events: ${props => props.i ? "auto" : "none"};
   
   .about-animated{
     display: grid; grid-template-rows: 40vh 60vh;

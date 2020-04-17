@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 //eslint-disable-next-line
 import { useSpring, animated } from 'react-spring';
-import {Spring} from 'react-spring/renderprops'
+import { Spring, config } from 'react-spring/renderprops'
 import { Container, AboutMe } from './AboutCSS';
 import ModalForm from './ModalForm';
 import AboutTable from './AboutTable';
@@ -11,14 +11,6 @@ import { Cyb, Photo, Web } from '../../../Icons';
 
 const About = ({ index, propsAbout }) => {
 
-// const config = { mass: 5, tension: 2000, friction: 200 }
-
-// const { size, opacity, ...rest } = useSpring({
-//   ref: springRef,
-//   config: config.stiff,
-//   from: { size: '20%', background: 'hotpink' },
-//   to: { size: isOpen ? '100%' : '20%', background: isOpen ? 'white' : 'hotpink' }
-// })
 const [modal, setModal] = useState(false);
 const [tableId, setTableId] = useState(1);
 
@@ -27,51 +19,68 @@ const openModalForm = () => {
   setModal(!modal);
 }
 
-// console.log('index: ', index)
-// console.log('About open?: ', isOpen)
-const animateChildren = useSpring({
-  // config,
-  // config: { duration: 1750 },
-  // transform: index===1 ? "translateY(50px)" : "translateY(0px)",
-  opacity: index===1 ? "1" : "0"
-})
-
 
 
 const svgs = [<Cyb/>, <Photo/>, <Web/>];
 
+const generalAnimation = config.stiff;
 
 return (
   <Container>
     <ModalForm modalOpen={modal}/>
 
     <AboutMe style={propsAbout} i={index===1 ? 1 : 0}>
-      <animated.div style={animateChildren} className="about-animated" >
+      <div className="about-animated" >
 
         <div className="top-part">
-          <h1>About</h1>
-          <div>
-            <p>I'm an IT passionate, independent coder and open minded CEO of <i>Klauza ltd.</i></p>
-            <p>I offer services which lead to business improvements.</p>
-            <animated.button onClick={openModalForm}>Ask me anything</animated.button>
-          </div>
-          <div className="svg-div">
+          
+          <Spring
+            delay={150}
+            config={generalAnimation}
+            from={{ transform: index===1 ? "translateY(-50px)" : "translateY(0px)", opacity: index===1 ? "0" : "1"  }}
+            to={{ transform: index===1 ? "translateY(0px)" : "translateY(-50px)", opacity: index===1 ? "1" : "0" }}
+          >
+            {props => <h1 style={props}>About</h1>}
+          </Spring>
+
+          <Spring
+            delay={250}
+            config={generalAnimation}
+            from={{ transform: index===1 ? "translateY(-50px)" : "translateY(0px)", opacity: index===1 ? "0" : "1"  }}
+            to={{ transform: index===1 ? "translateY(0px)" : "translateY(-50px)", opacity: index===1 ? "1" : "0" }}
+          >
+            {props => <div style={props}>
+              <p>I'm an IT passionate, independent coder and open minded CEO of <i>Klauza ltd.</i></p>
+              <p>I offer services which lead to business improvements.</p>
+              <animated.button onClick={openModalForm}>Ask me anything</animated.button>
+            </div>}
+          </Spring>
+
+          <Spring
+            delay={350}
+            config={generalAnimation}
+            from={{ transform: index===1 ? "translateX(25px)" : "translateX(0px)", opacity: index===1 ? "0" : "1"  }}
+            to={{ transform: index===1 ? "translateX(0px)" : "translateX(25px)", opacity: index===1 ? "1" : "0" }}
+          >
+          {({transform, opacity}) => <div style={{transform, opacity}} className="svg-div">
             {svgs[tableId-1]}
-          </div>
+          </div>}
+          </Spring>
+
         </div>
         
-        <div className="bot-part">
-          <AboutTable tableId={tableId} setTableId={setTableId} />
-        </div>
+        <Spring
+          delay={400}
+          config={generalAnimation}
+          from={{ transform: index===1 ? "translateY(50px)" : "translateY(0px)", opacity: index===1 ? "0" : "1"  }}
+          to={{ transform: index===1 ? "translateY(0px)" : "translateY(50px)", opacity: index===1 ? "1" : "0" }}
+        >
+          {props => <div style={props} className="bot-part">
+            <AboutTable tableId={tableId} setTableId={setTableId} />
+          </div>}
+        </Spring>
 
-      </animated.div>
-
-      <Spring
-        delay={300}
-        from={{ number: index===1 ? 0 : 1  }}
-        to={{ number: index===1 ? 1 : 0 }}>
-        {props => <div>{props.number}</div>}
-      </Spring>
+      </div>
 
     </AboutMe>
 

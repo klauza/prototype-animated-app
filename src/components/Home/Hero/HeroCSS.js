@@ -3,27 +3,32 @@ import { animated } from 'react-spring'
 
 export const Wrapper = styled(animated.div)`
   color: #fff;
-  
+  display: grid;
+  align-content: center;
+  pointer-events: ${props => props.i ? "auto" : "none"};
+
   .body-top{
-    /* height: 100vh; */
-    width: 100%;
+    width: 100%; 
     opacity: 1;
-    /* position: absolute; */
     /* transition: all 500ms ease; */
 
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-auto-rows: 500px;
     align-content: center;
-    align-items: center;
+    justify-content: center;
 
-    /* pointer-events: none; */
+
     &__developer{
       /* transition: opacity 1000ms ease; */
+      border: 1px solid blue;
+      // align-self: center;
+      // justify-self: center;
     }
     &__SVG{
       /* transition: opacity 1000ms ease; */
-
+      border: 1px solid red;
+      transform: translateY(50px);
     }
   }
 `;
