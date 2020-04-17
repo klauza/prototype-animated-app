@@ -13,14 +13,23 @@ export const AboutMe = styled(animated.div)`
 
   pointer-events: ${props => props.i ? "auto" : "none"};
   
-  .about-animated{
+  .about__content{
     display: grid; grid-template-rows: 40vh 60vh;
     width: 100%;
 
   
-    .top-part{
+    &--top{
       position: relative;
-      .svg-div{
+
+      .header{
+        color: green;
+      }
+
+      .paragraph{
+        color: green;
+      }
+
+      .svg{
         width: 200px;
         margin-left: auto;
         svg{
@@ -31,7 +40,7 @@ export const AboutMe = styled(animated.div)`
       }
     }
 
-    .bot-part{
+    &--bottom{
       display: flex; flex-direction: column;
       
       .tables{
@@ -39,6 +48,7 @@ export const AboutMe = styled(animated.div)`
         height: 50px;
         display: flex; flex-direction: row;
         .table-1, .table-2, .table-3{
+          cursor: pointer;
           border: 1px solid gray;
           width: 100%;
           transition: all 0.5s ease;
@@ -48,16 +58,39 @@ export const AboutMe = styled(animated.div)`
         }
       }
 
-      .contents{
+      .content{
         width: 100%; height: 100%;
         padding: 5px;
-        background: #d4d4d4;
+        background: linear-gradient(to bottom,
+          #d4d4d4,
+          #fff
+          );
         position: relative;
 
-        .content-1, .content-2, .content-3{
+        &-1, &-2, &-3{
           position: absolute;
           color: #000;
           font-size: 2.5em;
+          width: 100%; height: 100%;
+          display: flex; flex-direction: column;
+
+          h2{
+            font-size: 0.8em;
+          }
+          p{
+            font-size: 22px;
+          }
+          a{
+            font-size: 22px;
+            color: black;
+            width: 200px;
+            float: right;
+            margin-top: auto;
+            margin-bottom: 75px;
+            margin-left: auto;
+            margin-right: 25px;
+            display: block;
+          }
         }
       }
     }

@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
-//eslint-disable-next-line
-import { useTransition, useSpring, animated } from 'react-spring';
-import { Spring, config } from 'react-spring/renderprops'
+import { useTransition, animated } from 'react-spring';
+import { Spring, config } from 'react-spring/renderprops';
 import { Container, AboutMe } from './AboutCSS';
-import ModalForm from './ModalForm';
 import AboutTable from './AboutTable';
 
 // import SVG
@@ -11,14 +9,7 @@ import { Cyb, Photo, Web } from '../../../Icons';
 
 const About = ({ index, propsAbout }) => {
 
-const [modal, setModal] = useState(false);
 const [tableId, setTableId] = useState(0);
-
-const openModalForm = () => {
-  // setModalDelay(true);
-  setModal(!modal);
-}
-
 
 
 const svgs = [
@@ -37,9 +28,9 @@ const svgs = [
 ];
 
 const svgTransitions = useTransition(svgs[tableId], item=>item.id, {
-  from: {opacity: 0, transform: 'scale(1.2)'},
+  from: {opacity: 0, transform: 'scale(0.9)'},
   enter: {opacity: 1, transform: 'scale(1)'},
-  leave: {opacity: 0, transform: 'scale(0.8)'}
+  leave: {opacity: 0, transform: 'scale(0.9)'}
 })
 
 
@@ -47,12 +38,11 @@ const generalAnimation = config.stiff;
 
 return (
   <Container>
-    <ModalForm modalOpen={modal}/>
 
     <AboutMe style={propsAbout} i={index===1 ? 1 : 0}>
-      <div className="about-animated" >
+      <div className="about__content" >
 
-        <div className="top-part">
+        <div className="about__content--top">
           
           <Spring
             delay={150}
@@ -60,7 +50,7 @@ return (
             from={{ transform: index===1 ? "translateY(-50px)" : "translateY(0px)", opacity: index===1 ? "0" : "1"  }}
             to={{ transform: index===1 ? "translateY(0px)" : "translateY(-50px)", opacity: index===1 ? "1" : "0" }}
           >
-            {props => <h1 style={props}>About</h1>}
+            {props => <h1 className="header" style={props}>About</h1>}
           </Spring>
 
           <Spring
@@ -69,10 +59,10 @@ return (
             from={{ transform: index===1 ? "translateY(-50px)" : "translateY(0px)", opacity: index===1 ? "0" : "1"  }}
             to={{ transform: index===1 ? "translateY(0px)" : "translateY(-50px)", opacity: index===1 ? "1" : "0" }}
           >
-            {props => <div style={props}>
+            {props => 
+            <div className="paragraph" style={props}>
               <p>I'm an IT passionate, independent coder and open minded CEO of <i>Klauza ltd.</i></p>
-              <p>I offer services which lead to business improvements.</p>
-              <animated.button onClick={openModalForm}>Ask me anything</animated.button>
+              <p>I offer services to improve your business.</p>
             </div>}
           </Spring>
 
@@ -82,7 +72,8 @@ return (
             from={{ transform: index===1 ? "translateX(25px)" : "translateX(0px)", opacity: index===1 ? "0" : "1"  }}
             to={{ transform: index===1 ? "translateX(0px)" : "translateX(25px)", opacity: index===1 ? "1" : "0" }}
           >
-          {({transform, opacity}) => <div style={{transform, opacity}} className="svg-div">
+          {({transform, opacity}) => 
+          <div style={{transform, opacity}} className="svg">
             {
              svgTransitions.map(({ item, props, key }) => { 
               return <animated.div style={props} key={key} >{item.svg}</animated.div>
@@ -99,7 +90,7 @@ return (
           from={{ transform: index===1 ? "translateY(50px)" : "translateY(0px)", opacity: index===1 ? "0" : "1"  }}
           to={{ transform: index===1 ? "translateY(0px)" : "translateY(50px)", opacity: index===1 ? "1" : "0" }}
         >
-          {props => <div style={props} className="bot-part">
+          {props => <div style={props} className="about__content--bottom">
             <AboutTable tableId={tableId} setTableId={setTableId} />
           </div>}
         </Spring>

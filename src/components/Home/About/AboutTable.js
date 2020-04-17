@@ -1,43 +1,55 @@
 import React, { useState } from 'react';
 import { useTransition, animated } from 'react-spring';
+import { NavLink } from 'react-router-dom';
 
 const AboutTable = ({tableId, setTableId}) => {
-
-  // const [index, setIndex] = useState(0);
 
   const servicesData = [
     {
       id: 0,
-      contentText: 'one'
-    }, 
+      icon: "icon_1",
+      tablet_pc_text: "WWW",
+      title: "Web Development",
+      contentText: ['www application', 'google My Business implementation'],
+      path: "/page-one"
+    },
     {
       id: 1,
-      contentText: 'two two two two'
-    }, 
+      icon: "icon_2",
+      tablet_pc_text: "Design",
+      title: "Photography, design",
+      contentText: ["photo editing", "stock photos", "web wireframing", "icons"],
+      path: "/page-two"
+    },
     {
       id: 2,
-      contentText: 'three'
+      icon: "icon_3",
+      tablet_pc_text: "",
+      title: "Cybersecurity",
+      contentText: ['currently no services available'],
+      path: "/page-three"
     }
   ];
   
   const transitions = useTransition(servicesData[tableId], item=>item.id, {
-    from: {opacity: 0, transform: 'scale(1.2)'},
-    enter: {opacity: 1, transform: 'scale(1)'},
-    leave: {opacity: 0, transform: 'scale(0.8)'}
+    from: {opacity: 0, transform: 'translate(0px, 50px)'},
+    enter: {opacity: 1, transform: 'translate(0px, 0px)'},
+    leave: {opacity: 0, transform: 'translate(0px, 50px)'}
   })
-
 
 
   return (
     <>
+
       <div className="tables">
-        <div className={`table table-1 ${tableId===0 ? "active" : null}`} onClick={()=>{setTableId(0)}}>1</div>
-        <div className={`table table-2 ${tableId===1 ? "active" : null}`} onClick={()=>{setTableId(1)}}>2</div>
-        <div className={`table table-3 ${tableId===2 ? "active" : null}`} onClick={()=>{setTableId(2)}}>3</div>
+        {servicesData.map((item, i) => 
+          {
+            return ( <div key={i} className={`table table-${i+1} ${tableId===i ? "active" : null}`} onClick={()=>{setTableId(i)}}> {i+1} </div>)
+          }
+        )}
       </div>
 
-
-      <div className="contents">
+      <div className="content">
       {
         transitions.map(({ item, props, key }) => { 
           return (
@@ -45,14 +57,16 @@ const AboutTable = ({tableId, setTableId}) => {
             style={props} 
             key={key} 
             className={`content-${item.id+1}`}
-          >
-              <span>content {item.contentText}</span>
+          > 
+            <h2>{item.title}</h2>
+            {item.contentText.map((itm, i) => <p key={i}>{itm}</p>)}
+            <NavLink exact to={{pathname: item.path, state: item.id+1}}>Learn more</NavLink>
+
           </animated.div>
           )
         })
       }
       </div>
-     
 
     </>
   )
