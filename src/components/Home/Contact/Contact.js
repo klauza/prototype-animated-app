@@ -9,25 +9,41 @@ const Contact = ({ routes, animationDirection }) => {
 
   const generalAnimation = config.stiff;
 
-
+  console.log(animationDirection)
   return (
-    <ContactMe>
+    <div style={{ backgroundColor: "#fff"}}>
+      <ContactMe>
 
-      <Spring
-        config={generalAnimation}
-        delay={450}
-        from={{ transform: elementDir(animationDirection), opacity: "0" }}
-        to={{ transform: "translate(0px, 0px)", opacity: "1" }}
-      >
-        {props => 
-          <div style={props}>
-            <span>CONTACT PAGE</span>
-            <span>CONTACT PAGE</span>
-            <span>CONTACT PAGE</span>
-          </div>
-        }
-      </Spring>
-    </ContactMe>
+        <Spring
+          config={generalAnimation}
+          delay={350}
+          from={{ transform: elementDir(animationDirection), opacity: "0" }}
+          to={{ transform: "translate(0px, 0px)", opacity: "1" }}
+        >
+          {props => 
+            <div style={props}>
+              <span>CONTACT PAGE</span>
+              <span>CONTACT PAGE</span>
+              <span>CONTACT PAGE</span>
+            </div>
+          }
+        </Spring>
+
+        <Spring
+          config={generalAnimation}
+          delay={350}
+          from={{ transform: elementDir(animationDirection), opacity: "0" }}
+          to={{ transform: "translate(0px, 0px)", opacity: "1" }}
+        >
+          {props => 
+            <div className="test" style={props}>
+              <span>Box</span>
+            </div>
+          }
+        </Spring>
+
+      </ContactMe>
+    </div>
   )
 }
 

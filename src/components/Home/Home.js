@@ -133,7 +133,7 @@ const Home = ({update_Subpage_Id, updt_animation_direction, general: {routes, an
       id: 1
     }, 
     {
-      section: <Contact index={index} />,
+      section: <Contact index={index} animationDirection={animationDirection} routes={routes} />,
       id: 2
     }
   ];
