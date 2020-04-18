@@ -1,11 +1,13 @@
 
 import { UPDATE_SUBPAGE_ID } from '../actions/types';
+import { UPDATE_ANIMATION_DIRECTION_ID } from '../actions/types';
 
 const initialState = {
   routes: {
     home: 0,
     about: 0
-  }
+  },
+  animationDirection: 'down'
 }
 
 export default (state = initialState, action) => {
@@ -15,6 +17,12 @@ export default (state = initialState, action) => {
       return{
         ...state,
         routes: action.payload
+      }
+
+    case UPDATE_ANIMATION_DIRECTION_ID:
+      return{
+        ...state,
+        animationDirection: action.payload
       }
 
 
