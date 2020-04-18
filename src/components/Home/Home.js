@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components';
 import { AbsoluteWrapper } from '../reusable';
 import Swipe from 'react-easy-swipe';
@@ -27,29 +27,12 @@ const RenderingC = styled(animated.div)`
 
 const Home = ({update_Subpage_Id, updt_animation_direction, general: {routes, animationDirection}}) => {
 
-  const [open, setOpen] = React.useState(true);
-  // const [secondOpen, setSecondOpen] = React.useState(false);
-
-  // Modal form
-  // const [modalDelay, setModalDelay] = React.useState(false);
-  // scrolling
-  const [index, setIndex] = React.useState(routes.home);  // read index from Redux
-  const [blockSwipe, setBlockSwipe] = React.useState(false);
-
-  // const [stateAnimDir, setStateAnimDir] = React.useState(undefined);
-
-
-
-
-  // const propsHero = useSpring({ height: index===0 ? "100vh" : "0vh", opacity: index===0 ? "1" : "0" });
-  // const propsAbout = useSpring({ height: index===1 ? "100vh" : "0vh", opacity: index===1 ? "1" : "0" });
-  // const propsContact = useSpring({ height: index===2 ? "100vh" : "0vh", opacity: index===2 ? "1" : "0" });
-
-
-  // const aboutBtnProp = useSpring({ top: index===0 ? "100vh" : index===1 ? "0vh" : "0vh"});
-  // const contactBtnProp = useSpring({ top: index===0 ? "100vh" : index===1 ? "100vh" : "0vh"});
   
-  // console.log(index);
+  const [open, setOpen] = useState(true);
+
+  const [index, setIndex] = useState(routes.home);  // read index from Redux
+  const [blockSwipe, setBlockSwipe] = useState(false);
+  
 
   // const toggleOpen = () => {
   //   setOpen(!open);
@@ -72,32 +55,26 @@ const Home = ({update_Subpage_Id, updt_animation_direction, general: {routes, an
     }
    
     if(!blockSwipe){
-      // next, going down
       if(direction < 0 && index < 2){
-        // toggleOpen();
-        blockFromSwipe(); 
-
+        updt_animation_direction('down');   // update direction
         
-        setIndex(prevState => prevState+1);
+        blockFromSwipe();   // temp prevent from scroll
 
-        
-        // set current page
-        update_Subpage_Id({...routes, home: index+1});
-        updt_animation_direction('down');
+        setIndex(prevState => prevState+1);   // page ID
+
+        update_Subpage_Id({...routes, home: index+1});    // set current page
       }
-     // prev, going up
+
       if(direction > 0 && index > 0){
-        // toggleOpen();
+        updt_animation_direction('up');
+        
         blockFromSwipe(); 
         
-
         setIndex(prevState => prevState-1);
 
-        // set current page
         update_Subpage_Id({...routes, home: index-1});
-        
-        updt_animation_direction('up');
       }
+
     } else{
       return;
     }
@@ -105,32 +82,25 @@ const Home = ({update_Subpage_Id, updt_animation_direction, general: {routes, an
 
   // MOBILE SWIPE
   const onSwipeMove = (position, event) => {
-    // console.log(position);
     if(!blockSwipe){
-      // next, going down
+
       if(position.y < -75 && index < 2){
         updt_animation_direction('down');
-        // toggleOpen();
+        
         blockFromSwipe(); 
-
 
         setIndex(prevState => prevState+1);
 
-
-        // set current page
         update_Subpage_Id({...routes, home: index+1});
       }
-     // prev, going up
+      
       if(position.y > 75 && index > 0){
-        updt_animation_direction('up');
-        // toggleOpen();
-        blockFromSwipe(); 
+        updt_animation_direction('up'); 
         
+        blockFromSwipe(); 
         
         setIndex(prevState => prevState-1);
 
-        
-        // set current page
         update_Subpage_Id({...routes, home: index-1});
       }
     } else{
@@ -138,7 +108,7 @@ const Home = ({update_Subpage_Id, updt_animation_direction, general: {routes, an
     }
   }
 
-  // BLOCK FROM SCROLL
+  // TEMPORARY PREVENT FROM SCROLL/SWIPE
   const blockFromSwipe = () => {
     // block
     setBlockSwipe(true);
@@ -152,8 +122,7 @@ const Home = ({update_Subpage_Id, updt_animation_direction, general: {routes, an
   const HomeSections = [
     {
       section: <Hero index={index} />,
-      id: 0,
-      background: "#d4d4d4"
+      id: 0
     }, 
     {
       section: <About 
@@ -162,19 +131,15 @@ const Home = ({update_Subpage_Id, updt_animation_direction, general: {routes, an
               routes={routes}
               animationDirection={animationDirection}
               index={index} />,
-      id: 1,
-      background: "orange"
+      id: 1
     }, 
     {
       section: <Contact index={index} />,
-      id: 2,
-      background: "pink"
+      id: 2
     }
   ];
   
-  // direction
-  const dir = routeDir(animationDirection);
-  console.log('direction: ',dir);
+
 
   const sectionsTransitions = useTransition(HomeSections[index], sec => sec.id, {
     from: {opacity: 0, transform: routeDir(animationDirection) },

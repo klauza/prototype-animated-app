@@ -20,7 +20,7 @@ const AboutTable = ({ tableId, setTableId, update_Subpage_Id, routes }) => {
       icon: <Photo/>,
       table_text: "Design",
       title: "Photography, design",
-      contentText: ["photo editing", "stock photos", "web wireframing", "icons"],
+      contentText: ["photo editing", "stock photos", "web wireframing - would you like to see wireframes of This page? [example]", "icons"],
       path: "/photography-design"
     },
     {

@@ -3,7 +3,7 @@ import { animated } from 'react-spring';
 
 
 export const AboutMe = styled.div`
-  background: lightgreen;
+  background: transparent;
   max-width: 1280px;
   // width: auto;
   margin: 0 auto;
@@ -108,4 +108,3 @@ export const AboutMe = styled.div`
 
 
 `;
-// height: 100vh;
