@@ -1,10 +1,13 @@
 
 import styled from 'styled-components';
-import { animated } from 'react-spring';
+// import { animated } from 'react-spring';
 
 export const ContactMe = styled.div`
-  pointer-events: ${props => props.i ? "auto" : "none"};
-  width: 100%; height: 100%;  
   background: orange;
-  // position: absolute; top: 0;
+
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 2.5px;
+
+  width: 100%; height: 100%;  
 `;

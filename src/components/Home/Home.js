@@ -19,7 +19,7 @@ import Contact from './Contact/Contact';
 import { ExternalWrapper, AboutButton, ContactButton } from './HomeCSS';
 
 
-const RenderingC = styled(animated.div)`
+const VerticalComponent = styled(animated.div)`
   width: 100%; height: 100%;
   // transform-origin: bottom;
   position: absolute; bottom: 0; top:0;
@@ -33,7 +33,7 @@ const Home = ({update_Subpage_Id, updt_animation_direction, general: {routes, an
   const [index, setIndex] = useState(routes.home);  // read index from Redux
   const [blockSwipe, setBlockSwipe] = useState(false);
   
-
+  console.log(animationDirection);
   // const toggleOpen = () => {
   //   setOpen(!open);
 
@@ -121,7 +121,7 @@ const Home = ({update_Subpage_Id, updt_animation_direction, general: {routes, an
 
   const HomeSections = [
     {
-      section: <Hero index={index} />,
+      section: <Hero index={index} animationDirection={animationDirection} routes={routes} />,
       id: 0
     }, 
     {
@@ -129,7 +129,6 @@ const Home = ({update_Subpage_Id, updt_animation_direction, general: {routes, an
               animationDirection={animationDirection}
               update_Subpage_Id={update_Subpage_Id}
               routes={routes}
-              animationDirection={animationDirection}
               index={index} />,
       id: 1
     }, 
@@ -151,28 +150,20 @@ const Home = ({update_Subpage_Id, updt_animation_direction, general: {routes, an
   return (
     <AbsoluteWrapper>
 
-  
-      
       <Swipe onSwipeMove={onSwipeMove}>
         <ExternalWrapper onWheel={(e)=>handleScroll(e)}>
 
           <div style={{position: "reltaive", width: "100%", height: "100vh"}}>
           {
           sectionsTransitions.map(({ item, props, key }) => { 
-            return <RenderingC style={props} key={key} >{item.section}</RenderingC>
+            return <VerticalComponent style={props} key={key} >{item.section}</VerticalComponent>
           })
           }
           </div>
 
-    
-
-
-          
-       
-     
-
         </ExternalWrapper>
       </Swipe>
+      
     </AbsoluteWrapper>
   )
 }

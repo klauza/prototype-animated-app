@@ -13,9 +13,7 @@ const WrappedRoutes = ({ updateFirstStart, appFirstStart, loc1, loc2, location, 
     loc1 > loc2 ? updt_animation_direction("right") : updt_animation_direction("left")
   }, [location]);
 
-  return (
-    <Routes updateFirstStart={updateFirstStart} appFirstStart={appFirstStart} loc1={loc1} loc2={loc2} location={location} />
-  )
+  return <Routes updateFirstStart={updateFirstStart} appFirstStart={appFirstStart} loc1={loc1} loc2={loc2} location={location} />
 }
 
 
