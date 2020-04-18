@@ -5,18 +5,18 @@ export const routeDir = (dir, optional) => {
 
     if(dir === "up") return "translate(0px, 1000px)"
   
-    if(dir === "left") return "translate(-1000px, 0px)"
+    if(dir === "left") return "translate(-100%, 0%)"
   
-    if(dir === "right") return "translate(1000px, 0px)"
+    if(dir === "right") return "translate(100%, 0%)"
   }else{
 
     if(dir === "down") return "translate(0px, 1000px)"
 
     if(dir === "up") return "translate(0px, -1000px)"
   
-    if(dir === "left") return "translate(1000px, 0px)"
+    if(dir === "left") return "translate(100%, 0%)"
   
-    if(dir === "right") return "translate(-1000px, 0px)"
+    if(dir === "right") return "translate(-100%, 0%)"
 
   }
 
@@ -29,13 +29,13 @@ export const elementDir = (dir, optional) => {
 
 
 
-  if(dir === "down") return "translate(0px, -100px)"
+  if(dir === "down") return "translate(0px, 100px)"
 
-  if(dir === "up") return "translate(0px, 100px)"
+  if(dir === "up") return "translate(0px, -100px)"
 
-  if(dir === "left") return "translate(-100px, 0px)"
+  if(dir === "left") return "translate(100px, 0px)"
 
-  if(dir === "right") return "translate(100px, 0px)"
+  if(dir === "right") return "translate(-100px, 0px)"
 
 
 

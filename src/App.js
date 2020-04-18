@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 
 import { Provider } from 'react-redux';
 import store from './store';
@@ -8,7 +8,7 @@ import { __RouterContext } from 'react-router-dom';
 import Swipe from 'react-easy-swipe';
 
 // pages
-import Routes from './Routes';
+import WrappedRoutes from './WrappedRoutes';
 // nav
 import Navbar from './components/Navigation/Navbar';
 // footer
@@ -18,42 +18,48 @@ import Navbar from './components/Navigation/Navbar';
 function App() {
   const { location } = useContext(__RouterContext);
 
-  const [appFirstStart, setAppFirstStart] = React.useState(true);
-  const [loc1, setLoc1] = React.useState(location.state);
-  const [loc2, setLoc2] = React.useState(loc1);
+  const [appFirstStart, setAppFirstStart] = useState(true);
+  const [loc1, setLoc1] = useState(location.state);
+  const [loc2, setLoc2] = useState(loc1);
 
-  const [swipePrevent, setSwipePrevent] = React.useState(false);
+  const [swipePrevent, setSwipePrevent] = useState(false);
 
   const updateState = function(){
+    // update route direction
+    // redux function()
+
     setLoc1(location.state);
     setLoc2(loc1);
   }
 
   const enterState = function(){
+    console.log('fire enter state')
     if(location.pathname === '/'){
       setLoc1(0);
     }
-    if(location.pathname === '/page-one'){
+    if(location.pathname === '/web-development'){
       setLoc1(1);
     }
-    if(location.pathname === '/page-two'){
+    if(location.pathname === '/photography-design'){
       setLoc1(2);
     }
-    if(location.pathname === '/page-three'){
+    if(location.pathname === '/security'){
       setLoc1(3);
     }
   }
 
+  // fires every time route gets updated
   React.useMemo(()=>{
-    updateState();
+    !appFirstStart && updateState();
+
     //eslint-disable-next-line
-  }, [location])
+  }, [location]);
 
   // fires once on page load
   React.useMemo(()=>{
     enterState();
     //eslint-disable-next-line
-  }, [])
+  }, []);
 
   const updateFirstStart = () => {
     setAppFirstStart(false);
@@ -153,9 +159,11 @@ function App() {
     <Provider store={store}>
    
       {/* <Navbar /> */}
-      <Swipe onSwipeMove={onSwipeMove}>
-        <Routes updateFirstStart={updateFirstStart} appFirstStart={appFirstStart} loc1={loc1} loc2={loc2} location={location} />
-      </Swipe>
+
+      
+        <Swipe onSwipeMove={onSwipeMove}>
+          <WrappedRoutes updateFirstStart={updateFirstStart} appFirstStart={appFirstStart} loc1={loc1} loc2={loc2} location={location} />
+        </Swipe>
       
       {/* <Footer /> */}
 
