@@ -1,13 +1,14 @@
 import React from 'react';
+import styled from 'styled-components';
 import { AbsoluteWrapper } from '../reusable';
 import Swipe from 'react-easy-swipe';
-import { useSpring } from 'react-spring'
-import './circularMenu.scss';
+import { useTransition, useSpring, animated } from 'react-spring'
 // import { isMobile } from 'react-device-detect';
+import { routeDir } from '../RouteDirections';
 
 // redux
 import { connect } from 'react-redux';
-import { update_Subpage_Id } from '../../actions/routesActions';
+import { update_Subpage_Id, updt_animation_direction } from '../../actions/routesActions';
 
 // index pages
 import Hero from './Hero/Hero';
@@ -18,7 +19,13 @@ import Contact from './Contact/Contact';
 import { ExternalWrapper, AboutButton, ContactButton } from './HomeCSS';
 
 
-const Home = ({update_Subpage_Id, general: {routes}}) => {
+const RenderingC = styled(animated.div)`
+  width: 100%; height: 100%;
+  // transform-origin: bottom;
+  position: absolute; bottom: 0; top:0;
+`;
+
+const Home = ({update_Subpage_Id, updt_animation_direction, general: {routes, animationDirection}}) => {
 
   const [open, setOpen] = React.useState(true);
   // const [secondOpen, setSecondOpen] = React.useState(false);
@@ -29,35 +36,28 @@ const Home = ({update_Subpage_Id, general: {routes}}) => {
   const [index, setIndex] = React.useState(routes.home);  // read index from Redux
   const [blockSwipe, setBlockSwipe] = React.useState(false);
 
-
-  // const initPage = useSpring({ 
-  //   height: open ? '100vh' : "0vh"
-  //   // config: { duration: 250 } 
-  // });
-
-  // const closePage = useSpring({ 
-  //   height: "0vh"
-  //   // config: { duration: 250 } 
-  // });
+  // const [stateAnimDir, setStateAnimDir] = React.useState(undefined);
 
 
 
-  const propsHero = useSpring({ height: index===0 ? "100vh" : "0vh", opacity: index===0 ? "1" : "0" });
-  const propsAbout = useSpring({ height: index===1 ? "100vh" : "0vh", opacity: index===1 ? "1" : "0" });
-  const propsContact = useSpring({ height: index===2 ? "100vh" : "0vh", opacity: index===2 ? "1" : "0" });
 
-  const aboutBtnProp = useSpring({ top: index===0 ? "100vh" : index===1 ? "0vh" : "0vh"});
-  const contactBtnProp = useSpring({ top: index===0 ? "100vh" : index===1 ? "100vh" : "0vh"});
+  // const propsHero = useSpring({ height: index===0 ? "100vh" : "0vh", opacity: index===0 ? "1" : "0" });
+  // const propsAbout = useSpring({ height: index===1 ? "100vh" : "0vh", opacity: index===1 ? "1" : "0" });
+  // const propsContact = useSpring({ height: index===2 ? "100vh" : "0vh", opacity: index===2 ? "1" : "0" });
+
+
+  // const aboutBtnProp = useSpring({ top: index===0 ? "100vh" : index===1 ? "0vh" : "0vh"});
+  // const contactBtnProp = useSpring({ top: index===0 ? "100vh" : index===1 ? "100vh" : "0vh"});
   
   // console.log(index);
 
-  const toggleOpen = () => {
-    setOpen(!open);
+  // const toggleOpen = () => {
+  //   setOpen(!open);
 
-    setTimeout(()=>{
-      // setSecondOpen(!secondOpen);
-    }, 500)
-  }
+  //   setTimeout(()=>{
+  //     // setSecondOpen(!secondOpen);
+  //   }, 500)
+  // }
 
 
   // PC SWIPE/mouse-SCROLL
@@ -74,23 +74,29 @@ const Home = ({update_Subpage_Id, general: {routes}}) => {
     if(!blockSwipe){
       // next, going down
       if(direction < 0 && index < 2){
-        toggleOpen();
+        // toggleOpen();
         blockFromSwipe(); 
+
         
         setIndex(prevState => prevState+1);
 
+        
         // set current page
         update_Subpage_Id({...routes, home: index+1});
+        updt_animation_direction('down');
       }
      // prev, going up
       if(direction > 0 && index > 0){
-        toggleOpen();
+        // toggleOpen();
         blockFromSwipe(); 
         
+
         setIndex(prevState => prevState-1);
 
         // set current page
         update_Subpage_Id({...routes, home: index-1});
+        
+        updt_animation_direction('up');
       }
     } else{
       return;
@@ -103,21 +109,27 @@ const Home = ({update_Subpage_Id, general: {routes}}) => {
     if(!blockSwipe){
       // next, going down
       if(position.y < -75 && index < 2){
-        toggleOpen();
+        updt_animation_direction('down');
+        // toggleOpen();
         blockFromSwipe(); 
 
+
         setIndex(prevState => prevState+1);
+
 
         // set current page
         update_Subpage_Id({...routes, home: index+1});
       }
      // prev, going up
       if(position.y > 75 && index > 0){
-        toggleOpen();
+        updt_animation_direction('up');
+        // toggleOpen();
         blockFromSwipe(); 
+        
         
         setIndex(prevState => prevState-1);
 
+        
         // set current page
         update_Subpage_Id({...routes, home: index-1});
       }
@@ -137,9 +149,39 @@ const Home = ({update_Subpage_Id, general: {routes}}) => {
     }, 1000)
   }
 
-  // const fireCircleMenu = () => {
-  //   document.getElementById('circularMenu').classList.toggle('active')
-  // }
+  const HomeSections = [
+    {
+      section: <Hero index={index} />,
+      id: 0,
+      background: "#d4d4d4"
+    }, 
+    {
+      section: <About 
+              animationDirection={animationDirection}
+              update_Subpage_Id={update_Subpage_Id}
+              routes={routes}
+              animationDirection={animationDirection}
+              index={index} />,
+      id: 1,
+      background: "orange"
+    }, 
+    {
+      section: <Contact index={index} />,
+      id: 2,
+      background: "pink"
+    }
+  ];
+  
+  // direction
+  const dir = routeDir(animationDirection);
+  console.log('direction: ',dir);
+
+  const sectionsTransitions = useTransition(HomeSections[index], sec => sec.id, {
+    from: {opacity: 0, transform: routeDir(animationDirection) },
+    enter: {opacity: 1, transform: "translate(0px, 0px)" },
+    leave: {opacity: 0, transform: routeDir(animationDirection, true) }
+  })
+
 
   return (
     <AbsoluteWrapper>
@@ -149,79 +191,19 @@ const Home = ({update_Subpage_Id, general: {routes}}) => {
       <Swipe onSwipeMove={onSwipeMove}>
         <ExternalWrapper onWheel={(e)=>handleScroll(e)}>
 
+          <div style={{position: "reltaive", width: "100%", height: "100vh"}}>
+          {
+          sectionsTransitions.map(({ item, props, key }) => { 
+            return <RenderingC style={props} key={key} >{item.section}</RenderingC>
+          })
+          }
+          </div>
 
-
-          {/* <div id="circularMenu" className={`circular-menu ${isMobile ? null : 'active'}`}>
-
-            <a className="floating-btn" onClick={fireCircleMenu}>
-              <i className="fa fa-plus">X</i>
-            </a>
-
-            <menu className="items-wrapper">
-              <a href="#" className="menu-item fa fa-facebook">A</a>
-              <a href="#" className="menu-item fa fa-twitter">B</a>
-              <a href="#" className="menu-item fa fa-google-plus">C</a>
-              <a href="#" className="menu-item fa fa-linkedin">D</a>
-            </menu>
-
-          </div> */}
-
-          {/* Bottom nav Home buttons 
-          <AboutButton style={aboutBtnProp}>
-            <button onClick={()=>{
-              if(index===0 || index===2){
-                console.log('redirecting to About subpage')
-                blockFromSwipe();
-                setIndex(1);
-              }else{
-                console.log('redirecting back to home')
-                blockFromSwipe();
-                setIndex(0);
-              }
-            }}>
-              {index===0 ? "About" : index===1 ? "Home" : "About"}
-            </button>
-          </AboutButton>
-
-          <ContactButton style={contactBtnProp}>
-            <button onClick={()=>{
-              if(index===0 || index===1){
-                console.log('redirecting to Contact subpage')
-                blockFromSwipe(true);
-                setIndex(2);
-              }else{
-                console.log('redirecting back to home')
-                blockFromSwipe(true);
-                setIndex(0);
-              }
-            }}>
-              {index===0 ? "Contact" : index===1 ? "Contact" : "Home"}
-            </button>
-          </ContactButton>
-*/}
-
-          {/* HERO */}
-          <Hero 
-            index={index}
-            propsHero={propsHero} 
-            toggleOpen={toggleOpen} 
-          />
-      
-
-
-          {/* ABOUT */}
-          <About 
-            index={index}
-            propsAbout={propsAbout} 
-          />
     
 
 
-          {/* CONTACT */}
-          <Contact 
-            index={index}
-            propsContact={propsContact}
-          />
+          
+       
      
 
         </ExternalWrapper>
@@ -233,4 +215,4 @@ const Home = ({update_Subpage_Id, general: {routes}}) => {
 const mapStateToProps = (state) => ({
   general: state.general
 })
-export default connect(mapStateToProps, {update_Subpage_Id})(Home)
+export default connect(mapStateToProps, {update_Subpage_Id, updt_animation_direction})(Home)

@@ -1,15 +1,16 @@
 import styled from 'styled-components';
 import { animated } from 'react-spring';
 
-export const Container = styled.div`
-  background: white;
-`;
 
-export const AboutMe = styled(animated.div)`
+export const AboutMe = styled.div`
+  background: lightgreen;
   max-width: 1280px;
-  width: auto;
+  // width: auto;
   margin: 0 auto;
   padding: 0 2.5px;
+  // transition: height 500ms ease;
+  width: 100%; height: 100%;
+  // position: absolute; top: 0;
 
   pointer-events: ${props => props.i ? "auto" : "none"};
   
@@ -93,7 +94,6 @@ export const AboutMe = styled(animated.div)`
             font-size: 22px;
             color: black;
             width: 200px;
-            float: right;
             margin-top: auto;
             margin-bottom: 75px;
             margin-left: auto;

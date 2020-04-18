@@ -6,6 +6,10 @@ export const Wrapper = styled(animated.div)`
   display: grid;
   align-content: center;
   pointer-events: ${props => props.i ? "auto" : "none"};
+  width: 100%; height: 100%;
+  background: #d4d4d4;
+  // position: absolute; top: 0;
+  transform: ${props => props.i ? "translateY(0px)" : "translateY(-1000px)"};
 
   .body-top{
     width: 100%; 
