@@ -11,7 +11,6 @@ export const Wrapper = styled(animated.div)`
   .body-top{
     width: 100%; 
     opacity: 1;
-    /* transition: all 500ms ease; */
 
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -25,15 +24,10 @@ export const Wrapper = styled(animated.div)`
 
 
     &__developer{
-      /* transition: opacity 1000ms ease; */
       border: 1px solid blue;
-      // align-self: center;
-      // justify-self: center;
     }
     &__SVG{
-      /* transition: opacity 1000ms ease; */
       border: 1px solid red;
-      transform: translateY(50px);
     }
   }
 `;

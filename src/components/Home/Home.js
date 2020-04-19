@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import styled from 'styled-components';
 import { AbsoluteWrapper } from '../reusable';
 import Swipe from 'react-easy-swipe';
-import { useTransition, useSpring, animated } from 'react-spring'
+import { useTransition, animated } from 'react-spring'
 // import { isMobile } from 'react-device-detect';
 import { routeDir } from '../RouteDirections';
 
@@ -16,24 +16,23 @@ import About from './About/About';
 import Contact from './Contact/Contact';
 
 // CSS
-import { ExternalWrapper, AboutButton, ContactButton } from './HomeCSS';
+import { ExternalWrapper } from './HomeCSS';
 
 
 const VerticalComponent = styled(animated.div)`
   width: 100%; height: 100%;
-  // transform-origin: bottom;
   position: absolute; bottom: 0; top:0;
 `;
 
 const Home = ({update_Subpage_Id, updt_animation_direction, general: {routes, animationDirection}}) => {
 
   
-  const [open, setOpen] = useState(true);
+  // const [open, setOpen] = useState(true);
 
   const [index, setIndex] = useState(routes.home);  // read index from Redux
   const [blockSwipe, setBlockSwipe] = useState(false);
   
-  console.log(animationDirection);
+  // console.log(animationDirection);
   // const toggleOpen = () => {
   //   setOpen(!open);
 
@@ -41,20 +40,23 @@ const Home = ({update_Subpage_Id, updt_animation_direction, general: {routes, an
   //     // setSecondOpen(!secondOpen);
   //   }, 500)
   // }
-
+  // console.log('h')
 
   // PC SWIPE/mouse-SCROLL
+  // need those params if imported: updt_animation_direction, setIndex, update_Subpage_Id, blockFromSwipe
   const handleScroll = (e) => {
-    let direction;
-
-    // detect if firefox
-    if(navigator.userAgent.toLowerCase().indexOf('firefox') > -1){
-      direction = -e.deltaY;
-    } else{
-      direction = e.nativeEvent.wheelDelta;
-    }
-   
     if(!blockSwipe){
+
+      let direction;
+
+      // detect if firefox
+      if(navigator.userAgent.toLowerCase().indexOf('firefox') > -1){
+        direction = -e.deltaY;
+      } else{
+        direction = e.nativeEvent.wheelDelta;
+      }
+   
+    
       if(direction < 0 && index < 2){
         updt_animation_direction('down');   // update direction
         
@@ -87,7 +89,8 @@ const Home = ({update_Subpage_Id, updt_animation_direction, general: {routes, an
       if(position.y < -75 && index < 2){
         updt_animation_direction('down');
         
-        blockFromSwipe(); 
+        // blockFromSwipe(); 
+        setBlockSwipe(true);
 
         setIndex(prevState => prevState+1);
 
@@ -97,7 +100,8 @@ const Home = ({update_Subpage_Id, updt_animation_direction, general: {routes, an
       if(position.y > 75 && index > 0){
         updt_animation_direction('up'); 
         
-        blockFromSwipe(); 
+        // blockFromSwipe(); 
+        setBlockSwipe(true);
         
         setIndex(prevState => prevState-1);
 
@@ -108,7 +112,7 @@ const Home = ({update_Subpage_Id, updt_animation_direction, general: {routes, an
     }
   }
 
-  // TEMPORARY PREVENT FROM SCROLL/SWIPE
+  // TEMPORARY PREVENT FROM SCROLL
   const blockFromSwipe = () => {
     // block
     setBlockSwipe(true);
@@ -116,10 +120,10 @@ const Home = ({update_Subpage_Id, updt_animation_direction, general: {routes, an
     // remove block after 1s
     setTimeout(()=>{
       setBlockSwipe(false);
-    }, 1000)
+    }, 750)
   }
 
-  const HomeSections = [
+  const sections = [
     {
       section: <Hero index={index} animationDirection={animationDirection} routes={routes} />,
       id: 0
@@ -140,7 +144,7 @@ const Home = ({update_Subpage_Id, updt_animation_direction, general: {routes, an
   
 
 
-  const sectionsTransitions = useTransition(HomeSections[index], sec => sec.id, {
+  const sectionsTransitions = useTransition(sections[index], sec => sec.id, {
     from: {opacity: 0, transform: routeDir(animationDirection) },
     enter: {opacity: 1, transform: "translate(0px, 0px)" },
     leave: {opacity: 0, transform: routeDir(animationDirection, true) }
@@ -150,7 +154,7 @@ const Home = ({update_Subpage_Id, updt_animation_direction, general: {routes, an
   return (
     <AbsoluteWrapper>
 
-      <Swipe onSwipeMove={onSwipeMove}>
+      <Swipe onSwipeMove={onSwipeMove} onSwipeEnd={()=>{setBlockSwipe(false)}}>
         <ExternalWrapper onWheel={(e)=>handleScroll(e)}>
 
           <div style={{position: "reltaive", width: "100%", height: "100vh"}}>

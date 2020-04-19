@@ -11,7 +11,7 @@ export const ContactMe = styled.div`
   width: 100%; height: 100vh;  
 
   .test{
-    width: 600px;
+    width: 100%;
     height: 350px;
     background: white;
     border: 1px solid black;

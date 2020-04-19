@@ -43,7 +43,7 @@ const About = ({ update_Subpage_Id, routes, animationDirection }) => {
     {
       content: 
         <div>
-          <p>I'm an IT passionate, independent coder and photography hobbyist<i>Klauza ltd.</i></p>
+          <p>I'm an independent coder, photography hobbyist and IT passionate {'</>'} <i>Klauza ltd.</i></p>
           <p>I offer services to improve your business.</p>
         </div>, 
       class: "paragraph"
@@ -93,4 +93,4 @@ const About = ({ update_Subpage_Id, routes, animationDirection }) => {
 
 }
 
-export default About
+export default React.memo(About)
