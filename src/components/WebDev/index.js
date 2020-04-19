@@ -1,100 +1,161 @@
-import React from 'react'
-import { AbsoluteWrapper } from '../reusable';
-import { useSpring, useTrail, animated } from 'react-spring';
+import React, { useState } from 'react'
 import styled from 'styled-components';
 
+import Swipe from 'react-easy-swipe';
+
+// redux
+import { connect } from 'react-redux';
+import { update_Subpage_Id, updt_animation_direction } from '../../actions/routesActions';
+import { routeDir } from '../RouteDirections';
+
+
+// index pages
+import Hero from './Hero';
+import Content from './Content';
+
+import { AbsoluteWrapper } from '../reusable';
+import { useTransition, animated } from 'react-spring'
+
 const Wrapper = styled.div`
-  min-height: 100vh;
-  background: lightsalmon;
-  margin-top: 50px;
+  // background: lightsalmon;
+  // margin-top: 50px;
+
   h1{
     text-align: center;
     padding-top: 50px;
   }
+`;
 
-  .trails-main {
+const ExternalWrapper = styled.div`
   position: relative;
-  width: 100%;
-  height: 100%;
-  /* overflow: hidden; */
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-`;
-const Front = styled(animated.div)`
-
 `;
 
-const WebDevelopment = () => {
+const VerticalComponent = styled(animated.div)`
+  width: 100%; height: 100%;
+  position: absolute; bottom: 0; top:0;
+`;
 
 
-  const [toggle, set] = React.useState(false);
-  React.useEffect(()=>{
+const WebDevelopment = ({update_Subpage_Id, updt_animation_direction, general: {routes, animationDirection}}) => {
+  // { routes, index, animationDirection, update_Subpage_Id}
+
+  const [index, setIndex] = useState(routes.web_dev);  // read index from Redux
+  const [blockSwipe, setBlockSwipe] = useState(false);
+
+    // PC SWIPE/mouse-SCROLL
+  // need those params if imported: updt_animation_direction, setIndex, update_Subpage_Id, blockFromSwipe
+  const handleScroll = (e) => {
+    if(!blockSwipe){
+
+      let direction;
+
+      // detect if firefox
+      if(navigator.userAgent.toLowerCase().indexOf('firefox') > -1){
+        direction = -e.deltaY;
+      } else{
+        direction = e.nativeEvent.wheelDelta;
+      }
+   
+    
+      if(direction < 0 && index < 1){
+        updt_animation_direction('down');   // update direction
+        
+        blockFromSwipe();   // temp prevent from scroll
+
+        setIndex(prevState => prevState+1);   // page ID
+
+        update_Subpage_Id({...routes, web_dev: index+1});    // set current page
+      }
+
+    } else{
+      return;
+    }
+  }
+
+  // MOBILE SWIPE
+  const onSwipeMove = (position, event) => {
+    if(!blockSwipe){
+
+      if(position.y < -75 && index < 1){
+        updt_animation_direction('down');
+        
+        // blockFromSwipe(); 
+        setBlockSwipe(true);
+
+        setIndex(prevState => prevState+1);
+
+        update_Subpage_Id({...routes, web_dev: index+1});
+      }
+
+    } else{
+      return;
+    }
+  }
+
+  // TEMPORARY PREVENT FROM SCROLL
+  const blockFromSwipe = () => {
+    // block
+    setBlockSwipe(true);
+
+    // remove block after 1s
     setTimeout(()=>{
-      set(true);
+      setBlockSwipe(false);
+    }, 750)
+  }
 
-    }, 100)
-    return () => {
-      set(false);
+  const sections = [
+    {
+      section: <Hero 
+                index={index} 
+                animationDirection={animationDirection} 
+                routes={routes} 
+                />,
+      id: 0
+    }, 
+    {
+      section: <Content 
+              // index={index} 
+              blockFromSwipe={blockFromSwipe}
+              setIndex={setIndex}
+              // animationDirection={animationDirection}
+              updt_animation_direction={updt_animation_direction}
+              update_Subpage_Id={update_Subpage_Id}
+              routes={routes}
+              />,
+      id: 1
     }
-  }, [])
+  ];
 
-const items = ['Lorem', 'ipsum', 'dolor', 'asd']
-  const config = { mass: 5, tension: 2000, friction: 200 }
-
-  const trail = useTrail(items.length, {
-    config,
-    opacity: toggle ? 1 : 0,
-    x: toggle ? 0 : 150,
-    height: toggle ? 80 : 0,
-    from: { opacity: 0, x: 150, height: 0 },
+  const sectionsTransitions = useTransition(sections[index], sec => sec.id, {
+    from: {opacity: 0, transform: routeDir(animationDirection) },
+    enter: {opacity: 1, transform: "translate(0px, 0px)" },
+    leave: {opacity: 0, transform: routeDir(animationDirection, true) }
   })
 
-  const fade = useSpring({
-    from: {
-      trail: 1000,
-      opacity: 0,
-      transform: "translateY(100px)"
-    },
-    to: {
-      trail: 1000,
-      opacity: 1,
-      transform: "translateY(0px)"
-    }
-  })
-  // const fade = useSpring({ from: { opacity: 0 }, opacity: 1 });
 
-  // console.log(fade);
 
   return (
     <AbsoluteWrapper>
-      <Wrapper>
-        <Front style={fade}>
-          <h1>Page one</h1>
-        </Front>
+      <Swipe onSwipeMove={onSwipeMove} onSwipeEnd={()=>{setBlockSwipe(false)}}>
+        <ExternalWrapper onWheel={(e)=>handleScroll(e)}>
+          <div style={{position: "reltaive", width: "100%", height: "100vh"}}>
+            <Wrapper>
+            
+              {
+                sectionsTransitions.map(({ item, props, key }) => { 
+                  return <VerticalComponent style={props} key={key} >{item.section}</VerticalComponent>
+                })
+              }
 
-        <div className="trails-main" onClick={() => set(state => !state)}>
-          <div>
-            {trail.map(({ x, height, ...rest }, index) => (
-              <animated.div
-                key={items[index]}
-                className="trails-text"
-                style={{ ...rest, transform: x.interpolate(x => `translate3d(${x}px, ${x}px, 0)`) }}>
-                <animated.div style={{ height }}>{items[index]}</animated.div>
-              </animated.div>
-            ))}
+            </Wrapper>
           </div>
-        </div>
-
-        {/* <main>
-          <Toggle />
-        </main> */}
-      </Wrapper>
+        </ExternalWrapper>
+      </Swipe>
     </AbsoluteWrapper>
   )
 }
 
-export default WebDevelopment
+const mapStateToProps = (state) => ({
+  general: state.general
+})
+export default connect(mapStateToProps, {update_Subpage_Id, updt_animation_direction})(WebDevelopment)

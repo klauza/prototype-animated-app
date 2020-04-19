@@ -5,7 +5,8 @@ import { UPDATE_ANIMATION_DIRECTION_ID } from '../actions/types';
 const initialState = {
   routes: {
     home: 0,
-    about: 0
+    about: 0,
+    web_dev: 0
   },
   animationDirection: 'down'
 }
