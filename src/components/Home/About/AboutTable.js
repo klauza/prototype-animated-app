@@ -12,7 +12,7 @@ const AboutTable = ({ tableId, setTableId, update_Subpage_Id, routes }) => {
       icon: <Cyb/>,
       table_text: "WWW",
       title: "Web Development",
-      contentText: ['www application', 'google My Business implementation'],
+      contentText: ['React architecture', 'www application', 'google My Business implementation'],
       path: "/web-development"
     },
     {

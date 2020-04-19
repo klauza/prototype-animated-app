@@ -29,6 +29,7 @@ export const AboutMe = styled.div`
       .svg{
         width: 200px;
         margin-left: auto;
+        z-index: 2;
         svg{
           width: 200px; height: 200px;
           position: absolute;
@@ -39,6 +40,7 @@ export const AboutMe = styled.div`
 
     &--bottom{
       display: flex; flex-direction: column;
+      z-index: 3;
       
       .tables{
         width: 100%;
