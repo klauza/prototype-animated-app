@@ -1,18 +1,18 @@
 export const routeDir = (dir, optional) => {
 
   if(optional){
-    if(dir === "down") return "translate(0%, -70%)"
+    if(dir === "down") return "translate(0%, -100%)"
 
-    if(dir === "up") return "translate(0%, 70%)"
+    if(dir === "up") return "translate(0%, 100%)"
   
     if(dir === "left") return "translate(-100%, 0%)"
   
     if(dir === "right") return "translate(100%, 0%)"
   }else{
 
-    if(dir === "down") return "translate(0%, 70%)"
+    if(dir === "down") return "translate(0%, 100%)"
 
-    if(dir === "up") return "translate(0%, -70%)"
+    if(dir === "up") return "translate(0%, -100%)"
   
     if(dir === "left") return "translate(100%, 0%)"
   

@@ -23,7 +23,7 @@ const Routes = ({updateFirstStart, appFirstStart, loc1, loc2, location}) => {
 
   // GET ANIMATION DIRECTION FUNCTION IN USE HERE 
   const transitions = useTransition(location, location => location.pathname, {
-    config: { tension: 280, friction: 60 },
+    // config: { tension: 280, friction: 60 },
     from: { opacity: 0, transform: `translate(${appFirstStart ? "0%, 0%" : loc1 > loc2 ? "100%, 0%" : "-100%, 0%"})` },
     enter: { opacity: 1, transform: `translate(0%, 0%)` },
     leave: { opacity: 0, transform: `translate(${loc1 > loc2 ? "-100%" : "100%"}, 0%)` }
