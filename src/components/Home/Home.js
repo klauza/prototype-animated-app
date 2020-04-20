@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 import styled from 'styled-components';
 import { AbsoluteWrapper } from '../reusable';
 import Swipe from 'react-easy-swipe';
+import { isMobile } from 'react-device-detect';
+
 import { useTransition, animated } from 'react-spring'
 // import { isMobile } from 'react-device-detect';
 import { routeDir } from '../RouteDirections';
@@ -125,11 +127,12 @@ const Home = ({update_Subpage_Id, updt_animation_direction, general: {routes, an
 
   const sections = [
     {
-      section: <Hero index={index} animationDirection={animationDirection} routes={routes} />,
+      section: <Hero isMobile={isMobile} index={index} animationDirection={animationDirection} routes={routes} />,
       id: 0
     }, 
     {
       section: <About 
+              isMobile={isMobile}
               animationDirection={animationDirection}
               update_Subpage_Id={update_Subpage_Id}
               routes={routes}
@@ -137,7 +140,7 @@ const Home = ({update_Subpage_Id, updt_animation_direction, general: {routes, an
       id: 1
     }, 
     {
-      section: <Contact index={index} animationDirection={animationDirection} routes={routes} />,
+      section: <Contact isMobile={isMobile} index={index} animationDirection={animationDirection} routes={routes} />,
       id: 2
     }
   ];

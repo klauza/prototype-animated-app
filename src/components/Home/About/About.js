@@ -1,38 +1,26 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTrail, animated } from 'react-spring';
 import { Spring, config } from 'react-spring/renderprops';
 import { AboutMe } from './AboutCSS';
 import AboutTable from './AboutTable';
 import AboutSVGs from './AboutSVGs';
 
-import { isMobile } from 'react-device-detect';
 
 import { elementDir } from '../../RouteDirections';
 
 
+const About = ({ isMobile, update_Subpage_Id, routes, animationDirection }) => {
 
 
-const About = ({ update_Subpage_Id, routes, animationDirection }) => {
-
-
+  const [lockAnimation, setLockAnimation] = useState(true);
   const [tableId, setTableId] = useState(routes.about); // read from redux
 
-
-
-
-  
-
-
-
-
-
-
-
-
+  useEffect(()=>{
+    setTimeout(()=>{setLockAnimation(false)}, 800)
+  }, []);
 
   // const props = useSpring({transform: toggle && elementDir(animationDirection), opacity: toggle ? 1 : 0})
 
-  // console.log("about");
 
   const items = [
     {
@@ -50,7 +38,7 @@ const About = ({ update_Subpage_Id, routes, animationDirection }) => {
     }
     ,
     {
-      content: <AboutSVGs tableId={tableId} />, 
+      content: <AboutSVGs lockAnimation={lockAnimation} tableId={tableId} />, 
       class: "svg"
     }
 
@@ -59,6 +47,7 @@ const About = ({ update_Subpage_Id, routes, animationDirection }) => {
   const generalAnimation = config.stiff;
 
   const trail = useTrail(items.length, {
+    immediate: isMobile ? true : false,
     generalAnimation,
     from: { opacity: 0, transform: elementDir(animationDirection) },
     to: {opacity: 1, transform: "translate(0px, 0px)"}
@@ -79,7 +68,7 @@ const About = ({ update_Subpage_Id, routes, animationDirection }) => {
         </div>
 
         <div className="about__content--bottom" >
-          <AboutTable tableId={tableId} setTableId={setTableId} routes={routes} update_Subpage_Id={update_Subpage_Id} />
+          <AboutTable lockAnimation={lockAnimation} isMobile={isMobile} tableId={tableId} setTableId={setTableId} routes={routes} update_Subpage_Id={update_Subpage_Id} />
         </div>
        
         

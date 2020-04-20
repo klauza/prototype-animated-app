@@ -1,10 +1,14 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTransition, animated } from 'react-spring';
 import { NavLink } from 'react-router-dom';
 // import SVG (temp)
 import { Cyb, Photo, Web } from '../../../Icons';
 
-const AboutTable = ({ tableId, setTableId, update_Subpage_Id, routes }) => {
+const AboutTable = ({ lockAnimation, tableId, setTableId, update_Subpage_Id, routes }) => {
+
+
+
+
 
   const servicesData = [
     {
@@ -34,9 +38,10 @@ const AboutTable = ({ tableId, setTableId, update_Subpage_Id, routes }) => {
   ];
   
   const transitions = useTransition(servicesData[tableId], item=>item.id, {
+    immediate: lockAnimation,
     from: {opacity: 0, transform: 'translateX(35px)'},
     enter: {opacity: 1, transform: 'translateX(0px)'},
-    leave: {opacity: 0, transform: 'translateX(0px)'}
+    leave: {opacity: 0, transform: 'translateX(-15px)'}
   })
 
 

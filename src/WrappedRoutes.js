@@ -64,7 +64,6 @@ const WrappedRoutes = ({ updateFirstStart, appFirstStart, loc1, loc2, location, 
 
         // going right
         updt_animation_direction("right")
-        console.log('up')
 
         if(loc1 === 3){
           blockFromSwipe();

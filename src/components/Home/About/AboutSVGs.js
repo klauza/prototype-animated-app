@@ -4,7 +4,7 @@ import { useTransition, animated } from 'react-spring';
 // import SVG
 import { Cyb, Photo, Web } from '../../../Icons';
 
-const AboutSVGs = ({tableId}) => {
+const AboutSVGs = ({ lockAnimation, tableId }) => {
 
   const svgs = [
     {
@@ -22,6 +22,7 @@ const AboutSVGs = ({tableId}) => {
     ];
 
   const svgTransitions = useTransition(svgs[tableId], item=>item.id, {
+    immediate: lockAnimation,
     from: {opacity: 0, transform: 'scale(0.9)'},
     enter: {opacity: 1, transform: 'scale(1)'},
     leave: {opacity: 0, transform: 'scale(0.9)'}
