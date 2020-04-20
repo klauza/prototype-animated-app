@@ -6,7 +6,8 @@ const initialState = {
   routes: {
     home: 0,
     about: 0,
-    web_dev: 0
+    web_dev: 0,
+    web_projects: 0
   },
   animationDirection: 'down'
 }

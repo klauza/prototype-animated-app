@@ -43,7 +43,13 @@ const WebDevelopment = ({update_Subpage_Id, updt_animation_direction, general: {
   const [blockSwipe, setBlockSwipe] = useState(false);
 
     // PC SWIPE/mouse-SCROLL
-  // need those params if imported: updt_animation_direction, setIndex, update_Subpage_Id, blockFromSwipe
+  // need those params if imported: updt_animation_direction, setIndex, update_Subpage_Id, blockFromSwipe\
+
+  const updateSmth = (data) => {
+    update_Subpage_Id({...routes, web_projects: data});
+  }
+
+
   const handleScroll = (e) => {
     if(!blockSwipe){
 
@@ -62,9 +68,9 @@ const WebDevelopment = ({update_Subpage_Id, updt_animation_direction, general: {
         
         blockFromSwipe();   // temp prevent from scroll
 
-        setIndex(prevState => prevState+1);   // page ID
+        setIndex(1);   // page ID
 
-        update_Subpage_Id({...routes, web_dev: index+1});    // set current page
+        update_Subpage_Id({...routes, web_dev: 1});    // set current page
       }
 
     } else{
@@ -82,9 +88,9 @@ const WebDevelopment = ({update_Subpage_Id, updt_animation_direction, general: {
         // blockFromSwipe(); 
         setBlockSwipe(true);
 
-        setIndex(prevState => prevState+1);
+        setIndex(1);
 
-        update_Subpage_Id({...routes, web_dev: index+1});
+        update_Subpage_Id({...routes, web_dev: 1});
       }
 
     } else{
@@ -114,6 +120,7 @@ const WebDevelopment = ({update_Subpage_Id, updt_animation_direction, general: {
     }, 
     {
       section: <Content 
+              updateSmth={updateSmth}
               // index={index} 
               blockFromSwipe={blockFromSwipe}
               setIndex={setIndex}

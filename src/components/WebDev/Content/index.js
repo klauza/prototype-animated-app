@@ -4,17 +4,30 @@ import ProjectList from './ProjectList';
 
 import { ContentMain, BackButton } from '../WebDevCSS';
 
-const Content = ({blockFromSwipe, routes, updt_animation_direction, setIndex, update_Subpage_Id}) => {
+const Content = ({blockFromSwipe, routes, updt_animation_direction, setIndex, update_Subpage_Id, updateSmth}) => {
 
   const scrollableDiv = React.useRef();
+  // const [scrollLoc, setScrollLod] = React.useState(routes.web_projects); // read number from redux
 
   React.useEffect(()=>{
-    // adds the scroll class after section's animation
-    setTimeout(()=>{
-      scrollableDiv.current.classList.add('scrollable');
-
-    }, 550)
+    scrollableDiv.current.classList.add('scrollable');
+    scrollableDiv.current.addEventListener('scroll', handleScroll);
+    scrollableDiv.current.scrollTop = routes.web_projects;
+    
   }, [])
+
+
+  const handleScroll = (event) => {
+  
+
+      // scrollTop of scrollableDiv [Content]
+         // update redux
+      updateSmth(event.srcElement.scrollTop)
+    
+
+
+ 
+  }
 
   const backUp = () => {
     blockFromSwipe();
