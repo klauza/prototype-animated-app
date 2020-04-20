@@ -5,7 +5,7 @@ import Swipe from 'react-easy-swipe';
 
 // redux
 import { connect } from 'react-redux';
-import { update_Subpage_Id, updt_animation_direction } from '../../actions/routesActions';
+import { update_Subpage_Id, updt_animation_direction, update_subpage_scroll } from '../../actions/routesActions';
 import { routeDir } from '../RouteDirections';
 
 
@@ -36,27 +36,19 @@ const VerticalComponent = styled(animated.div)`
 `;
 
 
-const WebDevelopment = ({update_Subpage_Id, updt_animation_direction, general: {routes, animationDirection}}) => {
-  // { routes, index, animationDirection, update_Subpage_Id}
+const WebDevelopment = ({update_Subpage_Id, update_subpage_scroll, updt_animation_direction, general: {scroll, routes, animationDirection}}) => {
 
   const [index, setIndex] = useState(routes.web_dev);  // read index from Redux
   const [blockSwipe, setBlockSwipe] = useState(false);
-  const [contentYPos, setContentYPos] = useState(0);
 
-    // PC SWIPE/mouse-SCROLL
-  // need those params if imported: updt_animation_direction, setIndex, update_Subpage_Id, blockFromSwipe\
 
-  const updateSmth = (data) => {
-    // console.log(routes, data);
-    // setContentYPos(data)
-    update_Subpage_Id({...routes, web_projects: data});
-    
+  const updateReduxScrollPosition = (data) => {
+    update_subpage_scroll({...scroll, web_projects: data});
   }
 
 
   const handleScroll = (e) => {
     if(!blockSwipe){
-
       let direction;
 
       // detect if firefox
@@ -66,7 +58,6 @@ const WebDevelopment = ({update_Subpage_Id, updt_animation_direction, general: {
         direction = e.nativeEvent.wheelDelta;
       }
    
-    
       if(direction < 0 && index < 1){
         updt_animation_direction('down');   // update direction
         
@@ -76,7 +67,6 @@ const WebDevelopment = ({update_Subpage_Id, updt_animation_direction, general: {
 
         update_Subpage_Id({...routes, web_dev: 1});    // set current page
       }
-
     } else{
       return;
     }
@@ -126,7 +116,7 @@ const WebDevelopment = ({update_Subpage_Id, updt_animation_direction, general: {
       section: <Content 
               Swipe={Swipe}
               onSwipeMove={onSwipeMove}
-              updateSmth={updateSmth}
+              updateReduxScrollPosition={updateReduxScrollPosition}
               handleScroll={handleScroll}
               // index={index} 
               blockFromSwipe={blockFromSwipe}
@@ -135,6 +125,9 @@ const WebDevelopment = ({update_Subpage_Id, updt_animation_direction, general: {
               updt_animation_direction={updt_animation_direction}
               update_Subpage_Id={update_Subpage_Id}
               routes={routes}
+              scroll={scroll}
+              index={index}
+              animationDirection={animationDirection}
               />,
       id: 1
     }
@@ -174,4 +167,4 @@ const WebDevelopment = ({update_Subpage_Id, updt_animation_direction, general: {
 const mapStateToProps = (state) => ({
   general: state.general
 })
-export default connect(mapStateToProps, {update_Subpage_Id, updt_animation_direction})(WebDevelopment)
+export default connect(mapStateToProps, {update_subpage_scroll, update_Subpage_Id, updt_animation_direction})(WebDevelopment)
