@@ -41,12 +41,16 @@ const WebDevelopment = ({update_Subpage_Id, updt_animation_direction, general: {
 
   const [index, setIndex] = useState(routes.web_dev);  // read index from Redux
   const [blockSwipe, setBlockSwipe] = useState(false);
+  const [contentYPos, setContentYPos] = useState(0);
 
     // PC SWIPE/mouse-SCROLL
   // need those params if imported: updt_animation_direction, setIndex, update_Subpage_Id, blockFromSwipe\
 
   const updateSmth = (data) => {
+    // console.log(routes, data);
+    // setContentYPos(data)
     update_Subpage_Id({...routes, web_projects: data});
+    
   }
 
 
@@ -89,8 +93,8 @@ const WebDevelopment = ({update_Subpage_Id, updt_animation_direction, general: {
         setBlockSwipe(true);
 
         setIndex(1);
-
-        update_Subpage_Id({...routes, web_dev: 1});
+      // console.log(position)
+      update_Subpage_Id({...routes, web_dev: 1});
       }
 
     } else{
@@ -120,7 +124,10 @@ const WebDevelopment = ({update_Subpage_Id, updt_animation_direction, general: {
     }, 
     {
       section: <Content 
+              Swipe={Swipe}
+              onSwipeMove={onSwipeMove}
               updateSmth={updateSmth}
+              handleScroll={handleScroll}
               // index={index} 
               blockFromSwipe={blockFromSwipe}
               setIndex={setIndex}
@@ -143,21 +150,23 @@ const WebDevelopment = ({update_Subpage_Id, updt_animation_direction, general: {
 
   return (
     <AbsoluteWrapper>
-      <Swipe onSwipeMove={onSwipeMove} onSwipeEnd={()=>{setBlockSwipe(false)}}>
-        <ExternalWrapper onWheel={(e)=>handleScroll(e)}>
-          <div style={{position: "reltaive", width: "100%", height: "100vh"}}>
-            <Wrapper>
-            
-              {
-                sectionsTransitions.map(({ item, props, key }) => { 
-                  return <VerticalComponent style={props} key={key} >{item.section}</VerticalComponent>
-                })
-              }
 
-            </Wrapper>
-          </div>
-        </ExternalWrapper>
-      </Swipe>
+      <ExternalWrapper onWheel={(e)=>handleScroll(e)}>
+        <Swipe onSwipeMove={onSwipeMove}>
+            <div style={{position: "reltaive", width: "100%", height: "100vh"}}>
+              <Wrapper>
+              
+                {
+                  sectionsTransitions.map(({ item, props, key }) => { 
+                    return <VerticalComponent style={props} key={key} >{item.section}</VerticalComponent>
+                  })
+                }
+
+              </Wrapper>
+            </div>
+        </Swipe>
+      </ExternalWrapper>
+
     </AbsoluteWrapper>
   )
 }
