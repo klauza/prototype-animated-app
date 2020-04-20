@@ -1,5 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+// CSS
 import styled from 'styled-components';
+import { AbsoluteWrapper } from '../reusable';
+
+import { useTransition, animated } from 'react-spring';
 
 import Swipe from 'react-easy-swipe';
 
@@ -8,27 +12,10 @@ import { connect } from 'react-redux';
 import { update_Subpage_Id, updt_animation_direction, update_subpage_scroll } from '../../actions/routesActions';
 import { routeDir } from '../RouteDirections';
 
-
 // index pages
 import Hero from './Hero';
 import Content from './Content';
 
-import { AbsoluteWrapper } from '../reusable';
-import { useTransition, animated } from 'react-spring'
-
-const Wrapper = styled.div`
-  // background: lightsalmon;
-  // margin-top: 50px;
-
-  h1{
-    text-align: center;
-    padding-top: 50px;
-  }
-`;
-
-const ExternalWrapper = styled.div`
-  position: relative;
-`;
 
 const VerticalComponent = styled(animated.div)`
   width: 100%; height: 100%;
@@ -38,7 +25,7 @@ const VerticalComponent = styled(animated.div)`
 
 const WebDevelopment = ({update_Subpage_Id, update_subpage_scroll, updt_animation_direction, general: {scroll, routes, animationDirection}}) => {
 
-  const [index, setIndex] = useState(routes.web_dev);  // read index from Redux
+  const [index, setIndex] = useState(routes.web_dev);  // route_id => 0 or 1
   const [blockSwipe, setBlockSwipe] = useState(false);
 
 
@@ -48,7 +35,7 @@ const WebDevelopment = ({update_Subpage_Id, update_subpage_scroll, updt_animatio
 
 
   const handleScroll = (e) => {
-    if(!blockSwipe){
+    if(!blockSwipe && index < 1){
       let direction;
 
       // detect if firefox
@@ -58,7 +45,7 @@ const WebDevelopment = ({update_Subpage_Id, update_subpage_scroll, updt_animatio
         direction = e.nativeEvent.wheelDelta;
       }
    
-      if(direction < 0 && index < 1){
+      if(direction < 0){
         updt_animation_direction('down');   // update direction
         
         blockFromSwipe();   // temp prevent from scroll
@@ -74,9 +61,9 @@ const WebDevelopment = ({update_Subpage_Id, update_subpage_scroll, updt_animatio
 
   // MOBILE SWIPE
   const onSwipeMove = (position, event) => {
-    if(!blockSwipe){
+    if(!blockSwipe && index < 1){
 
-      if(position.y < -75 && index < 1){
+      if(position.y < -75){
         updt_animation_direction('down');
         
         // blockFromSwipe(); 
@@ -144,21 +131,19 @@ const WebDevelopment = ({update_Subpage_Id, update_subpage_scroll, updt_animatio
   return (
     <AbsoluteWrapper>
 
-      <ExternalWrapper onWheel={(e)=>handleScroll(e)}>
+      <div style={{position: "relative"}} onWheel={(e)=>handleScroll(e)}>
         <Swipe onSwipeMove={onSwipeMove}>
             <div style={{position: "reltaive", width: "100%", height: "100vh"}}>
-              <Wrapper>
-              
+        
                 {
                   sectionsTransitions.map(({ item, props, key }) => { 
                     return <VerticalComponent style={props} key={key} >{item.section}</VerticalComponent>
                   })
                 }
 
-              </Wrapper>
             </div>
         </Swipe>
-      </ExternalWrapper>
+      </div>
 
     </AbsoluteWrapper>
   )
