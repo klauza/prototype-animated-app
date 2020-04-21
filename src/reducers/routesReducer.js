@@ -8,7 +8,7 @@ const initialState = {
     about: 0,
     web_dev: 0
   },
-  animationDirection: 'down',
+  animationDirection: 'to_down',
   scroll: {
     web_projects: 0
   }

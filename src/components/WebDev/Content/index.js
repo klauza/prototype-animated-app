@@ -22,7 +22,7 @@ const Content = ({ index, blockFromSwipe, routes, scroll, updt_animation_directi
 
   const backUp = () => {
     blockFromSwipe();
-    updt_animation_direction("up");
+    updt_animation_direction("to_down");
     setIndex(0);
     update_Subpage_Id({ ...routes, web_dev: 0 }); 
   }

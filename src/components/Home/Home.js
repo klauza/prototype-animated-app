@@ -28,21 +28,9 @@ const VerticalComponent = styled(animated.div)`
 
 const Home = ({update_Subpage_Id, updt_animation_direction, general: {routes, animationDirection}}) => {
 
-  
-  // const [open, setOpen] = useState(true);
 
   const [index, setIndex] = useState(routes.home);  // read index from Redux
   const [blockSwipe, setBlockSwipe] = useState(false);
-  
-  // console.log(animationDirection);
-  // const toggleOpen = () => {
-  //   setOpen(!open);
-
-  //   setTimeout(()=>{
-  //     // setSecondOpen(!secondOpen);
-  //   }, 500)
-  // }
-  // console.log('h')
 
   // PC SWIPE/mouse-SCROLL
   // need those params if imported: updt_animation_direction, setIndex, update_Subpage_Id, blockFromSwipe
@@ -60,7 +48,7 @@ const Home = ({update_Subpage_Id, updt_animation_direction, general: {routes, an
    
     
       if(direction < 0 && index < 2){
-        updt_animation_direction('down');   // update direction
+        updt_animation_direction('to_up');   // update direction
         
         blockFromSwipe();   // temp prevent from scroll
 
@@ -70,7 +58,7 @@ const Home = ({update_Subpage_Id, updt_animation_direction, general: {routes, an
       }
 
       if(direction > 0 && index > 0){
-        updt_animation_direction('up');
+        updt_animation_direction('to_down');
         
         blockFromSwipe(); 
         
@@ -89,7 +77,7 @@ const Home = ({update_Subpage_Id, updt_animation_direction, general: {routes, an
     if(!blockSwipe){
 
       if(position.y < -75 && index < 2){
-        updt_animation_direction('down');
+        updt_animation_direction('to_up');
         
         // blockFromSwipe(); 
         setBlockSwipe(true);
@@ -100,7 +88,7 @@ const Home = ({update_Subpage_Id, updt_animation_direction, general: {routes, an
       }
       
       if(position.y > 75 && index > 0){
-        updt_animation_direction('up'); 
+        updt_animation_direction('to_down'); 
         
         // blockFromSwipe(); 
         setBlockSwipe(true);
