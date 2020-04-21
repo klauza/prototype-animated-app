@@ -10,12 +10,11 @@ import { updt_animation_direction } from './actions/routesActions';
 const WrappedRoutes = ({ updateFirstStart, appFirstStart, loc1, loc2, location, updt_animation_direction, updateState }) => {
 
   const [swipePrevent, setSwipePrevent] = React.useState(false);
-
-  // useEffect(()=>{
-  //   // update left-right direction redux data
-  //   loc1 > loc2 ? updt_animation_direction("right") : updt_animation_direction("left")
-  // }, [loc1, loc2]);
-
+  
+  useEffect(()=>{
+    document.addEventListener("keydown", handlePCSwipe)
+    document.addEventListener("keyup", handlePCSwipeOff)
+  }, [])
   const onSwipeMove = (position, event) => {
 
     // excluding parts of website we don't want to interfere with while sliding/animating a route
@@ -30,7 +29,7 @@ const WrappedRoutes = ({ updateFirstStart, appFirstStart, loc1, loc2, location, 
 
       if(position.x < -75){
         // going left
-        updt_animation_direction("left")
+        updt_animation_direction("to_left")
 
         if(loc1 === 0){
           blockFromSwipe();
@@ -63,7 +62,7 @@ const WrappedRoutes = ({ updateFirstStart, appFirstStart, loc1, loc2, location, 
       if(position.x > 75){
 
         // going right
-        updt_animation_direction("right")
+        updt_animation_direction("to_right")
 
         if(loc1 === 3){
           blockFromSwipe();
@@ -105,10 +104,20 @@ const WrappedRoutes = ({ updateFirstStart, appFirstStart, loc1, loc2, location, 
       }, 750)
     }
 
+    
+    const handlePCSwipeOff = () => {
+      document.getElementsByTagName("body")[0].style.cursor="default";
+    }
+    const handlePCSwipe = (e) => {
+      if(e.which === 18) document.getElementsByTagName("body")[0].style.cursor="grab";
+    }
+
   return (
+    
     <Swipe onSwipeMove={onSwipeMove}>
       <Routes updateFirstStart={updateFirstStart} appFirstStart={appFirstStart} loc1={loc1} loc2={loc2} location={location} />
     </Swipe>
+
   )
 }
 
