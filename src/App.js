@@ -8,7 +8,7 @@ import { __RouterContext } from 'react-router-dom';
 // pages
 import WrappedRoutes from './WrappedRoutes';
 // nav
-import Navbar from './components/Navigation/Navbar';
+import Navbar from './components/Navigation';
 // footer
 // import Footer from './components/Footer/Footer';
 
@@ -49,6 +49,8 @@ function App() {
   // fires every time route gets updated
   React.useMemo(()=>{
     !appFirstStart && updateState();
+    // console.log('next loc: ', loc1)
+    // console.log('prev loc: ', loc2)
 
     //eslint-disable-next-line
   }, [location]);
@@ -72,7 +74,7 @@ function App() {
   return (
     <Provider store={store}>
    
-      {/* <Navbar /> */}
+      <Navbar loc1={loc1} loc2={loc2} />
 
       
         
