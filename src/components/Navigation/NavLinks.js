@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 
-import MenuHamburger from './MenuHamburger';
 import { MenuIcon } from '../../media';
 
 // redux
@@ -12,16 +11,12 @@ import history from '../../history';
 // css
 import { LinkGroup, ListItem } from './NavbarCSS';
 
-const NavLinks = ({ updt_animation_direction, loc1, loc2 }) => {
+const NavLinks = ({ toggleSideMenu, updt_animation_direction, loc1, loc2 }) => {
 
-  const [hamburgerToggle, setHamburgerToggle] = useState(false);
 
   const currentLocation = history.location.state;
 
-  const toggleSideMenu = () => {
-    setHamburgerToggle(prevState => !prevState);
-  }
-  console.log('menu is: ',hamburgerToggle);
+
 
   const handleUpdateAnimation = (id) => {
     // console.log('leaving location: ', currentLocation);
@@ -64,8 +59,8 @@ const NavLinks = ({ updt_animation_direction, loc1, loc2 }) => {
 
   return (
     <LinkGroup background={MenuIcon} >
-
-      <MenuHamburger toggleSideMenu={toggleSideMenu}/>
+      <div className="link-hamburger" onClick={toggleSideMenu} />
+      
 
       <ul>
         <ListItem active={loc1===0 ? "white" : "grey"} onClick={()=>handleUpdateAnimation(0)}>Home></ListItem>

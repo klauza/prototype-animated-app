@@ -1,9 +1,10 @@
 import styled from 'styled-components';
+import {animated} from 'react-spring'
 
 export const Wrapper = styled.div`
   position: fixed;
   top: 0;
-  z-index: 999;
+  z-index: 900;
   width: 100%; height: 40px;
   background: rgba(0,0,0,.25);
   .top-section{
@@ -59,4 +60,37 @@ export const ListItem = styled.li`
   list-style: none;
   color: ${props => props.active};
   cursor: pointer;
+`;
+
+
+// MODAL MENU
+export const ModalHolder = styled(animated.div)`
+  // height: 100vh;
+  // width: 100vw;
+  background: rgba(0,0,0,.5);
+  position: fixed;
+  top: 0; bottom: 0;
+  left: 0; right: 0;
+  z-index: 999;
+  display: ${props => props.vis};
+`;
+
+export const ModalMenuContainer = styled(animated.div)`
+  position: fixed;
+  top: 0; bottom: 0;
+  left: 0; 
+  width: ${props => props.browser==="mobile" ? "50vw" : props.browser==="screen" && "25vw"};
+  height: 100%;
+  background: #d4d4d4;
+  z-index: 999;
+  
+`;
+
+export const ModalNextToMenu = styled(animated.div)`
+  position: fixed;
+  top: 0; bottom: 0;
+  right: 0; 
+  width: ${props => props.browser==="mobile" ? "50vw" : props.browser==="screen" && "75vw"};
+  height: 100%;
+  background: transparent;
 `;

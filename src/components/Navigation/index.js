@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { BrowserView, MobileView } from 'react-device-detect';
 
+import ModalMenu from './ModalMenu';
 
 // platform navs
 import PcNav from './PcNav';
@@ -17,19 +18,43 @@ import { Wrapper, Navigation } from './NavbarCSS';
 // PC nav has more animations
 const Navbar = ({ loc1, loc2 }) => {
 
+  const [hamburgerToggle, setHamburgerToggle] = useState(false);
+  const [visibility, setVisibility] = useState(false);
+
+  // const bgLayer = useRef();
+
+  const toggleSideMenu = () => {
+    setHamburgerToggle(prevState => !prevState);
+
+    if(visibility===false) setVisibility(true);
+
+    if(visibility===true){
+      setTimeout(()=>{
+        setVisibility(false);
+      }, 500)
+    }
+    
+  }
 
   return (
-    <Wrapper>
-      <div className="top-section">
-        <span>Title here</span>
-      </div>
-      <Navigation>
-        <BrowserView><PcNav loc1={loc1} loc2={loc2} /></BrowserView>
+    <>
+      <ModalMenu visibility={visibility} hamburgerToggle={hamburgerToggle} toggleSideMenu={toggleSideMenu} />
 
-        <MobileView><MobileNav loc1={loc1} loc2={loc2} /></MobileView>
+      <Wrapper>
 
-      </Navigation>
-    </Wrapper>
+        <div className="top-section">
+          <span>Title here</span>
+        </div>
+
+        <Navigation>
+
+          <BrowserView><PcNav toggleSideMenu={toggleSideMenu} loc1={loc1} loc2={loc2} /></BrowserView>
+
+          <MobileView><MobileNav toggleSideMenu={toggleSideMenu} loc1={loc1} loc2={loc2} /></MobileView>
+
+        </Navigation>
+      </Wrapper>
+    </>
   )
 }
 
