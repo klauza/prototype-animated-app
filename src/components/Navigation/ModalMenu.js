@@ -8,7 +8,7 @@ import { isBrowser, isMobile } from 'react-device-detect';
 // media / icons
 import { AppsIcon } from '../../media';
 
-const ModalMenu = ({ visibility, hamburgerToggle, toggleSideMenu }) => {
+const ModalMenu = ({ blockFromToggle, visibility, hamburgerToggle, toggleSideMenu }) => {
 
   const browser = isMobile ? "mobile" : isBrowser && "screen";
 
@@ -21,7 +21,7 @@ const ModalMenu = ({ visibility, hamburgerToggle, toggleSideMenu }) => {
 
   return (
     <ModalHolder vis={visibility ? "block" : "none"} style={modalProps} >
-      <ModalMenuContainer style={menuProps} browser={browser}> 
+      <ModalMenuContainer style={menuProps} browser={browser} preventEvent={blockFromToggle ? "none" : "default"}> 
         <div className="grid-menu left-column">
           <div className="social-icons">[f]</div>
           <div className="tool-pages__icons">

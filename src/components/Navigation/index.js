@@ -40,7 +40,7 @@ const Navbar = ({ loc1, loc2 }) => {
 
   return (
     <>
-      <ModalMenu visibility={visibility} hamburgerToggle={hamburgerToggle} toggleSideMenu={toggleSideMenu} />
+      <ModalMenu blockFromToggle={blockFromToggle} visibility={visibility} hamburgerToggle={hamburgerToggle} toggleSideMenu={toggleSideMenu} />
 
       <Wrapper>
 
