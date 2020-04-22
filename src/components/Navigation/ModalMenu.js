@@ -1,7 +1,7 @@
 import React from 'react';
 import {useSpring, animated} from 'react-spring';
 
-import { ModalHolder, ModalNextToMenu, ModalMenuContainer } from './NavbarCSS';
+import { ModalHolder, ClickableAreaNextToMenu, ModalMenuContainer } from './NavbarCSS';
 import { isBrowser, isMobile } from 'react-device-detect';
 
 const ModalMenu = ({ visibility, hamburgerToggle, toggleSideMenu }) => {
@@ -25,7 +25,7 @@ const ModalMenu = ({ visibility, hamburgerToggle, toggleSideMenu }) => {
         <button onClick={toggleSideMenu}>Exit modal</button>
       </ModalMenuContainer> 
 
-      <ModalNextToMenu onClick={toggleSideMenu} browser={browser}/>
+      <ClickableAreaNextToMenu onClick={toggleSideMenu} browser={browser}/>
 
     </ModalHolder>
   )

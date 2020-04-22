@@ -20,19 +20,30 @@ const Navbar = ({ loc1, loc2 }) => {
 
   const [hamburgerToggle, setHamburgerToggle] = useState(false);
   const [visibility, setVisibility] = useState(false);
+  const [blockFromToggle, setBlockFromToggle] = useState(false);
 
   // const bgLayer = useRef();
 
   const toggleSideMenu = () => {
-    setHamburgerToggle(prevState => !prevState);
+    if(!blockFromToggle){
+      setBlockFromToggle(true);
+      setHamburgerToggle(prevState => !prevState);
 
-    if(visibility===false) setVisibility(true);
-
-    if(visibility===true){
+      if(visibility===false) setVisibility(true);
+  
+      if(visibility===true){
+        setTimeout(()=>{
+          setVisibility(false);
+        }, 750)
+      }
+     
+      // remove block 
       setTimeout(()=>{
-        setVisibility(false);
-      }, 500)
+        setBlockFromToggle(false);
+      }, 750)
     }
+
+
     
   }
 
