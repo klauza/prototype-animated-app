@@ -17,8 +17,6 @@ const ModalMenu = ({ blockFromToggle, visibility, hamburgerToggle, toggleSideMen
   const menuProps = useSpring({ opacity: hamburgerToggle? 1 : 0, transform: hamburgerToggle ? "translateX(0%)" : "translate(-100%)" });
 
 
-
-
   return (
     <ModalHolder vis={visibility ? "block" : "none"} style={modalProps} >
       <ModalMenuContainer style={menuProps} browser={browser} preventEvent={blockFromToggle ? "none" : "default"}> 
@@ -41,18 +39,24 @@ const ModalMenu = ({ blockFromToggle, visibility, hamburgerToggle, toggleSideMen
           <div className="tool-pages__links">
             <NavLink onClick={toggleSideMenu}exact to={{pathname: "/information", state: -1}}>Information</NavLink>
             <NavLink onClick={toggleSideMenu}exact to={{pathname: "/vision", state: -2}}>Vision</NavLink> 
-            <NavLink onClick={toggleSideMenu}exact to={{pathname: "/faq", state: -3}}>FAQ</NavLink> 
+            <NavLink onClick={toggleSideMenu}exact to={{pathname: "/faq", state: -3}}>Have questions? <br/>See FAQ</NavLink> 
+            <NavLink onClick={toggleSideMenu}exact to={{pathname: "/tac-pp", state: -4}}>Terms and conditions <br/>Privacy Policy</NavLink> 
           </div>
           <div className="bottom-desc">
             <span>Author</span>
-            <span>The page is written in React</span>
+            <span>Page written in React</span>
             <span>copyright ©</span>
           </div> 
         </div>
         
       </ModalMenuContainer>  
 
-      <ClickableAreaNextToMenu onClick={toggleSideMenu} browser={browser}/>
+      <ClickableAreaNextToMenu 
+        browser={browser} 
+        onClick={toggleSideMenu} 
+        onMouseEnter={()=>{document.getElementsByTagName("body")[0].style.cursor="not-allowed"}} 
+        onMouseLeave={()=>{document.getElementsByTagName("body")[0].style.cursor="default"}} 
+      />
 
     </ModalHolder>
   )
