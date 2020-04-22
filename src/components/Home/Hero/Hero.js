@@ -1,8 +1,8 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
-// import { useSpring, animated } from 'react-spring';
 import { Spring, config } from 'react-spring/renderprops';
 import { Wrapper } from './HeroCSS';
+import { Web } from '../../../Icons';
+
 
 import { elementDir } from '../../RouteDirections';
 
@@ -21,19 +21,17 @@ const Hero = ({ animationDirection }) => {
           to={{ transform: "translate(0px, 0px)", opacity: 1}}
         >
           {props => 
-            <div className="body-top" style={props}>
+            <div className="hero__contaier" style={props}>
 
-              <div className="body-top__developer">
-                <p>SUCCESSFULL BUSINESS</p>
-                <p>Whether you already have or want</p>
-                <p>work with me</p>
-                <NavLink exact to={{pathname: "/information", state: -1}}>Information</NavLink>
-                <NavLink exact to={{pathname: "/vision", state: -2}}>Vision</NavLink>
+              <div className="hero__contaier--text">
+                <h1>MAIN TITLE</h1>
+                <p>Subtext Ut mauris metus, dignissim a nisi eu, egestas sollicitudin metus.</p>
+                <p>2nd laneMauris eu malesuada felis.</p>
               </div>
 
-              <div className="body-top__SVG">
+              <div className="hero__contaier--image">
                 <div>
-                  SVG
+                  <Web />
                 </div>
               </div>
 

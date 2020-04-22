@@ -17,6 +17,12 @@ const Navbar = ({ loc1, loc2 }) => {
   const [visibility, setVisibility] = useState(false);
   const [blockFromToggle, setBlockFromToggle] = useState(false);
 
+  // top checkboxes
+  const [topCheckbox, setTopCheckbox] = useState({
+    dark_mode: false,
+    pc_mouse_move: false
+  });
+
 
   const toggleSideMenu = () => {
     if(!blockFromToggle){
@@ -38,6 +44,16 @@ const Navbar = ({ loc1, loc2 }) => {
     }
   }
 
+  const handleInputChange = (e) => {
+    const name = e.target.name;
+    const bool = topCheckbox[name];
+
+    setTopCheckbox({
+      ...topCheckbox, 
+      [e.target.name]: !bool })
+  }
+
+  
   return (
     <>
       <ModalMenu blockFromToggle={blockFromToggle} visibility={visibility} hamburgerToggle={hamburgerToggle} toggleSideMenu={toggleSideMenu} />
@@ -46,7 +62,8 @@ const Navbar = ({ loc1, loc2 }) => {
 
         <div className="top-section">
           <span>Title here</span>
-          <div>Move website with mouse <input type="checkbox" checked /></div>
+          <div>Dark mode <input type="checkbox" name="dark_mode" checked={topCheckbox.dark_mode} onChange={handleInputChange} /></div>
+          <BrowserView><div>Move website with mouse <input type="checkbox" name="pc_mouse_move" checked={topCheckbox.pc_mouse_move} onChange={handleInputChange} /></div></BrowserView>
         </div>
 
         <Navigation>

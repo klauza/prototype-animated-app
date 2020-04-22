@@ -46,7 +46,7 @@ const WebDevelopment = ({update_Subpage_Id, update_subpage_scroll, updt_animatio
       }
    
       if(direction < 0){
-        updt_animation_direction('down');   // update direction
+        updt_animation_direction('to_up');   // update direction
         
         blockFromSwipe();   // temp prevent from scroll
 
@@ -64,7 +64,7 @@ const WebDevelopment = ({update_Subpage_Id, update_subpage_scroll, updt_animatio
     if(!blockSwipe && index < 1){
 
       if(position.y < -75){
-        updt_animation_direction('down');
+        updt_animation_direction('to_up');
         
         // blockFromSwipe(); 
         setBlockSwipe(true);

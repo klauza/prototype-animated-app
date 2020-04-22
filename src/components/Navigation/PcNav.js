@@ -2,7 +2,7 @@ import React from 'react'
 
 import NavLinks from './NavLinks';
 // icons
-import { HomeIcon, AppsIcon, MenuIcon } from '../../media';
+// import { HomeIcon, AppsIcon, MenuIcon } from '../../media';
 
 const PcNav = ({ toggleSideMenu, loc1, loc2 }) => {
   return (

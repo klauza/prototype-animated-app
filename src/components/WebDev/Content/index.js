@@ -1,7 +1,7 @@
 import React from 'react';
 import ProjectList from './ProjectList';
 
-import { ContentMain, BackButton } from '../WebDevCSS';
+import { ContentMain, BackButton, HeroTopImage, Wrapper } from '../WebDevCSS';
 
 
 const Content = ({ index, blockFromSwipe, routes, scroll, updt_animation_direction, setIndex, update_Subpage_Id, animationDirection, updateReduxScrollPosition}) => {
@@ -11,13 +11,15 @@ const Content = ({ index, blockFromSwipe, routes, scroll, updt_animation_directi
   React.useEffect(()=>{
     scrollableDiv.current.classList.add('scrollable');
     scrollableDiv.current.scrollTop = scroll.web_projects;
-  }, [])
+    //eslint-disable-next-line
+  }, []);
 
   React.useEffect(()=>{
     // fires when component dismounts
     return(()=>{
       updateReduxScrollPosition(scrollableDiv.current.scrollTop);
     })
+    //eslint-disable-next-line
   }, [])
 
   const backUp = () => {
@@ -29,12 +31,24 @@ const Content = ({ index, blockFromSwipe, routes, scroll, updt_animation_directi
 
 
   return (
-    <ContentMain>
-
+    <ContentMain>  
       <div ref={scrollableDiv} style={{overflowY: 'scroll'}}>
         <BackButton onClick={backUp}>Back ^</BackButton>
-        <span>Content [PROJECT LIST]</span>
-        <ProjectList animationDirection={animationDirection} />
+          
+        <HeroTopImage bg={"https://www.gettyimages.co.uk/gi-resources/images/500px/983794168.jpg"}>
+          <div className="hero_top_image--content">
+            <h1>TEXT_TEXT</h1>
+          </div>
+        </HeroTopImage>     
+
+        <Wrapper>
+      
+
+
+
+          <ProjectList animationDirection={animationDirection} />
+
+        </Wrapper>
       </div>
       
     </ContentMain>

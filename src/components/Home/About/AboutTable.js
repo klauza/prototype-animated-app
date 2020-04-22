@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useTransition, animated } from 'react-spring';
 import { NavLink } from 'react-router-dom';
 // import SVG (temp)

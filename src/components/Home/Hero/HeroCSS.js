@@ -7,27 +7,39 @@ export const Wrapper = styled(animated.div)`
   align-content: center;
   width: 100%; height: 100%;
   background: #d4d4d4;
+  padding: 0 7.5px;
+  @media(min-width:1280px){
+    padding: 0 100px;
+  }
 
-  .body-top{
+  .hero__contaier{
     width: 100%; 
     opacity: 1;
 
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-auto-rows: 250px;
-    align-content: center;
+    grid-auto-rows: auto;
+    align-items: center;
     justify-content: center;
 
     @media(max-width: 998px){
       grid-template-columns: 1fr;
     }
 
-
-    &__developer{
+    &--text{
+      color: red;
       border: 1px solid blue;
     }
-    &__SVG{
+    &--image{
       border: 1px solid red;
     }
+
+    @media(max-width: 998px){
+      &--text{
+        text-align: center;
+      }
+    }
   }
+
+
 `;

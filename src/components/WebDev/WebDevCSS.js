@@ -3,11 +3,15 @@ import styled from 'styled-components';
 
 
 export const Header = styled(animated.div)`
-
+  h1{
+    text-align: center;
+  }
 `;
 
 export const BackButton = styled.button`
+  z-index: 10;
   position: absolute;
+  top: 60px;
   left: 50%; transform: translateX(-50%);
   width: 90px; height: 40px; line-height: 40px;
 
@@ -15,10 +19,10 @@ export const BackButton = styled.button`
 `;
 
 export const ContentMain = styled.div`
-  background: lightblue;
-  width: 100%; height: 100%;
-
+  background: yellowgreen;
+  width: 100% ;height: 100%; 
   position: relative;
+
 
   .scrollable{
     height: 100vh;
@@ -26,19 +30,71 @@ export const ContentMain = styled.div`
     padding-bottom: 100px;
   }
 `;
+
+export const Wrapper = styled.div`
+padding: 0 7.5px;
+  width: 1280px;
+  margin: 0 auto;
+  padding-top: 60px;
+  
+  @media(max-width: 998px){
+    width: auto;
+  }
+
+`;
+
+export const HeroTopImage = styled.div`
+  width: 100%;
+  height: 500px;
+  background: url(${props => props.bg}) no-repeat;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+
+  .hero_top_image--content{
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    h1{
+      color: #0FF;
+    }
+  }
+
+
+  @media(max-width: 998px){
+    height: 350px;
+  }
+
+
+`;
+
 export const ProjectsWrapper = styled.div`
   height: 100%;
   width: 100%;
 
   .project__container{
-    min-height: 400px; width: 100%;
+    display: flex; flex-direction: row;
+    height: auto;
+
+    width: 100%;
     border: 1px solid black;
 
-    &--title{
-
+    &--image{
+      height: 100px;
+      width: 100px;
+      img{
+        height: 100%; width: 100%;
+        object-fit: cover;
+      }
     }
 
-    &--desc{
+    &--info{
+      h3{
+        color: red;
+      }
+    }
+
+    &--btns{
 
     }
   }

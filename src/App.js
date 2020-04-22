@@ -31,7 +31,7 @@ function App() {
   }
 
   const enterState = function(){
-    console.log('fire enter state')
+    // console.log('fire enter state');
     if(location.pathname === '/'){
       setLoc1(0);
     }

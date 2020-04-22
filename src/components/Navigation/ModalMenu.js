@@ -19,18 +19,18 @@ const ModalMenu = ({ blockFromToggle, visibility, hamburgerToggle, toggleSideMen
 
   return (
     <ModalHolder vis={visibility ? "block" : "none"} style={modalProps} >
-      <ModalMenuContainer style={menuProps} browser={browser} preventEvent={blockFromToggle ? "none" : "default"}> 
+      <ModalMenuContainer style={menuProps} browser={browser} pointer_event={blockFromToggle ? "none" : "default"}> 
         <div className="grid-menu left-column">
           <div className="social-icons">[f]</div>
           <div className="tool-pages__icons">
-            <div><img src={AppsIcon} /></div>
-            <div><img src={AppsIcon} /></div>
-            <div><img src={AppsIcon} /></div>
+            <div><img src={AppsIcon} alt="" /></div>
+            <div><img src={AppsIcon} alt="" /></div>
+            <div><img src={AppsIcon} alt="" /></div>
           </div>
           <div className="bottom-icons">
-            <div><img src={AppsIcon} /></div>
-            <div><img src={AppsIcon} /></div>
-            <div><img src={AppsIcon} /></div>
+            <div><img src={AppsIcon} alt="" /></div>
+            <div><img src={AppsIcon} alt="" /></div>
+            <div><img src={AppsIcon} alt="" /></div>
           </div>
         </div>
 
@@ -43,8 +43,8 @@ const ModalMenu = ({ blockFromToggle, visibility, hamburgerToggle, toggleSideMen
             <NavLink onClick={toggleSideMenu}exact to={{pathname: "/tac-pp", state: -4}}>Terms and conditions <br/>Privacy Policy</NavLink> 
           </div>
           <div className="bottom-desc">
-            <span>Author</span>
-            <span>Page written in React</span>
+            <span>Music on/off</span>
+            <span>Dark mode on/off</span>
             <span>copyright ©</span>
           </div> 
         </div>

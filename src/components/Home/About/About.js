@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useTrail, animated } from 'react-spring';
-import { Spring, config } from 'react-spring/renderprops';
+import { config } from 'react-spring/renderprops';
 import { AboutMe } from './AboutCSS';
 import AboutTable from './AboutTable';
 import AboutSVGs from './AboutSVGs';

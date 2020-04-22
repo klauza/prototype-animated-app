@@ -82,7 +82,7 @@ export const ModalMenuContainer = styled(animated.div)`
   position: fixed;
   top: 0; bottom: 0;
   left: 0; 
-  width: ${props => props.browser==="mobile" ? "50vw" : props.browser==="screen" && "25vw"};
+  width: ${props => props.browser==="mobile" ? "60vw" : props.browser==="screen" && "25vw"};
   height: 100%;
   background: #d4d4d4;
   z-index: 999;
@@ -94,12 +94,13 @@ export const ModalMenuContainer = styled(animated.div)`
     color: white;
     height: 100%;
     display: grid;
-    grid-template-rows: 15vh 70vh 15vh;
+    grid-template-rows: 15% 70% 15%;
     justify-items: center;
-    
+    padding: 10px 0;
   }
 
   .left-column{
+    
     z-index: 2;
     background: #3B3B3B;
     
@@ -119,9 +120,10 @@ export const ModalMenuContainer = styled(animated.div)`
     }
     .bottom-icons{
       display: flex; flex-direction: column;
+      align-self: center;
       div{
-        width: auto; 
-        height: 40px;
+        width: 30px; 
+        height: 30px;
         img{
           transform: scale(0.7);
           width: 100%; height: 100%; object-fit: contain;
@@ -138,8 +140,19 @@ export const ModalMenuContainer = styled(animated.div)`
     
 
     .logo-icon{
+      width: 100%;
+      display:grid;
+      justify-items: center;
+
       span{
         font-size: 3em;
+      }
+      &::after{
+        content: '';
+        display: block;
+        width: 70%; height: 1px;
+        background: #fff;
+        margin: auto auto 10px;
       }
     }
 
@@ -147,7 +160,7 @@ export const ModalMenuContainer = styled(animated.div)`
       width: 100%;
       display: flex; flex-direction: column;
       a{
-        pointer-events: ${props => props.preventEvent};
+        pointer-events: ${props => props.pointer_event};
         line-height: 40px;
         text-align: center;
         // border: 1px solid red;
@@ -161,9 +174,10 @@ export const ModalMenuContainer = styled(animated.div)`
     .bottom-desc{
       width: 100%;
       display: flex; flex-direction: column;
+      align-self: center;
 
       span{
-        line-height: 40px;
+        height: 30px;
         text-align: center;
       }
     }
@@ -176,7 +190,7 @@ export const ClickableAreaNextToMenu = styled(animated.div)`
   position: fixed;
   top: 0; bottom: 0;
   right: 0; 
-  width: ${props => props.browser==="mobile" ? "50vw" : props.browser==="screen" && "75vw"};
+  width: ${props => props.browser==="mobile" ? "40vw" : props.browser==="screen" && "75vw"};
   height: 100%;
   background: transparent;
 `;

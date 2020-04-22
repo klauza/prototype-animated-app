@@ -1,14 +1,8 @@
-import React, { useState } from 'react';
-import { useSpring, useTrail, animated } from 'react-spring';
+import React from 'react';
+import { useSpring } from 'react-spring';
 import { Header, HeroMain } from './WebDevCSS';
 
 const Hero = () => {
-
-  const [fade, setFade] = useState(false);
-
-  React.useEffect(()=>{
-    setFade(true);
-  }, []);
 
 
   const fadeIn = useSpring({
