@@ -39,17 +39,15 @@ const ModalMenu = ({ visibility, hamburgerToggle, toggleSideMenu }) => {
         <div className="grid-menu right-column">
           <div className="logo-icon"><span>LOGO</span></div>
           <div className="tool-pages__links">
-            <NavLink exact to={{pathname: "/information", state: -1}}>Information</NavLink>
-            <NavLink exact to={{pathname: "/vision", state: -2}}>Vision</NavLink> 
-            <NavLink exact to={{pathname: "/faq", state: -3}}>FAQ</NavLink> 
+            <NavLink onClick={toggleSideMenu}exact to={{pathname: "/information", state: -1}}>Information</NavLink>
+            <NavLink onClick={toggleSideMenu}exact to={{pathname: "/vision", state: -2}}>Vision</NavLink> 
+            <NavLink onClick={toggleSideMenu}exact to={{pathname: "/faq", state: -3}}>FAQ</NavLink> 
           </div>
           <div className="bottom-desc">
             <span>Author</span>
             <span>The page is written in React</span>
             <span>copyright ©</span>
           </div> 
-
-          <button onClick={toggleSideMenu}>Exit modal</button>
         </div>
         
       </ModalMenuContainer>  
