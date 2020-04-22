@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useState } from 'react'
 import { BrowserView, MobileView } from 'react-device-detect';
 
 import ModalMenu from './ModalMenu';
@@ -7,12 +7,7 @@ import ModalMenu from './ModalMenu';
 import PcNav from './PcNav';
 import MobileNav from './MobileNav';
 
-
 import { Wrapper, Navigation } from './NavbarCSS';
-
-
-{/* <NavLink exact to={{pathname: "/information", state: -1}}>Information</NavLink>
-<NavLink exact to={{pathname: "/vision", state: -2}}>Vision</NavLink> */}
 
 
 // PC nav has more animations
@@ -22,7 +17,6 @@ const Navbar = ({ loc1, loc2 }) => {
   const [visibility, setVisibility] = useState(false);
   const [blockFromToggle, setBlockFromToggle] = useState(false);
 
-  // const bgLayer = useRef();
 
   const toggleSideMenu = () => {
     if(!blockFromToggle){
@@ -42,9 +36,6 @@ const Navbar = ({ loc1, loc2 }) => {
         setBlockFromToggle(false);
       }, 750)
     }
-
-
-    
   }
 
   return (
@@ -55,6 +46,7 @@ const Navbar = ({ loc1, loc2 }) => {
 
         <div className="top-section">
           <span>Title here</span>
+          <div>Move website with mouse <input type="checkbox" checked /></div>
         </div>
 
         <Navigation>
