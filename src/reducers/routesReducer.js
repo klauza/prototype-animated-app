@@ -1,6 +1,7 @@
 
 import { UPDATE_SUBPAGE_ID, UPDATE_SUBPAGE_SCROLL } from '../actions/types';
 import { UPDATE_ANIMATION_DIRECTION_ID } from '../actions/types';
+import { UPDATE_TOOL_BOOLEAN } from '../actions/types';
 
 const initialState = {
   routes: {
@@ -11,6 +12,11 @@ const initialState = {
   animationDirection: 'to_down',
   scroll: {
     web_projects: 0
+  },
+  tools: {
+    music: false,
+    dark_mode: false,
+    pc_mouse_move: false
   }
 }
 
@@ -33,6 +39,12 @@ export default (state = initialState, action) => {
       return{
         ...state,
         animationDirection: action.payload
+      }
+
+    case UPDATE_TOOL_BOOLEAN:
+      return{
+        ...state,
+        tools: action.payload
       }
 
 

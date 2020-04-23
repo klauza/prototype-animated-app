@@ -1,5 +1,5 @@
 
-import { UPDATE_SUBPAGE_ID, UPDATE_ANIMATION_DIRECTION_ID, UPDATE_SUBPAGE_SCROLL } from './types';
+import { UPDATE_SUBPAGE_ID, UPDATE_ANIMATION_DIRECTION_ID, UPDATE_SUBPAGE_SCROLL, UPDATE_TOOL_BOOLEAN } from './types';
 
 // ?: method for updating vertical page location (which is non-router applicable)
 // how it works: components read it's ID and position the horizontal container
@@ -24,6 +24,13 @@ export const update_subpage_scroll = (data) => async dispatch => {
 export const updt_animation_direction = (data) => async dispatch => {
   dispatch({
     type: UPDATE_ANIMATION_DIRECTION_ID,
+    payload: data
+  })
+}
+
+export const update_tool_bool = (data) => async dispatch => {
+  dispatch({
+    type: UPDATE_TOOL_BOOLEAN,
     payload: data
   })
 }
