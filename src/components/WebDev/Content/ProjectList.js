@@ -1,6 +1,7 @@
 import React from 'react';
 import { ProjectsWrapper } from '../WebDevCSS';
 
+import Project from './Project';
 
 // import { elementDir } from '../../RouteDirections';
 
@@ -8,6 +9,16 @@ import { ProjectsWrapper } from '../WebDevCSS';
 
 const ProjectList = ({ animationDirection }) => {
   // web_dev_projects
+  const [isToggled, setIsToggled] = React.useState(null);
+
+  const toggle = (id) => {
+    if(id === isToggled){
+      setIsToggled(null);
+    } else{
+      setIsToggled(id);
+    }
+  }
+
   const data = [
     {
       id: 0,
@@ -74,30 +85,15 @@ const ProjectList = ({ animationDirection }) => {
     }
   ]
   
-
+  // const height = isToggled ? "auto" : "300px";
+  // console.log(height);
 
   return (
     <ProjectsWrapper>
          <span>Content1</span>
             {
         data.map((project, id) => { return (
-          <div key={project.id} className="project__container">
-
-            <div className="project__container--image">
-              <img src="https://www.gettyimages.co.uk/gi-resources/images/500px/983794168.jpg" alt="" />
-            </div>
-            
-            <div className="project__container--info">
-              <h3>{project.title}</h3>
-              <p>{project.desc}</p>
-            </div>
-
-            <div className="project__container--btns">
-              <button>open live page</button>
-              <button>read more</button>
-            </div>
-
-          </div>
+            <Project key={project.id} isToggled={isToggled} project={project} id={project.id} toggle={toggle} />
           )} 
       )}
 

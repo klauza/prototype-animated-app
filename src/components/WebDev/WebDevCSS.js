@@ -19,7 +19,7 @@ export const BackButton = styled.button`
 `;
 
 export const ContentMain = styled.div`
-  background: yellowgreen;
+  background: lightgrey;
   width: 100% ;height: 100%; 
   position: relative;
 
@@ -67,37 +67,79 @@ export const HeroTopImage = styled.div`
 
 
 `;
+export const ProjectDiv = styled(animated.div)`
+  .project__container{
+    margin: 20px 0;
+    display: flex; flex-direction: column;
+    height: 100%;
+    width: 100%;
+  }
+  .project{
+    
+    &__main{
+      display: flex;
+      flex-direction: column;
+
+      // MAIN TOP
+      &-top{
+        display: flex;
+        flex-direction: row;
+
+        .image{
+          height: 100px;
+          width: 100px;
+          img{
+            height: 100%; width: 100%;
+            object-fit: cover;
+          }
+        }
+        
+        .info{
+          h3{
+            color: red;
+          }
+        }
+
+        .live-btn{
+          button{
+            background: black;
+            color: white;
+          }
+        }
+      }
+
+      // MAIN BOT
+      &-bot{
+        // display: grid;
+        // grid-template-columns: 1fr 1fr;
+        // grid-template-rows: 0;
+        display: flex; flex-direction: row;
+        background: yellow;
+        width: 100%;
+        overflow: hidden;
+        span{
+          height: 50px;
+        }
+      }
+
+    }
+
+    // MORE BUTTON
+    &__more{
+      width: 100%;
+      height: auto;
+    }
+    
+
+
+  }
+`;
 
 export const ProjectsWrapper = styled.div`
   height: 100%;
   width: 100%;
 
-  .project__container{
-    display: flex; flex-direction: row;
-    height: auto;
 
-    width: 100%;
-    border: 1px solid black;
-
-    &--image{
-      height: 100px;
-      width: 100px;
-      img{
-        height: 100%; width: 100%;
-        object-fit: cover;
-      }
-    }
-
-    &--info{
-      h3{
-        color: red;
-      }
-    }
-
-    &--btns{
-
-    }
-  }
 `;
 
 export const HeroMain = styled.div`
