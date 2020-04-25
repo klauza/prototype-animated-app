@@ -10,7 +10,7 @@ import history from '../../history';
 // css
 import { LinkGroup, ListItem } from './NavbarCSS';
 
-const NavLinks = ({ toggleSideMenu, updt_animation_direction, loc1, loc2 }) => {
+const NavLinks = ({ toggleModal, toggleSideMenu, updt_animation_direction, loc1, loc2 }) => {
 
 
   const currentLocation = history.location.state;
@@ -58,7 +58,7 @@ const NavLinks = ({ toggleSideMenu, updt_animation_direction, loc1, loc2 }) => {
 
   return (
     <LinkGroup background={MenuIcon} >
-      <div className="link-hamburger" onClick={toggleSideMenu} />
+      <div className="link-hamburger" onClick={toggleModal} />
       
 
       <ul>

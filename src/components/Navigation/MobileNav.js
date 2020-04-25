@@ -5,10 +5,10 @@ import NavLinks from './NavLinks';
 // icons
 // import {HomeIcon, AppsIcon, MenuIcon } from '../../media';
 
-const MobileNav = ({ toggleSideMenu, loc1, loc2 }) => {
+const MobileNav = ({ toggleModal, toggleState, loc1, loc2 }) => {
   return (
     <div>
-      <NavLinks toggleSideMenu={toggleSideMenu} loc1={loc1} loc2={loc2} />
+      <NavLinks toggleModal={toggleModal} loc1={loc1} loc2={loc2} />
     </div>
   )
 }

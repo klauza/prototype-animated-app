@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { BrowserView, MobileView } from 'react-device-detect';
 
-import ModalMenu from './ModalMenu';
+// modal
+import Modal from './Modal'
 
 // redux
 import { connect } from 'react-redux';
@@ -19,44 +20,15 @@ const Navbar = ({ update_tool_bool, loc1, loc2, general: { tools } }) => {
   // music
   // dark_mode
 
-  const [hamburgerToggle, setHamburgerToggle] = useState(false);
-  const [visibility, setVisibility] = useState(false);
-  const [blockFromToggle, setBlockFromToggle] = useState(false);
-
   // destructure redux data
   const { dark_mode, pc_mouse_move, music} = tools;
 
-  React.useEffect(()=>{
 
-  }, [dark_mode, pc_mouse_move, music])
-
-
-  // top checkboxes
-  // const [topCheckbox, setTopCheckbox] = useState({
-  //   dark_mode: tools.dark_mode,
-  //   pc_mouse_move: tools.pc_mouse_move,
-  //   music: tools.music
-  // });
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
 
-  const toggleSideMenu = () => {
-    if(!blockFromToggle){
-      setBlockFromToggle(true);
-      setHamburgerToggle(prevState => !prevState);
-
-      if(visibility===false) setVisibility(true);
-  
-      if(visibility===true){
-        setTimeout(()=>{
-          setVisibility(false);
-        }, 750)
-      }
-     
-      // remove block 
-      setTimeout(()=>{
-        setBlockFromToggle(false);
-      }, 750)
-    }
+  const toggleModal = () => {
+    setIsModalOpen(prevState => !prevState);
   }
 
   const handleCheckboxChange = (e) => {
@@ -70,7 +42,13 @@ const Navbar = ({ update_tool_bool, loc1, loc2, general: { tools } }) => {
   
   return (
     <>
-      <ModalMenu blockFromToggle={blockFromToggle} visibility={visibility} hamburgerToggle={hamburgerToggle} toggleSideMenu={toggleSideMenu} />
+      {isModalOpen && (
+        <Modal
+          id="modal"
+          isOpen={isModalOpen}
+          onClose={toggleModal}
+        />
+      )}
 
       <Wrapper>
 
@@ -82,9 +60,21 @@ const Navbar = ({ update_tool_bool, loc1, loc2, general: { tools } }) => {
 
         <Navigation>
 
-          <BrowserView><PcNav toggleSideMenu={toggleSideMenu} loc1={loc1} loc2={loc2} /></BrowserView>
+          <BrowserView>
+            <PcNav 
+              toggleModal={toggleModal} 
+              loc1={loc1} 
+              loc2={loc2} 
+            />
+          </BrowserView>
 
-          <MobileView><MobileNav toggleSideMenu={toggleSideMenu} loc1={loc1} loc2={loc2} /></MobileView>
+          <MobileView>
+            <MobileNav 
+              toggleModal={toggleModal} 
+              loc1={loc1} 
+              loc2={loc2} 
+            />
+          </MobileView>
 
         </Navigation>
       </Wrapper>
