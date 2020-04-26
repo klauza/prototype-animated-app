@@ -2,6 +2,7 @@ import React, { useRef, useEffect, useState } from 'react';
 import MetaTags from '../../meta-tags';
 import { AbsoluteWrapper } from '../reusable';
 import { SVGHero, Wrapper } from './DeisngCSS';
+import history from '../../history';
 
 // content
 import Content from './Content';
@@ -40,11 +41,13 @@ const PhotographyDesign = ({ update_Subpage_Id, update_subpage_scroll, general: 
 
   React.useEffect(()=>{
     // fires when component dismounts
-    return(()=>{
-      updateReduxScrollPosition(scrollableDiv.current.scrollTop);
-    })
+    if(history.location.state === 2) return
+    updateReduxScrollPosition(scrollableDiv.current.scrollTop);
+    // return(()=>{
+    //   updateReduxScrollPosition(scrollableDiv.current.scrollTop);
+    // })
     //eslint-disable-next-line
-  }, [])
+  }, [history.location.state])
 
 
 

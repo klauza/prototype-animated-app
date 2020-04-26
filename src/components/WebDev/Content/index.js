@@ -1,5 +1,6 @@
 import React from 'react';
 import ProjectList from './ProjectList';
+import history from '../../../history';
 
 import { ContentMain, BackButton, HeroTopImage, Wrapper } from '../WebDevCSS';
 
@@ -16,11 +17,12 @@ const Content = ({ index, blockFromSwipe, routes, scroll, updt_animation_directi
 
   React.useEffect(()=>{
     // fires when component dismounts
-    return(()=>{
-      updateReduxScrollPosition(scrollableDiv.current.scrollTop);
-    })
+    if(history.location.state === 1) return
+    updateReduxScrollPosition(scrollableDiv.current.scrollTop);
+
     //eslint-disable-next-line
-  }, [])
+  }, [history.location.state])
+
 
   const backUp = () => {
     blockFromSwipe();
