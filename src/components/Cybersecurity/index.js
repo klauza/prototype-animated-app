@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import MetaTags from '../../meta-tags';
 
 import { AbsoluteWrapper } from '../reusable';
 import styled from 'styled-components';
@@ -17,7 +18,14 @@ const Wrapper = styled.div`
 
 `;
 const Cybersecurity = () => {
-
+  // meta-tags
+  const metaData = {
+    title: 'Web Development services - improve your business',
+    description: "If you seek for tools to upgrade your business, this is the right place. Have a look what I offer and consider our partnership.",
+    keywords: "web development, website, webpage, service, business, google, google maps",
+    robots: "home, index",
+    canonicalUrl: window.location.origin
+  };
 
   React.useEffect(()=>{
     
@@ -25,6 +33,8 @@ const Cybersecurity = () => {
   }, [])
 
   return (
+    <>
+    <MetaTags metaData={metaData} />
     <AbsoluteWrapper>
       <Wrapper>
         <h1>Page three</h1>
@@ -32,6 +42,7 @@ const Cybersecurity = () => {
         <TheSlider/>
       </Wrapper>
     </AbsoluteWrapper>
+    </>
   )
 }
 

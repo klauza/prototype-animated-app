@@ -1,4 +1,6 @@
 import React, {useState} from 'react';
+import MetaTags from '../../meta-tags';
+
 import styled from 'styled-components';
 import { AbsoluteWrapper } from '../reusable';
 import Swipe from 'react-easy-swipe';
@@ -27,7 +29,14 @@ const VerticalComponent = styled(animated.div)`
 `;
 
 const Home = ({update_Subpage_Id, updt_animation_direction, general: {routes, animationDirection}}) => {
-
+  // meta-tags
+  const metaData = {
+    title: 'Web Development services - improve your business',
+    description: "If you seek for tools to upgrade your business, this is the right place. Have a look what I offer and consider our partnership.",
+    keywords: "web development, website, webpage, service, business, google, google maps",
+    robots: "home, index",
+    canonicalUrl: window.location.origin
+  };
 
   const [index, setIndex] = useState(routes.home);  // read index from Redux
   const [blockSwipe, setBlockSwipe] = useState(false);
@@ -143,6 +152,8 @@ const Home = ({update_Subpage_Id, updt_animation_direction, general: {routes, an
 
 
   return (
+    <>
+    <MetaTags metaData={metaData} />
     <AbsoluteWrapper>
 
       <Swipe onSwipeMove={onSwipeMove} onSwipeEnd={()=>{setBlockSwipe(false)}}>
@@ -160,6 +171,7 @@ const Home = ({update_Subpage_Id, updt_animation_direction, general: {routes, an
       </Swipe>
       
     </AbsoluteWrapper>
+    </>
   )
 }
 

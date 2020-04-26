@@ -1,4 +1,5 @@
-import React, { useRef, useEffect, useState } from 'react'
+import React, { useRef, useEffect, useState } from 'react';
+import MetaTags from '../../meta-tags';
 import { AbsoluteWrapper } from '../reusable';
 import { SVGHero, Wrapper } from './DeisngCSS';
 
@@ -12,6 +13,14 @@ import { update_Subpage_Id, update_subpage_scroll } from '../../actions/routesAc
 
 
 const PhotographyDesign = ({ update_Subpage_Id, update_subpage_scroll, general: {scroll, routes} }) => {
+  // meta-tags
+  const metaData = {
+    title: 'Design services - improve your business',
+    description: "If you seek for tools to upgrade your business, this is the right place. Have a look what I offer and consider our partnership.",
+    keywords: "web development, website, design, wireframes, webpage, service, business, google, google maps",
+    robots: "home, index",
+    canonicalUrl: window.location.origin
+  };
 
   const [contentID, setContentID] = useState(routes.web_design_cat); // || read from redux
   const scrollableDiv = useRef();
@@ -53,6 +62,8 @@ const PhotographyDesign = ({ update_Subpage_Id, update_subpage_scroll, general: 
 
 
   return (
+    <>
+    <MetaTags metaData={metaData} />
     <AbsoluteWrapper>
       <Wrapper isLegit={contentID}>
         <div ref={scrollableDiv} style={{overflowY: 'scroll'}}>
@@ -79,6 +90,7 @@ const PhotographyDesign = ({ update_Subpage_Id, update_subpage_scroll, general: 
         </div>
       </Wrapper>
     </AbsoluteWrapper>
+    </>
   )
 }
 

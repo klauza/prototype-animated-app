@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import MetaTags from '../../meta-tags';
 // CSS
 import styled from 'styled-components';
 import { AbsoluteWrapper } from '../reusable';
@@ -24,7 +25,15 @@ const VerticalComponent = styled(animated.div)`
 
 
 const WebDevelopment = ({update_Subpage_Id, update_subpage_scroll, updt_animation_direction, general: {scroll, routes, animationDirection}}) => {
-
+  // meta-tags
+  const metaData = {
+    title: 'Web Development services - improve your business',
+    description: "If you seek for tools to upgrade your business, this is the right place. Have a look what I offer and consider our partnership.",
+    keywords: "web development, website, webpage, service, business, google, google maps",
+    robots: "home, index",
+    canonicalUrl: window.location.origin
+  };
+  
   const [index, setIndex] = useState(routes.web_dev);  // route_id => 0 or 1
   const [blockSwipe, setBlockSwipe] = useState(false);
 
@@ -129,6 +138,8 @@ const WebDevelopment = ({update_Subpage_Id, update_subpage_scroll, updt_animatio
 
 
   return (
+    <>
+    <MetaTags metaData={metaData} />
     <AbsoluteWrapper>
 
       <div style={{position: "relative"}} onWheel={(e)=>handleScroll(e)}>
@@ -146,6 +157,7 @@ const WebDevelopment = ({update_Subpage_Id, update_subpage_scroll, updt_animatio
       </div>
 
     </AbsoluteWrapper>
+    </>
   )
 }
 
