@@ -40,13 +40,13 @@ const Content = ({ id, contentTopPosition }) => {
   })
 
   return (
-    <ContentWrapper ref={contentTopPosition}>
+    <div ref={contentTopPosition} style={{height: "125vh", position: "relative"}}>
         {
         contentTransitions.map(({ item, props, key }) => { 
           return <AnimatedContent style={props} key={key} >{item.name}</AnimatedContent>
           })
         }
-    </ContentWrapper>
+    </div>
   )
 }
 
