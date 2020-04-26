@@ -1,59 +1,64 @@
-import React from 'react'
+import React, { useRef, useEffect, useState } from 'react'
 import { AbsoluteWrapper } from '../reusable';
-import styled from 'styled-components';
+import { SVGHero, Wrapper } from './DeisngCSS';
 
-const Wrapper = styled.div`
-  height: auto;
-  width: 100%;
-  color: #000;
-  background: #d4d4d4;
-  margin-top: 50px;
-  margin-bottom: 50px;
-  padding-bottom: 100px;
-  h1{
-    text-align: center;
-    padding: 100px;
-  }
+// content
+import Content from './Content';
 
-  .scrollable{
-    height: calc( 100vh - 50px); 
-    overflow-y: auto;
-    padding-bottom: 100px;
-  }
-`;
+
 
 const PhotographyDesign = () => {
-  const scrollableDiv = React.useRef();
 
-  React.useEffect(()=>{
+  const [contentID, setContentID] = useState(null); // || read from redux
+  const scrollableDiv = useRef();
+
+
+  const contentTopPosition = useRef();
+
+  useEffect(()=>{
     // adds the scroll class after section's animation
     setTimeout(()=>{
       scrollableDiv.current.classList.add('scrollable');
-
     }, 550)
   }, [])
 
- return (
+
+
+  const selectContent = (id) => {
+    setContentID(id);
+    if(contentID !== null){
+      contentTopPosition.current.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      })
+    }
+  }
+
+
+  return (
     <AbsoluteWrapper>
-      <Wrapper>
+      <Wrapper isLegit={contentID}>
         <div ref={scrollableDiv} style={{overflowY: 'scroll'}}>
-          <h1>Page two</h1>
-          <div>Massive content here</div>
+          <SVGHero />
+          <div className={`div-container`}>
+            <div onClick={()=>selectContent(0)} className={`section section-1 ${contentID===0 ? "flex" : null} ${contentID !== null && contentID!==0 ? "shaded" : null}`} style={{backgroundColor: "red"}}>
+              <span>0</span>
+            </div>
+            <div onClick={()=>selectContent(1)} className={`section section-2 ${contentID===1 ? "flex" : null} ${contentID !== null && contentID!==1 ? "shaded" : null}`} style={{backgroundColor: "green"}}>
+              <span>1</span>
+            </div>
+            <div onClick={()=>selectContent(2)} className={`section section-3 ${contentID===2 ? "flex" : null} ${contentID !== null && contentID!==2 ? "shaded" : null}`} style={{backgroundColor: "blue"}}>
+              <span>2</span>
+            </div>
+          </div>
+
+          {contentID !== null 
+            ? <Content id={contentID} contentTopPosition={contentTopPosition} /> 
+            : <h1>^ Selected category you would like to see</h1>
+          }
+          
           
             
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, nostrum esse ea id quo quis dolore reprehenderit minus? Fugit, suscipit. Ea deserunt sunt alias molestias, maxime doloremque sequi, nemo dolore veritatis hic, dolorum vel itaque? Esse, magnam alias! Tenetur, quam distinctio culpa, excepturi deserunt illo corporis totam beatae est eos eius natus labore dolorum odit ipsum. Voluptate, recusandae animi quam sapiente assumenda debitis eum! Provident voluptas, nostrum ratione tempore voluptate modi nulla aut omnis nesciunt mollitia corporis quibusdam debitis quisquam rem. Aperiam est nihil, quod laboriosam quia a ipsum. Ipsum dolorem voluptatum esse architecto facilis nam doloremque autem dolorum sapiente velit! Optio corrupti ut alias cupiditate distinctio quam architecto? Neque, ratione facere dignissimos qui laborum accusantium officia dolorem blanditiis repudiandae aliquid rem, dolorum tempore animi. Vel quod aspernatur unde delectus officiis odit natus quae nam quo sit. Impedit debitis adipisci praesentium esse facilis, ea officia laboriosam fugiat id odit quod!</p>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, nostrum esse ea id quo quis dolore reprehenderit minus? Fugit, suscipit. Ea deserunt sunt alias molestias, maxime doloremque sequi, nemo dolore veritatis hic, dolorum vel itaque? Esse, magnam alias! Tenetur, quam distinctio culpa, excepturi deserunt illo corporis totam beatae est eos eius natus labore dolorum odit ipsum. Voluptate, recusandae animi quam sapiente assumenda debitis eum! Provident voluptas, nostrum ratione tempore voluptate modi nulla aut omnis nesciunt mollitia corporis quibusdam debitis quisquam rem. Aperiam est nihil, quod laboriosam quia a ipsum. Ipsum dolorem voluptatum esse architecto facilis nam doloremque autem dolorum sapiente velit! Optio corrupti ut alias cupiditate distinctio quam architecto? Neque, ratione facere dignissimos qui laborum accusantium officia dolorem blanditiis repudiandae aliquid rem, dolorum tempore animi. Vel quod aspernatur unde delectus officiis odit natus quae nam quo sit. Impedit debitis adipisci praesentium esse facilis, ea officia laboriosam fugiat id odit quod!</p>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, nostrum esse ea id quo quis dolore reprehenderit minus? Fugit, suscipit. Ea deserunt sunt alias molestias, maxime doloremque sequi, nemo dolore veritatis hic, dolorum vel itaque? Esse, magnam alias! Tenetur, quam distinctio culpa, excepturi deserunt illo corporis totam beatae est eos eius natus labore dolorum odit ipsum. Voluptate, recusandae animi quam sapiente assumenda debitis eum! Provident voluptas, nostrum ratione tempore voluptate modi nulla aut omnis nesciunt mollitia corporis quibusdam debitis quisquam rem. Aperiam est nihil, quod laboriosam quia a ipsum. Ipsum dolorem voluptatum esse architecto facilis nam doloremque autem dolorum sapiente velit! Optio corrupti ut alias cupiditate distinctio quam architecto? Neque, ratione facere dignissimos qui laborum accusantium officia dolorem blanditiis repudiandae aliquid rem, dolorum tempore animi. Vel quod aspernatur unde delectus officiis odit natus quae nam quo sit. Impedit debitis adipisci praesentium esse facilis, ea officia laboriosam fugiat id odit quod!</p>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, nostrum esse ea id quo quis dolore reprehenderit minus? Fugit, suscipit. Ea deserunt sunt alias molestias, maxime doloremque sequi, nemo dolore veritatis hic, dolorum vel itaque? Esse, magnam alias! Tenetur, quam distinctio culpa, excepturi deserunt illo corporis totam beatae est eos eius natus labore dolorum odit ipsum. Voluptate, recusandae animi quam sapiente assumenda debitis eum! Provident voluptas, nostrum ratione tempore voluptate modi nulla aut omnis nesciunt mollitia corporis quibusdam debitis quisquam rem. Aperiam est nihil, quod laboriosam quia a ipsum. Ipsum dolorem voluptatum esse architecto facilis nam doloremque autem dolorum sapiente velit! Optio corrupti ut alias cupiditate distinctio quam architecto? Neque, ratione facere dignissimos qui laborum accusantium officia dolorem blanditiis repudiandae aliquid rem, dolorum tempore animi. Vel quod aspernatur unde delectus officiis odit natus quae nam quo sit. Impedit debitis adipisci praesentium esse facilis, ea officia laboriosam fugiat id odit quod!</p>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, nostrum esse ea id quo quis dolore reprehenderit minus? Fugit, suscipit. Ea deserunt sunt alias molestias, maxime doloremque sequi, nemo dolore veritatis hic, dolorum vel itaque? Esse, magnam alias! Tenetur, quam distinctio culpa, excepturi deserunt illo corporis totam beatae est eos eius natus labore dolorum odit ipsum. Voluptate, recusandae animi quam sapiente assumenda debitis eum! Provident voluptas, nostrum ratione tempore voluptate modi nulla aut omnis nesciunt mollitia corporis quibusdam debitis quisquam rem. Aperiam est nihil, quod laboriosam quia a ipsum. Ipsum dolorem voluptatum esse architecto facilis nam doloremque autem dolorum sapiente velit! Optio corrupti ut alias cupiditate distinctio quam architecto? Neque, ratione facere dignissimos qui laborum accusantium officia dolorem blanditiis repudiandae aliquid rem, dolorum tempore animi. Vel quod aspernatur unde delectus officiis odit natus quae nam quo sit. Impedit debitis adipisci praesentium esse facilis, ea officia laboriosam fugiat id odit quod!</p>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, nostrum esse ea id quo quis dolore reprehenderit minus? Fugit, suscipit. Ea deserunt sunt alias molestias, maxime doloremque sequi, nemo dolore veritatis hic, dolorum vel itaque? Esse, magnam alias! Tenetur, quam distinctio culpa, excepturi deserunt illo corporis totam beatae est eos eius natus labore dolorum odit ipsum. Voluptate, recusandae animi quam sapiente assumenda debitis eum! Provident voluptas, nostrum ratione tempore voluptate modi nulla aut omnis nesciunt mollitia corporis quibusdam debitis quisquam rem. Aperiam est nihil, quod laboriosam quia a ipsum. Ipsum dolorem voluptatum esse architecto facilis nam doloremque autem dolorum sapiente velit! Optio corrupti ut alias cupiditate distinctio quam architecto? Neque, ratione facere dignissimos qui laborum accusantium officia dolorem blanditiis repudiandae aliquid rem, dolorum tempore animi. Vel quod aspernatur unde delectus officiis odit natus quae nam quo sit. Impedit debitis adipisci praesentium esse facilis, ea officia laboriosam fugiat id odit quod!</p>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, nostrum esse ea id quo quis dolore reprehenderit minus? Fugit, suscipit. Ea deserunt sunt alias molestias, maxime doloremque sequi, nemo dolore veritatis hic, dolorum vel itaque? Esse, magnam alias! Tenetur, quam distinctio culpa, excepturi deserunt illo corporis totam beatae est eos eius natus labore dolorum odit ipsum. Voluptate, recusandae animi quam sapiente assumenda debitis eum! Provident voluptas, nostrum ratione tempore voluptate modi nulla aut omnis nesciunt mollitia corporis quibusdam debitis quisquam rem. Aperiam est nihil, quod laboriosam quia a ipsum. Ipsum dolorem voluptatum esse architecto facilis nam doloremque autem dolorum sapiente velit! Optio corrupti ut alias cupiditate distinctio quam architecto? Neque, ratione facere dignissimos qui laborum accusantium officia dolorem blanditiis repudiandae aliquid rem, dolorum tempore animi. Vel quod aspernatur unde delectus officiis odit natus quae nam quo sit. Impedit debitis adipisci praesentium esse facilis, ea officia laboriosam fugiat id odit quod!</p>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, nostrum esse ea id quo quis dolore reprehenderit minus? Fugit, suscipit. Ea deserunt sunt alias molestias, maxime doloremque sequi, nemo dolore veritatis hic, dolorum vel itaque? Esse, magnam alias! Tenetur, quam distinctio culpa, excepturi deserunt illo corporis totam beatae est eos eius natus labore dolorum odit ipsum. Voluptate, recusandae animi quam sapiente assumenda debitis eum! Provident voluptas, nostrum ratione tempore voluptate modi nulla aut omnis nesciunt mollitia corporis quibusdam debitis quisquam rem. Aperiam est nihil, quod laboriosam quia a ipsum. Ipsum dolorem voluptatum esse architecto facilis nam doloremque autem dolorum sapiente velit! Optio corrupti ut alias cupiditate distinctio quam architecto? Neque, ratione facere dignissimos qui laborum accusantium officia dolorem blanditiis repudiandae aliquid rem, dolorum tempore animi. Vel quod aspernatur unde delectus officiis odit natus quae nam quo sit. Impedit debitis adipisci praesentium esse facilis, ea officia laboriosam fugiat id odit quod!</p>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, nostrum esse ea id quo quis dolore reprehenderit minus? Fugit, suscipit. Ea deserunt sunt alias molestias, maxime doloremque sequi, nemo dolore veritatis hic, dolorum vel itaque? Esse, magnam alias! Tenetur, quam distinctio culpa, excepturi deserunt illo corporis totam beatae est eos eius natus labore dolorum odit ipsum. Voluptate, recusandae animi quam sapiente assumenda debitis eum! Provident voluptas, nostrum ratione tempore voluptate modi nulla aut omnis nesciunt mollitia corporis quibusdam debitis quisquam rem. Aperiam est nihil, quod laboriosam quia a ipsum. Ipsum dolorem voluptatum esse architecto facilis nam doloremque autem dolorum sapiente velit! Optio corrupti ut alias cupiditate distinctio quam architecto? Neque, ratione facere dignissimos qui laborum accusantium officia dolorem blanditiis repudiandae aliquid rem, dolorum tempore animi. Vel quod aspernatur unde delectus officiis odit natus quae nam quo sit. Impedit debitis adipisci praesentium esse facilis, ea officia laboriosam fugiat id odit quod!</p>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, nostrum esse ea id quo quis dolore reprehenderit minus? Fugit, suscipit. Ea deserunt sunt alias molestias, maxime doloremque sequi, nemo dolore veritatis hic, dolorum vel itaque? Esse, magnam alias! Tenetur, quam distinctio culpa, excepturi deserunt illo corporis totam beatae est eos eius natus labore dolorum odit ipsum. Voluptate, recusandae animi quam sapiente assumenda debitis eum! Provident voluptas, nostrum ratione tempore voluptate modi nulla aut omnis nesciunt mollitia corporis quibusdam debitis quisquam rem. Aperiam est nihil, quod laboriosam quia a ipsum. Ipsum dolorem voluptatum esse architecto facilis nam doloremque autem dolorum sapiente velit! Optio corrupti ut alias cupiditate distinctio quam architecto? Neque, ratione facere dignissimos qui laborum accusantium officia dolorem blanditiis repudiandae aliquid rem, dolorum tempore animi. Vel quod aspernatur unde delectus officiis odit natus quae nam quo sit. Impedit debitis adipisci praesentium esse facilis, ea officia laboriosam fugiat id odit quod!</p>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, nostrum esse ea id quo quis dolore reprehenderit minus? Fugit, suscipit. Ea deserunt sunt alias molestias, maxime doloremque sequi, nemo dolore veritatis hic, dolorum vel itaque? Esse, magnam alias! Tenetur, quam distinctio culpa, excepturi deserunt illo corporis totam beatae est eos eius natus labore dolorum odit ipsum. Voluptate, recusandae animi quam sapiente assumenda debitis eum! Provident voluptas, nostrum ratione tempore voluptate modi nulla aut omnis nesciunt mollitia corporis quibusdam debitis quisquam rem. Aperiam est nihil, quod laboriosam quia a ipsum. Ipsum dolorem voluptatum esse architecto facilis nam doloremque autem dolorum sapiente velit! Optio corrupti ut alias cupiditate distinctio quam architecto? Neque, ratione facere dignissimos qui laborum accusantium officia dolorem blanditiis repudiandae aliquid rem, dolorum tempore animi. Vel quod aspernatur unde delectus officiis odit natus quae nam quo sit. Impedit debitis adipisci praesentium esse facilis, ea officia laboriosam fugiat id odit quod!</p>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, nostrum esse ea id quo quis dolore reprehenderit minus? Fugit, suscipit. Ea deserunt sunt alias molestias, maxime doloremque sequi, nemo dolore veritatis hic, dolorum vel itaque? Esse, magnam alias! Tenetur, quam distinctio culpa, excepturi deserunt illo corporis totam beatae est eos eius natus labore dolorum odit ipsum. Voluptate, recusandae animi quam sapiente assumenda debitis eum! Provident voluptas, nostrum ratione tempore voluptate modi nulla aut omnis nesciunt mollitia corporis quibusdam debitis quisquam rem. Aperiam est nihil, quod laboriosam quia a ipsum. Ipsum dolorem voluptatum esse architecto facilis nam doloremque autem dolorum sapiente velit! Optio corrupti ut alias cupiditate distinctio quam architecto? Neque, ratione facere dignissimos qui laborum accusantium officia dolorem blanditiis repudiandae aliquid rem, dolorum tempore animi. Vel quod aspernatur unde delectus officiis odit natus quae nam quo sit. Impedit debitis adipisci praesentium esse facilis, ea officia laboriosam fugiat id odit quod!</p>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, nostrum esse ea id quo quis dolore reprehenderit minus? Fugit, suscipit. Ea deserunt sunt alias molestias, maxime doloremque sequi, nemo dolore veritatis hic, dolorum vel itaque? Esse, magnam alias! Tenetur, quam distinctio culpa, excepturi deserunt illo corporis totam beatae est eos eius natus labore dolorum odit ipsum. Voluptate, recusandae animi quam sapiente assumenda debitis eum! Provident voluptas, nostrum ratione tempore voluptate modi nulla aut omnis nesciunt mollitia corporis quibusdam debitis quisquam rem. Aperiam est nihil, quod laboriosam quia a ipsum. Ipsum dolorem voluptatum esse architecto facilis nam doloremque autem dolorum sapiente velit! Optio corrupti ut alias cupiditate distinctio quam architecto? Neque, ratione facere dignissimos qui laborum accusantium officia dolorem blanditiis repudiandae aliquid rem, dolorum tempore animi. Vel quod aspernatur unde delectus officiis odit natus quae nam quo sit. Impedit debitis adipisci praesentium esse facilis, ea officia laboriosam fugiat id odit quod!</p>
         </div>
       </Wrapper>
     </AbsoluteWrapper>

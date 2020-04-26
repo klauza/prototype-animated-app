@@ -106,7 +106,7 @@ export const ProjectDiv = styled(animated.div)`
           }
           @media(max-width: 550px){
             p{
-              font-size: 2vw;
+              font-size: 2.25vw;
             }
           }
         }
