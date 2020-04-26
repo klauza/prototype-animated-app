@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { animated } from 'react-spring';
 
 export const SVGHero = styled.div`
   height: 100vh;
@@ -30,6 +31,7 @@ export const Wrapper = styled.div`
     position: ${props => props.isLegit !== null ? "sticky" : "none"};
     top: 60px;
     transition: all 0.25s ease;
+    z-index: 999;
 
     .section{
       flex-grow: 1;
@@ -53,6 +55,13 @@ export const Wrapper = styled.div`
 `;
 
 export const ContentWrapper = styled.div`
-  padding-top: 125px;
   height: 125vh;
+  position: relative;
+
+`;
+
+export const AnimatedContent = styled(animated.div)`
+  margin-top: 125px;
+  position: absolute;
+  top: 0;
 `;
