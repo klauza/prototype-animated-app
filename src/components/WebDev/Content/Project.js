@@ -1,14 +1,23 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { ProjectDiv } from '../WebDevCSS';
 import { animated } from 'react-spring';
 import { Spring } from 'react-spring/renderprops'
 
 const Project = ({ isToggled, project, id, toggle }) => {
 
+  const thisProject = useRef();
 
+  const readMoreClick = () => {
+    toggle(id);
+    if(isToggled===id) return
+    thisProject.current.scrollIntoView({
+      behavior: 'smooth',
+      block: 'center'
+    })
+  }
 
   return (
-    <ProjectDiv key={id} className="project project__container">
+    <ProjectDiv key={id} className="project project__container" ref={thisProject}>
 
       <div className="project__main">
         <div className="project__main-top">
@@ -51,7 +60,7 @@ const Project = ({ isToggled, project, id, toggle }) => {
       </div>
 
       <div className="project__more">
-          <button onClick={()=>toggle(id)}>more details {isToggled===id ? "^" : "v"}</button>
+          <button onClick={readMoreClick}>more details {isToggled===id ? "^" : "v"}</button>
       </div>
 
     </ProjectDiv>
