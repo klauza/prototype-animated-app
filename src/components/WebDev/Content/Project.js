@@ -8,7 +8,7 @@ const Project = ({ isToggled, project, id, toggle }) => {
 
 
   return (
-    <ProjectDiv className="project project__container">
+    <ProjectDiv key={id} className="project project__container">
 
       <div className="project__main">
         <div className="project__main-top">
@@ -22,15 +22,27 @@ const Project = ({ isToggled, project, id, toggle }) => {
           </div>
 
           <div className="live-btn">
-            <button>Live page</button>
+            <button><a href={project.live_page} rel="noopener noreferrer" target="_blank">Live<br/>page</a></button>
           </div>
         </div>
 
         <Spring from={{ height: 0 }} to={{ height: isToggled===id ? 'auto' : 0 }}>
           {props => (
             <animated.div className="project__main-bot" style={props}>
-              <span>Content 1</span>
-              <span>Content 2</span>
+              <div className="features">
+                <span>Features</span>
+                {project.features.map((feature, k) => <div key={k}>{feature}</div>)}
+              </div>
+              <div className="technologies">
+                <span>Technologies</span>
+                {project.technologies.map((techn, k) => <div key={k}>{techn}</div>)}
+              </div>
+              <div className="images">
+                <span>Demonstrative images</span>
+                <div className="img-holder">
+                  {project.images.map((img, k) => <div key={k}> <img src={img} /> </div>)}
+                </div>
+              </div>
             </animated.div>
           )}
 
@@ -39,7 +51,7 @@ const Project = ({ isToggled, project, id, toggle }) => {
       </div>
 
       <div className="project__more">
-        <button onClick={()=>toggle(id)}>more details</button>
+          <button onClick={()=>toggle(id)}>more details {isToggled===id ? "^" : "v"}</button>
       </div>
 
     </ProjectDiv>
