@@ -7,11 +7,13 @@ const initialState = {
   routes: {
     home: 0,
     about: 0,
-    web_dev: 0
+    web_dev: 0,
+    web_design_cat: null
   },
   animationDirection: 'to_down',
   scroll: {
-    web_projects: 0
+    web_projects: 0,
+    web_graphics: 0
   },
   tools: {
     music: false,

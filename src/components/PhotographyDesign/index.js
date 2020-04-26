@@ -5,27 +5,44 @@ import { SVGHero, Wrapper } from './DeisngCSS';
 // content
 import Content from './Content';
 
+// redux
+import { connect } from 'react-redux';
+import { update_Subpage_Id, update_subpage_scroll } from '../../actions/routesActions';
+// import { routeDir } from '../RouteDirections';
 
 
-const PhotographyDesign = () => {
+const PhotographyDesign = ({ update_Subpage_Id, update_subpage_scroll, general: {scroll, routes} }) => {
 
-  const [contentID, setContentID] = useState(null); // || read from redux
+  const [contentID, setContentID] = useState(routes.web_design_cat); // || read from redux
   const scrollableDiv = useRef();
+
+  const updateReduxScrollPosition = (data) => {
+    update_subpage_scroll({...scroll, web_graphics: data});
+  }
 
 
   const contentTopPosition = useRef();
 
   useEffect(()=>{
     // adds the scroll class after section's animation
-    setTimeout(()=>{
-      scrollableDiv.current.classList.add('scrollable');
-    }, 550)
+    scrollableDiv.current.classList.add('scrollable');
+    scrollableDiv.current.scrollTop = scroll.web_graphics;
   }, [])
+
+  React.useEffect(()=>{
+    // fires when component dismounts
+    return(()=>{
+      updateReduxScrollPosition(scrollableDiv.current.scrollTop);
+    })
+    //eslint-disable-next-line
+  }, [])
+
 
 
 
   const selectContent = (id) => {
     setContentID(id);
+    update_Subpage_Id({ ...routes, web_design_cat: id }); 
     if(contentID !== null){
       contentTopPosition.current.scrollIntoView({
         behavior: 'smooth',
@@ -65,4 +82,7 @@ const PhotographyDesign = () => {
   )
 }
 
-export default PhotographyDesign
+const mapStateToProps = (state) => ({
+  general: state.general
+})
+export default connect(mapStateToProps, {update_subpage_scroll, update_Subpage_Id})(PhotographyDesign)
