@@ -16,7 +16,8 @@ export const Wrapper = styled.div`
   padding-bottom: 100px;
   h1{
     text-align: center;
-    padding: 100px;
+    padding-top: 50px;
+    padding-bottom: 25px;
   }
 
   .scrollable{
@@ -61,6 +62,7 @@ export const ContentWrapper = styled.div`
 `;
 
 export const AnimatedContent = styled(animated.div)`
+  width: 100%;
   margin-top: 100px;
   position: absolute;
   top: 0;

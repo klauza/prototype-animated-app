@@ -214,6 +214,7 @@ export const ProjectDiv = styled(animated.div)`
       
       button{
         width: 100%;
+        cursor: pointer;
       }
     }
     

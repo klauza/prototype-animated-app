@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { ContentWrapper, AnimatedContent } from './DeisngCSS';
+import { ContentWrapper, AnimatedContent } from './GeneralCSS';
 import { useTransition, animated } from 'react-spring';
 
 import WebDesign from './Contents/WebDesign';
@@ -40,7 +40,7 @@ const Content = ({ id, contentTopPosition }) => {
   })
 
   return (
-    <div ref={contentTopPosition} style={{height: "125vh", position: "relative"}}>
+    <div ref={contentTopPosition} style={{height: "100%", marginBottom: "50px", position: "relative"}}>
         {
         contentTransitions.map(({ item, props, key }) => { 
           return <AnimatedContent style={props} key={key} >{item.name}</AnimatedContent>

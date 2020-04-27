@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import MetaTags from '../../meta-tags';
 import { AbsoluteWrapper } from '../reusable';
-import { SVGHero, Wrapper } from './DeisngCSS';
+import { SVGHero, Wrapper } from './GeneralCSS';
 import history from '../../history';
 
 // content
