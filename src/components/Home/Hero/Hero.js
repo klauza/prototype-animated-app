@@ -14,17 +14,18 @@ const Hero = ({ animationDirection }) => {
   return (
     <Wrapper>
       <form name="contact" method="POST" data-netlify-recaptcha="true" data-netlify="true">
-  <p>
-    <label>Email: <input type="text" name="name" /></label>
-  </p>
-  <p>
-    <label>Message: <textarea name="message"></textarea></label>
-  </p>
-  <div data-netlify-recaptcha="true"></div>
-  <p>
-    <button type="submit">Send</button>
-  </p>
-</form>
+        <input type="hidden" name="form-name" value="contact" />
+        <p>
+          <label>Email: <input type="text" name="name" /></label>
+        </p>
+        <p>
+          <label>Message: <textarea name="message"></textarea></label>
+        </p>
+        <div data-netlify-recaptcha="true"></div>
+        <p>
+          <button type="submit">Send</button>
+        </p>
+      </form>
         <Spring
           config={generalAnimation}
           delay={250}
