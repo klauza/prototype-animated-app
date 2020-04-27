@@ -13,7 +13,7 @@ const Hero = ({ animationDirection }) => {
 
   return (
     <Wrapper>
-          <form name="contact" netlify style={{marginTop: "50px"}}>
+          <form name="contact" method="POST" data-netlify-recaptcha="true" data-netlify="true" style={{marginTop: "50px"}}>
             <p>
               <label>Your Name: <input type="text" name="name" /></label>   
             </p>
@@ -24,7 +24,6 @@ const Hero = ({ animationDirection }) => {
               <label>Message: <textarea name="message"></textarea></label>
             </p>
             <input type="file" name="myfile" id="myfile" placeholder="Upload file" rows="7" />
-            <div data-netlify-recaptcha="true"></div>
             <p>
               <button type="submit">Send</button>
             </p>
