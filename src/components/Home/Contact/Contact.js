@@ -23,20 +23,28 @@ const Contact = ({ routes, animationDirection }) => {
           <>
             <div style={props}>
 
-              <form action="POST" data-netlify="true">
-                <input type="text" name="name" id="name" placeholder="Name" />
-
-                <input type="email" name="emai" id="email" placeholder="Email" />
-
-                <textarea name="message" id="message" rows="7"></textarea>
-              
-                <input type="file" name="myfile" id="myfile" placeholder="Upload file" rows="7" />
-                
-                <div data-netlify-recaptcha="true"></div>
-                <ul className="actions">
-                  <li><input type="submit" value="Send message" class="button primary" /></li>
-                </ul>
-              </form>
+            <form name="contact" method="POST" data-netlify="true">
+              <p>
+                <label>Your Name: <input type="text" name="name" /></label>   
+              </p>
+              <p>
+                <label>Your Email: <input type="email" name="email" /></label>
+              </p>
+              <p>
+                <label>Your Role: <select name="role[]" multiple>
+                  <option value="leader">Leader</option>
+                  <option value="follower">Follower</option>
+                </select></label>
+              </p>
+              <p>
+                <label>Message: <textarea name="message"></textarea></label>
+              </p>
+              <div data-netlify-recaptcha="true"></div>
+              <p>
+                <button type="submit">Send</button>
+              </p>
+            </form>
+       
 
             </div>
             <div className="test" style={props}>
