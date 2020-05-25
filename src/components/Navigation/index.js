@@ -54,8 +54,8 @@ const Navbar = ({ update_tool_bool, loc1, loc2, general: { tools } }) => {
 
         <div className="top-section">
           <span>Title here</span>
-          <div>Dark mode <input type="checkbox" name="dark_mode" checked={dark_mode} onChange={handleCheckboxChange} /></div>
-          <BrowserView><div>Move website with mouse <input type="checkbox" name="pc_mouse_move" checked={pc_mouse_move} onChange={handleCheckboxChange} /></div></BrowserView>
+          {/* <div>Dark mode <input type="checkbox" name="dark_mode" checked={dark_mode} onChange={handleCheckboxChange} /></div> */}
+          <BrowserView><div>Enable mouse drag <input type="checkbox" name="pc_mouse_move" checked={pc_mouse_move} onChange={handleCheckboxChange} /></div></BrowserView>
         </div>
 
         <Navigation>
