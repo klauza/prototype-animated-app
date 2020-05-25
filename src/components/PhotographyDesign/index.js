@@ -58,7 +58,7 @@ const PhotographyDesign = ({ update_Subpage_Id, update_subpage_scroll, general: 
     if(contentID !== null){
       contentTopPosition.current.scrollIntoView({
         behavior: 'smooth',
-        block: 'start'
+        block: 'center'
       })
     }
   }
