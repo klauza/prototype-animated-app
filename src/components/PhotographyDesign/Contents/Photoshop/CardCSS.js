@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const CardWrapper = styled.div`
-  padding-top: 150px;
   width: 100%;
   height: 100%;
   display: flex;
@@ -11,6 +10,7 @@ export const CardWrapper = styled.div`
 
 .c {
   position: absolute;
+  top: 200px;
   max-width: 500px;
   max-height: 500px;
   width: 50ch;
