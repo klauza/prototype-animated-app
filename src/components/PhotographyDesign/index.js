@@ -69,7 +69,7 @@ const PhotographyDesign = ({ update_Subpage_Id, update_subpage_scroll, general: 
     <MetaTags metaData={metaData} />
     <AbsoluteWrapper>
       <Wrapper isLegit={contentID}>
-        <div ref={scrollableDiv} style={{overflowY: 'scroll'}}>
+        <div ref={scrollableDiv} style={{overflowY: 'scroll', overflowX: 'hidden'}}>
           <SVGHero />
           <div className={`div-container`}>
             <div onClick={()=>selectContent(0)} className={`section section-1 ${contentID===0 ? "flex" : null} ${contentID !== null && contentID!==0 ? "shaded" : null}`} style={{backgroundColor: "red"}}>

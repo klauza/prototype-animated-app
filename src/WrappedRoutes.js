@@ -12,18 +12,20 @@ const WrappedRoutes = ({ updateFirstStart, appFirstStart, loc1, loc2, location, 
   const [swipePrevent, setSwipePrevent] = React.useState(false);
   
   useEffect(()=>{
-    document.addEventListener("keydown", handlePCSwipe)
-    document.addEventListener("keyup", handlePCSwipeOff)
+    // document.addEventListener("keydown", handlePCSwipe)
+    // document.addEventListener("keyup", handlePCSwipeOff)
   }, [])
   const onSwipeMove = (position, event) => {
 
     // excluding parts of website we don't want to interfere with while sliding/animating a route
     if (event.target.classList.contains('swiper-slide')){
-      console.log('break');
+      // console.log('break');
       return
     };
-
-    //
+    if (event.target.classList.contains('prevent_page_swing')){
+      // console.log('break');
+      return
+    };
 
     if(!swipePrevent){
 

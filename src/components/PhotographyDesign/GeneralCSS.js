@@ -63,7 +63,7 @@ export const ContentWrapper = styled.div`
 
 export const AnimatedContent = styled(animated.div)`
   width: 100%;
-  margin-top: 100px;
+  // margin-top: 100px;
   position: absolute;
   top: 0;
 `;
