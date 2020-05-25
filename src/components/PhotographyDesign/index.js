@@ -37,6 +37,7 @@ const PhotographyDesign = ({ update_Subpage_Id, update_subpage_scroll, general: 
     // adds the scroll class after section's animation
     scrollableDiv.current.classList.add('scrollable');
     scrollableDiv.current.scrollTop = scroll.web_graphics;
+  //eslint-disable-next-line
   }, [])
 
   React.useEffect(()=>{

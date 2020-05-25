@@ -21,7 +21,11 @@ const Navbar = ({ update_tool_bool, loc1, loc2, general: { tools } }) => {
   // dark_mode
 
   // destructure redux data
-  const { dark_mode, pc_mouse_move, music} = tools;
+  const { 
+    // dark_mode, 
+    // music,
+    pc_mouse_move 
+  } = tools;
 
 
   const [isModalOpen, setIsModalOpen] = useState(false);

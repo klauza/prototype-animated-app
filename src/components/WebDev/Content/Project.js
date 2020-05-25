@@ -49,7 +49,7 @@ const Project = ({ isToggled, project, id, toggle }) => {
               <div className="images">
                 <span>Demonstrative images</span>
                 <div className="img-holder">
-                  {project.images.map((img, k) => <div key={k}> <img src={img} /> </div>)}
+                  {project.images.map((img, k) => <div key={k}> <img src={img} alt="" /> </div>)}
                 </div>
               </div>
             </animated.div>

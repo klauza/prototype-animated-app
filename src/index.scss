@@ -8,7 +8,7 @@
 #root{
   display: flex; flex-direction: column;
   min-height: 100vh;
-  background: #000;
+  background: var(--primary-backgroundColor);
   // overflow: hidden;
 }
 
@@ -35,6 +35,9 @@ body {
 body, html{
   overflow: hidden;
   height: 100%;
+  // overscroll-behavior-y: contain;
+  // user-select: none;
+
 }
 
 /* NavLinks */

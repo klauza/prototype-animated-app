@@ -55,12 +55,6 @@ export const Wrapper = styled.div`
   }
 `;
 
-export const ContentWrapper = styled.div`
-  height: 125vh;
-  position: relative;
-
-`;
-
 export const AnimatedContent = styled(animated.div)`
   width: 100%;
   // margin-top: 100px;

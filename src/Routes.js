@@ -1,5 +1,6 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom';
+// eslint-disable-next-line
 import { config, useTransition, animated } from 'react-spring';
 
 // pages

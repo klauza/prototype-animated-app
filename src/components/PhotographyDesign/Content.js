@@ -1,10 +1,10 @@
-import React, { useEffect, useRef } from 'react';
-import { ContentWrapper, AnimatedContent } from './GeneralCSS';
-import { useTransition, animated } from 'react-spring';
+import React, { useEffect } from 'react';
+import { AnimatedContent } from './GeneralCSS';
+import { useTransition } from 'react-spring';
 
-import WebDesign from './Contents/WebDesign';
-import Photography from './Contents/Photography';
-import Photoshop from './Contents/Photoshop';
+import WebDesign from './views/WebDesign';
+import Photography from './views/Photography';
+import Photoshop from './views/Photoshop';
 
 const Content = ({ id, contentTopPosition }) => {
 
@@ -15,6 +15,7 @@ const Content = ({ id, contentTopPosition }) => {
       behavior: 'smooth',
       block: 'start'
     })
+    //eslint-disable-next-line
   }, [])
 
   const contents = [

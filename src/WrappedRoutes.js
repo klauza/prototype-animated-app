@@ -15,6 +15,7 @@ const WrappedRoutes = ({ updateFirstStart, appFirstStart, loc1, loc2, location, 
     // document.addEventListener("keydown", handlePCSwipe)
     // document.addEventListener("keyup", handlePCSwipeOff)
   }, [])
+  
   const onSwipeMove = (position, event) => {
 
     // excluding parts of website we don't want to interfere with while sliding/animating a route
@@ -107,12 +108,12 @@ const WrappedRoutes = ({ updateFirstStart, appFirstStart, loc1, loc2, location, 
     }
 
     
-    const handlePCSwipeOff = () => {
-      document.getElementsByTagName("body")[0].style.cursor="default";
-    }
-    const handlePCSwipe = (e) => {
-      if(e.which === 18) document.getElementsByTagName("body")[0].style.cursor="grab";
-    }
+    // const handlePCSwipeOff = () => {
+    //   document.getElementsByTagName("body")[0].style.cursor="default";
+    // }
+    // const handlePCSwipe = (e) => {
+    //   if(e.which === 18) document.getElementsByTagName("body")[0].style.cursor="grab";
+    // }
 
   return (
     

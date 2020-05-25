@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import ReactDom from "react-dom";
-import PropTypes from "prop-types";
 import { NavLink } from 'react-router-dom';
 import { isBrowser, isMobile } from 'react-device-detect';
 import { useSpring } from 'react-spring';
@@ -29,13 +28,14 @@ const Modal = ({ id, modalClass, modalSize, isOpen, onClose }) => {
     return () => {
       window.removeEventListener("keydown", onEscKeyDown, false);
     };
+  //eslint-disable-next-line
   }, [])
 
   useEffect(()=>{
     if (!isOpen) {
       setFadeType("out")
-
     }
+  //eslint-disable-next-line
   }, [fadeType])
 
 
