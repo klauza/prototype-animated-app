@@ -33,9 +33,9 @@ export const AboutMe = styled.div`
 
 
 
-      h1{
+      // h1{
 
-      }
+      // }
       .paragraph{
       }
 
@@ -64,6 +64,7 @@ export const AboutMe = styled.div`
           border: 1px solid gray;
           width: 100%;
           transition: all 0.5s ease;
+          background: #fff;
           &.active{
             background: lightgrey;
           }

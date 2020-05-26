@@ -21,7 +21,7 @@ const AboutTable = ({ lockAnimation, tableId, setTableId, update_Subpage_Id, rou
     {
       id: 1,
       icon: <Sad/>,
-      table_text: "Sas",
+      table_text: "SAD",
       title: "SAD",
       contentText: ["Lorem ipsum dolor sit amet.", "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit, quod veniam?", "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minus, sunt.", "lorem"]
     },
