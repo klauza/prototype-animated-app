@@ -38,21 +38,21 @@ const NavLinks = ({ handleCheckboxChange, pc_mouse_move, toggleModal, toggleSide
     if(id === 1){
 
       history.push({
-        pathname: '/web-development',
+        pathname: '/primo',
         state: 1
       })
     }
     if(id === 2){
 
       history.push({
-        pathname: '/photography-design',
+        pathname: '/secundo',
         state: 2
       })
     }
     if(id === 3){
 
       history.push({
-        pathname: '/security',
+        pathname: '/tertio',
         state: 3
       })
     }
@@ -64,13 +64,13 @@ const NavLinks = ({ handleCheckboxChange, pc_mouse_move, toggleModal, toggleSide
       
 
       <ul>
-        <ListItem active={loc1===0 ? "white" : "grey"} onClick={()=>handleUpdateAnimation(0)}>Home></ListItem>
+        <ListItem active={loc1===0 ? "white" : "grey"} onClick={()=>handleUpdateAnimation(0)}>Home</ListItem>
 
-        <ListItem active={loc1===1 ? "white" : "grey"} onClick={()=>handleUpdateAnimation(1)} >Page 1</ListItem>
+        <ListItem active={loc1===1 ? "white" : "grey"} onClick={()=>handleUpdateAnimation(1)} >Primo</ListItem>
 
-        <ListItem active={loc1===2 ? "white" : "grey"} onClick={()=>handleUpdateAnimation(2)} >Page 2</ListItem>
+        <ListItem active={loc1===2 ? "white" : "grey"} onClick={()=>handleUpdateAnimation(2)} >Secundo</ListItem>
 
-        <ListItem active={loc1===3 ? "white" : "grey"} onClick={()=>handleUpdateAnimation(3)} >Page 3</ListItem>
+        <ListItem active={loc1===3 ? "white" : "grey"} onClick={()=>handleUpdateAnimation(3)} >Tertio</ListItem>
       </ul>
 
       {isBrowser && <div className="drag-with-mouse"><label for="pc_mouse_move">Drag app with mouse</label><input type="checkbox" id="pc_mouse_move" name="pc_mouse_move" checked={pc_mouse_move} onChange={handleCheckboxChange} /></div>}
