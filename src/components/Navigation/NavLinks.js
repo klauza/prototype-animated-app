@@ -1,6 +1,8 @@
 import React from 'react';
+import { BrowserView, MobileView, isBrowser } from 'react-device-detect';
 
-import { MenuIcon } from '../../media';
+// import { MenuIcon } from '../../media';
+import { Hamburger } from '../../Icons';
 
 // redux
 import { connect } from 'react-redux';
@@ -10,7 +12,7 @@ import history from '../../history';
 // css
 import { LinkGroup, ListItem } from './NavbarCSS';
 
-const NavLinks = ({ toggleModal, toggleSideMenu, updt_animation_direction, loc1, loc2 }) => {
+const NavLinks = ({ handleCheckboxChange, pc_mouse_move, toggleModal, toggleSideMenu, updt_animation_direction, loc1, loc2 }) => {
 
 
   const currentLocation = history.location.state;
@@ -57,8 +59,8 @@ const NavLinks = ({ toggleModal, toggleSideMenu, updt_animation_direction, loc1,
   }
 
   return (
-    <LinkGroup background={MenuIcon} >
-      <div className="link-hamburger" onClick={toggleModal} />
+    <LinkGroup>
+      <Hamburger onClick={toggleModal} />
       
 
       <ul>
@@ -70,6 +72,10 @@ const NavLinks = ({ toggleModal, toggleSideMenu, updt_animation_direction, loc1,
 
         <ListItem active={loc1===3 ? "white" : "grey"} onClick={()=>handleUpdateAnimation(3)} >Page 3</ListItem>
       </ul>
+
+      {isBrowser && <div className="drag-with-mouse"><label for="pc_mouse_move">Drag app with mouse</label><input type="checkbox" id="pc_mouse_move" name="pc_mouse_move" checked={pc_mouse_move} onChange={handleCheckboxChange} /></div>}
+
+
     </LinkGroup>
   )
 }

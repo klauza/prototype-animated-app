@@ -8,8 +8,9 @@ export const Wrapper = styled.div`
   position: fixed;
   top: 0;
   z-index: 900;
-  width: 100%; height: 40px;
-  background: rgba(0,0,0,.25);
+  width: 100%; height: 30px;
+  background: rgba(0,0,0,1);
+  box-shadow: 0 1px 3px 0 black;
   .top-section{
     width: 1280px;
     margin: 0px auto;
@@ -24,12 +25,12 @@ export const Wrapper = styled.div`
     }
 `;
 export const Navigation = styled.nav`
-  height: 40px;
+  height: 30px;
   width: 1280px;
   margin: 0px auto;
 
   color: #fff;
-  background: lightblue;
+  background: #000;
   @media(max-width: 1280px){
     padding: 0 15px;
     width: auto;
@@ -40,24 +41,26 @@ export const LinkGroup = styled.div`
   width: 100%;
   display: flex; flex-direction: row;
 
-  .link-hamburger{
-    width: 50px; height: 40px;
-    background: url(${props => props.background});
-    background-size: 70%;
-    background-repeat: no-repeat;
-    background-position: center;
-    cursor: pointer;
+  svg{
+    width: auto; height: 30px;
+    fill: #fff;
     &:hover{
-      border: 1px solid red;
+      fill: #d4d4d4;
+      cursor: pointer;
     }
   }
 
   ul{
-    width: 100%;
+    margin: 0 auto;
+    width: 600px;
     display: flex; flex-direction: row;
     justify-content: space-around;
     align-items: center;
 
+  }
+
+  .drag-with-mouse{
+    line-height: 30px;
   }
 `;
 
