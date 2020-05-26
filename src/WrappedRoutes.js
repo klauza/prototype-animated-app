@@ -37,7 +37,7 @@ const WrappedRoutes = ({ updateFirstStart, appFirstStart, loc1, loc2, location, 
         if(loc1 === 0){
           blockFromSwipe();
           history.push({
-            pathname: '/web-development',
+            pathname: '/primo',
             state: 1
           })
         }
@@ -45,7 +45,7 @@ const WrappedRoutes = ({ updateFirstStart, appFirstStart, loc1, loc2, location, 
         if(loc1 === 1){
           blockFromSwipe();
           history.push({
-            pathname: '/photography-design',
+            pathname: '/secundo',
             state: 2
           })
         }
@@ -53,7 +53,7 @@ const WrappedRoutes = ({ updateFirstStart, appFirstStart, loc1, loc2, location, 
         if(loc1 === 2){
           blockFromSwipe();
           history.push({
-            pathname: '/security',
+            pathname: '/tertio',
             state: 3
           })
         }
@@ -70,7 +70,7 @@ const WrappedRoutes = ({ updateFirstStart, appFirstStart, loc1, loc2, location, 
         if(loc1 === 3){
           blockFromSwipe();
           history.push({
-            pathname: '/photography-design',
+            pathname: '/secundo',
             state: 2
           })
         }
@@ -78,7 +78,7 @@ const WrappedRoutes = ({ updateFirstStart, appFirstStart, loc1, loc2, location, 
         if(loc1 === 2){
           blockFromSwipe();
           history.push({
-            pathname: '/web-development',
+            pathname: '/primo',
             state: 1
           })
         }
