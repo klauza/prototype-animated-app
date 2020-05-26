@@ -12,17 +12,25 @@ export const Wrapper = styled(animated.div)`
   }
 
   .hero__contaier{
+    width: 100%;
     position: absolute;
     top: 50%; left: 50%;
     opacity: 1;
 
-    h1{
-      font-family: Verdana;
-      font-size: 7.5em;
-      color: #000;
+    svg{
+      width: 100%;
+      height: 250px;
       top: 50%; left: 50%;
       transform: translate(-50%, -50%);
     }
+
+    // h1{
+    //   font-family: Verdana;
+    //   font-size: 7.5em;
+    //   color: #000;
+    //   top: 50%; left: 50%;
+    //   transform: translate(-50%, -50%);
+    // }
 
   }
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Spring, config } from 'react-spring/renderprops';
 import { Wrapper } from './HeroCSS';
-import { Web } from '../../../Icons';
+import { Home } from '../../../Icons';
 
 
 import { elementDir } from '../../RouteDirections';
@@ -21,7 +21,7 @@ const Hero = ({ animationDirection }) => {
         >
           {props => 
             <div className="hero__contaier" style={props}>
-              <h1>I</h1>
+              <Home />
             </div>
           }
         </Spring>
