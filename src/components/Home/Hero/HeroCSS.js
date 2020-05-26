@@ -2,9 +2,8 @@ import styled from 'styled-components';
 import { animated } from 'react-spring';
 
 export const Wrapper = styled(animated.div)`
-  color: #fff;
-  display: grid;
-  align-content: center;
+ 
+  position: relative;
   width: 100%; height: 100%;
   background: #d4d4d4;
   padding: 0 7.5px;
@@ -13,32 +12,18 @@ export const Wrapper = styled(animated.div)`
   }
 
   .hero__contaier{
-    width: 100%; 
+    position: absolute;
+    top: 50%; left: 50%;
     opacity: 1;
 
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-auto-rows: auto;
-    align-items: center;
-    justify-content: center;
-
-    @media(max-width: 998px){
-      grid-template-columns: 1fr;
+    h1{
+      font-family: Verdana;
+      font-size: 7.5em;
+      color: #000;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
     }
 
-    &--text{
-      color: red;
-      border: 1px solid blue;
-    }
-    &--image{
-      border: 1px solid red;
-    }
-
-    @media(max-width: 998px){
-      &--text{
-        text-align: center;
-      }
-    }
   }
 
 

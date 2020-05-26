@@ -21,19 +21,7 @@ const Hero = ({ animationDirection }) => {
         >
           {props => 
             <div className="hero__contaier" style={props}>
-
-              <div className="hero__contaier--text">
-                <h1>MAIN TITLE</h1>
-                <p>Subtext Ut mauris metus, dignissim a nisi eu, egestas sollicitudin metus.</p>
-                <p>2nd laneMauris eu malesuada felis.</p>
-              </div>
-
-              <div className="hero__contaier--image">
-                <div>
-                  <Web />
-                </div>
-              </div>
-
+              <h1>I</h1>
             </div>
           }
         </Spring>
