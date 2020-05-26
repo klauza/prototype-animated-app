@@ -27,10 +27,10 @@ const VerticalComponent = styled(animated.div)`
 const Primo = ({update_Subpage_Id, update_subpage_scroll, updt_animation_direction, general: {scroll, routes, animationDirection}}) => {
   // meta-tags
   const metaData = {
-    title: 'Web Development services - improve your business',
-    description: "If you seek for tools to upgrade your business, this is the right place. Have a look what I offer and consider our partnership.",
+    title: 'Proto Primo',
+    description: "tools of proto-folio",
     keywords: "web development, website, webpage, service, business, google, google maps",
-    robots: "home, index",
+    robots: "home, index, proto",
     canonicalUrl: window.location.origin
   };
   

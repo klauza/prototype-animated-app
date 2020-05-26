@@ -21,8 +21,8 @@ const generalAnimation = config.stiff;
 const Tertio = ({ update_subpage_scroll, general: {scroll, routes, animationDirection} }) => {
   // meta-tags
   const metaData = {
-    title: 'Web Development services - improve your business',
-    description: "If you seek for tools to upgrade your business, this is the right place. Have a look what I offer and consider our partnership.",
+    title: 'Proto Tertio',
+    description: "proto tertio route",
     keywords: "web development, website, webpage, service, business, google, google maps",
     robots: "home, index",
     canonicalUrl: window.location.origin

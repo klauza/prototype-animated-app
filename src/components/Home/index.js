@@ -31,10 +31,10 @@ const VerticalComponent = styled(animated.div)`
 const Home = ({update_Subpage_Id, updt_animation_direction, general: {routes, animationDirection}}) => {
   // meta-tags
   const metaData = {
-    title: 'Web Development services - improve your business',
-    description: "If you seek for tools to upgrade your business, this is the right place. Have a look what I offer and consider our partnership.",
-    keywords: "web development, website, webpage, service, business, google, google maps",
-    robots: "home, index",
+    title: 'Proto Home',
+    description: "Home of proto-folio, welcome!",
+    keywords: "proto, folio, webpage, service, business, google, google maps",
+    robots: "home, index, proto, folio",
     canonicalUrl: window.location.origin
   };
 

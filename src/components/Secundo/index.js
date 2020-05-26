@@ -20,8 +20,8 @@ const generalAnimation = config.stiff;
 const Secundo = ({ update_Subpage_Id, update_subpage_scroll, general: {scroll, routes, animationDirection} }) => {
   // meta-tags
   const metaData = {
-    title: 'Design services - improve your business',
-    description: "If you seek for tools to upgrade your business, this is the right place. Have a look what I offer and consider our partnership.",
+    title: 'Proto Secundo',
+    description: "proto secundo route",
     keywords: "web development, website, design, wireframes, webpage, service, business, google, google maps",
     robots: "home, index",
     canonicalUrl: window.location.origin
