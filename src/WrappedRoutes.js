@@ -29,8 +29,8 @@ const WrappedRoutes = ({ updateFirstStart, appFirstStart, loc1, loc2, location, 
     };
 
     if(!swipePrevent){
-
-      if(position.x < -75){
+      console.log(loc1)
+      if(position.x < -75  && loc1 !== 3){
         // going left
         updt_animation_direction("to_left")
 
@@ -62,7 +62,7 @@ const WrappedRoutes = ({ updateFirstStart, appFirstStart, loc1, loc2, location, 
         
         
       } else 
-      if(position.x > 75){
+      if(position.x > 75 && loc1 !== 0){
 
         // going right
         updt_animation_direction("to_right")
