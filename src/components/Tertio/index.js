@@ -8,47 +8,14 @@ import history from '../../history';
 import { connect } from 'react-redux';
 import { update_subpage_scroll } from '../../actions/routesActions';
 
+// CSS
+import { Wrapper, Header } from './TertioCSS';
 
 import { AbsoluteWrapper } from '../reusable';
-import styled from 'styled-components';
 
 import TheSlider from './TheSlider';
 
 const generalAnimation = config.stiff;
-
-const Wrapper = styled.div`
-  height: auto;
-  color: #fff;
-  background: #d4d4d4;
-  padding-bottom: 100px;
-
-  .swiper-container{
-    margin: 25px 2.5px;
-    height: 300px;
-    background: white;
-  }
-  .scrollable{
-    height: 100vh; 
-    overflow-y: auto;
-  }
-`;
-
-const Header = styled.div`
-  height: 400px;
-  background: black;
-  position: relative;
-
-  .heading-h1{
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-  }
-  h1{
-    font-family: Verdana;
-    font-size: 10em;
-    transform: translate(-50%, -50%);
-  }
-`;
 
 
 const Tertio = ({ update_subpage_scroll, general: {scroll, routes, animationDirection} }) => {
