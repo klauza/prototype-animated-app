@@ -1,10 +1,22 @@
 import { animated } from 'react-spring';
 import styled from 'styled-components';
 
+export const HeroMain = styled.div`
+  background: grey;
+  height: 100%;
+  position: relative;
+`;
 
-export const Header = styled(animated.div)`
+export const Header = styled.div`
+position: absolute;
+top: 50%; left: 50%;
+transform: translate(-50%, -50%);
   h1{
-    text-align: center;
+    // text-align: center;
+    font-family: Verdana;
+    font-size: 10em;
+    color: #000;
+    transform: translate(-50%, -50%);
   }
 `;
 
@@ -230,7 +242,3 @@ export const ProjectsWrapper = styled.div`
 
 `;
 
-export const HeroMain = styled.div`
-  background: gray;
-  width: 100%; height: 100%;
-`;

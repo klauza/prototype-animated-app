@@ -1,8 +1,10 @@
 import React, { useRef, useEffect, useState } from 'react';
 import MetaTags from '../../meta-tags';
 import { AbsoluteWrapper } from '../reusable';
-import { SVGHero, Wrapper } from './GeneralCSS';
+import { HeroDiv, Wrapper } from './GeneralCSS';
 import history from '../../history';
+import { Spring, config } from 'react-spring/renderprops';
+import { elementDir } from '../RouteDirections';
 
 // content
 import Content from './Content';
@@ -13,7 +15,9 @@ import { update_Subpage_Id, update_subpage_scroll } from '../../actions/routesAc
 // import { routeDir } from '../RouteDirections';
 
 
-const PhotographyDesign = ({ update_Subpage_Id, update_subpage_scroll, general: {scroll, routes} }) => {
+const generalAnimation = config.stiff;
+
+const Secundo = ({ update_Subpage_Id, update_subpage_scroll, general: {scroll, routes, animationDirection} }) => {
   // meta-tags
   const metaData = {
     title: 'Design services - improve your business',
@@ -71,7 +75,25 @@ const PhotographyDesign = ({ update_Subpage_Id, update_subpage_scroll, general: 
     <AbsoluteWrapper>
       <Wrapper isLegit={contentID}>
         <div ref={scrollableDiv} style={{overflowY: 'scroll', overflowX: 'hidden'}}>
-          <SVGHero />
+          
+
+          <HeroDiv>
+
+            <Spring
+              config={generalAnimation}
+              delay={250}
+              from={{ transform: elementDir(animationDirection), opacity: 0  }}
+              to={{ transform: "translate(0px, 0px)", opacity: 1}}
+            >
+               {props => 
+                <div style={props}>
+                  <h1>II</h1>
+                </div>
+               }
+            </Spring>
+
+          </HeroDiv>
+
           <div className={`div-container`}>
             <div onClick={()=>selectContent(0)} className={`section section-1 ${contentID===0 ? "flex" : null} ${contentID !== null && contentID!==0 ? "shaded" : null}`} style={{backgroundColor: "red"}}>
               <span>0</span>
@@ -86,7 +108,7 @@ const PhotographyDesign = ({ update_Subpage_Id, update_subpage_scroll, general: 
 
           {contentID !== null 
             ? <Content id={contentID} contentTopPosition={contentTopPosition} /> 
-            : <h1>^ Selected category you would like to see</h1>
+            : <h1 className="cat-h1">^ Selected category you would like to see</h1>
           }
           
           
@@ -101,4 +123,4 @@ const PhotographyDesign = ({ update_Subpage_Id, update_subpage_scroll, general: 
 const mapStateToProps = (state) => ({
   general: state.general
 })
-export default connect(mapStateToProps, {update_subpage_scroll, update_Subpage_Id})(PhotographyDesign)
+export default connect(mapStateToProps, {update_subpage_scroll, update_Subpage_Id})(Secundo)

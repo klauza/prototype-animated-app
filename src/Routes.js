@@ -6,8 +6,8 @@ import { config, useTransition, animated } from 'react-spring';
 // pages
 import Home from './components/Home';
 import Primo from './components/Primo';
-import PhotographyDesign from './components/Primo';
-import Cybersecurity from './components/Cybersecurity';
+import Secundo from './components/Secundo';
+import Tertio from './components/Tertio';
 import Vision from './components/Vision';
 import Information from './components/Information';
 
@@ -43,8 +43,8 @@ const Routes = ({updateFirstStart, appFirstStart, loc1, loc2, location}) => {
         <Switch location={item}>
           <Route exact path="/" component={Home} />
           <Route exact path="/primo" component={Primo} />
-          <Route exact path="/secundo" component={PhotographyDesign} />
-          <Route exact path="/tertio" component={Cybersecurity} />
+          <Route exact path="/secundo" component={Secundo} />
+          <Route exact path="/tertio" component={Tertio} />
           <Route exact path="/vision" component={Vision} />
           <Route exact path="/information" component={Information} />
 

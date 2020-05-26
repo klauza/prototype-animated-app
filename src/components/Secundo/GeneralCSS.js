@@ -1,10 +1,24 @@
 import styled from 'styled-components';
 import { animated } from 'react-spring';
 
-export const SVGHero = styled.div`
+export const HeroDiv = styled.div`
   height: 100vh;
   width: 100%;
   background: rgba(100, 160, 200 ,1);
+  position: relative;
+  div{
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  h1{
+    // position: absolute;
+    font-family: Verdana;
+    font-size: 10em;
+    color: #000;
+    // top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+  }
 `;
 export const Wrapper = styled.div`
   height: auto;
@@ -14,7 +28,7 @@ export const Wrapper = styled.div`
   // margin-top: 50px;
   // margin-bottom: 50px;
   padding-bottom: 100px;
-  h1{
+  .cat-h1{
     text-align: center;
     padding-top: 50px;
     padding-bottom: 25px;
@@ -30,7 +44,7 @@ export const Wrapper = styled.div`
     flex-basis: auto;
     height: ${props => props.isLegit !== null ? "40px" : "100px"};
     position: ${props => props.isLegit !== null ? "sticky" : "none"};
-    top: 60px;
+    top: 30px;
     transition: all 0.25s ease;
     z-index: 999;
 

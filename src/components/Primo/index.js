@@ -24,7 +24,7 @@ const VerticalComponent = styled(animated.div)`
 `;
 
 
-const WebDevelopment = ({update_Subpage_Id, update_subpage_scroll, updt_animation_direction, general: {scroll, routes, animationDirection}}) => {
+const Primo = ({update_Subpage_Id, update_subpage_scroll, updt_animation_direction, general: {scroll, routes, animationDirection}}) => {
   // meta-tags
   const metaData = {
     title: 'Web Development services - improve your business',
@@ -164,4 +164,4 @@ const WebDevelopment = ({update_Subpage_Id, update_subpage_scroll, updt_animatio
 const mapStateToProps = (state) => ({
   general: state.general
 })
-export default connect(mapStateToProps, {update_subpage_scroll, update_Subpage_Id, updt_animation_direction})(WebDevelopment)
+export default connect(mapStateToProps, {update_subpage_scroll, update_Subpage_Id, updt_animation_direction})(Primo)

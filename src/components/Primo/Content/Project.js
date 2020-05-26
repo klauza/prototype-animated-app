@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { ProjectDiv } from '../WebDevCSS';
+import { ProjectDiv } from '../PrimoCSS';
 import { animated } from 'react-spring';
 import { Spring } from 'react-spring/renderprops'
 

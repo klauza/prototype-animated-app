@@ -2,7 +2,7 @@ import React from 'react';
 import ProjectList from './ProjectList';
 import history from '../../../history';
 
-import { ContentMain, BackButton, HeroTopImage, Wrapper } from '../WebDevCSS';
+import { ContentMain, BackButton, HeroTopImage, Wrapper } from '../PrimoCSS';
 
 
 const Content = ({ index, blockFromSwipe, routes, scroll, updt_animation_direction, setIndex, update_Subpage_Id, animationDirection, updateReduxScrollPosition}) => {

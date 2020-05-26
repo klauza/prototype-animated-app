@@ -1,5 +1,5 @@
 import React from 'react';
-import { ProjectsWrapper } from '../WebDevCSS';
+import { ProjectsWrapper } from '../PrimoCSS';
 
 import Project from './Project';
 
