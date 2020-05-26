@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Spring, config } from 'react-spring/renderprops';
 import { elementDir } from '../RouteDirections';
 import MetaTags from '../../meta-tags';
@@ -16,14 +16,24 @@ import TheSlider from './TheSlider';
 const generalAnimation = config.stiff;
 
 const Wrapper = styled.div`
-  min-height: 100vh;
+  height: auto;
   color: #fff;
   background: #d4d4d4;
+  padding-bottom: 100px;
 
+  .swiper-container{
+    margin: 25px 2.5px;
+    height: 300px;
+    background: white;
+  }
+  .scrollable{
+    height: 100vh; 
+    overflow-y: auto;
+  }
 `;
 
 const Header = styled.div`
-  height: 500px;
+  height: 400px;
   background: black;
   position: relative;
 
@@ -49,10 +59,12 @@ const Tertio = ({ general: {scroll, routes, animationDirection} }) => {
     robots: "home, index",
     canonicalUrl: window.location.origin
   };
+  const scrollableDiv = useRef();
 
   React.useEffect(()=>{
-    
-    
+    scrollableDiv.current.classList.add('scrollable');
+    scrollableDiv.current.scrollTop = scroll.web_graphics;
+  
   }, [])
 
   return (
@@ -60,24 +72,27 @@ const Tertio = ({ general: {scroll, routes, animationDirection} }) => {
     <MetaTags metaData={metaData} />
     <AbsoluteWrapper>
       <Wrapper>
+        <div ref={scrollableDiv} style={{overflowY: 'scroll'}}>
 
+          <Header>
+            <Spring
+              config={generalAnimation}
+              delay={250}
+              from={{ transform: elementDir(animationDirection), opacity: 0  }}
+              to={{ transform: "translate(0px, 0px)", opacity: 1}}
+            >
+              {props => 
+                <div className="heading-h1" style={props}>
+                  <h1>III</h1>
+                </div>
+              }
+            </Spring>
+          </Header>
 
-      <Header>
-        <Spring
-          config={generalAnimation}
-          delay={250}
-          from={{ transform: elementDir(animationDirection), opacity: 0  }}
-          to={{ transform: "translate(0px, 0px)", opacity: 1}}
-        >
-          {props => 
-            <div className="heading-h1" style={props}>
-              <h1>III</h1>
-            </div>
-          }
-        </Spring>
-      </Header>
+          <TheSlider/>
+          <TheSlider/>
 
-        <TheSlider/>
+        </div>
       </Wrapper>
     </AbsoluteWrapper>
     </>
