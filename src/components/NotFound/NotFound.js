@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { AbsoluteWrapper } from '../reusable';
-import { Web } from '../../Icons';
+import { Sad } from '../../Icons';
 
 const Wrapper = styled.div`
   background: #a5c2b3;
@@ -25,7 +25,7 @@ const NotFound = () => {
       <Wrapper>
         <div className="not-found__content">
           <span>page is not found</span>
-          <Web />
+          <Sad />
         </div>
       </Wrapper>
     </AbsoluteWrapper>

@@ -2,6 +2,7 @@ import React from 'react';
 // import { useSpring, animated } from 'react-spring';
 import { Spring, config } from 'react-spring/renderprops';
 import { ContactMe } from './ContactCSS';
+import { ContactSvg } from '../../../Icons';
 
 import { elementDir } from '../../RouteDirections';
 
@@ -23,6 +24,7 @@ const Contact = ({ routes, animationDirection }) => {
           <>
             <div style={props}>
 
+            {/* FOR NETLIFY
             <form name="contact" data-netlify-recaptcha="true" method="post">
               <input type="hidden" name="form-name" value="contact" />
               <p>
@@ -39,10 +41,14 @@ const Contact = ({ routes, animationDirection }) => {
                 <button type="submit">Send</button>
               </p>
             </form>
+            */}
             
             </div>
-            <div className="test" style={props}>
-              <span>Box</span>
+            <div className="content" style={props}>
+              <ContactSvg />
+              <div>
+                <a href="mailto:mail@mail.com">email-me@mailto.com</a>
+              </div>
             </div>
           </>
           }
