@@ -4,7 +4,7 @@ import { Switch, Route } from 'react-router-dom';
 import { config, useTransition, animated } from 'react-spring';
 
 // pages
-import Home from './components/Home/Home';
+import Home from './components/Home';
 import WebDev from './components/WebDev';
 import PhotographyDesign from './components/PhotographyDesign';
 import Cybersecurity from './components/Cybersecurity';
