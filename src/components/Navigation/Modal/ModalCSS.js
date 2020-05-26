@@ -102,9 +102,12 @@ export const ModalMenuContainer = styled(animated.div)`
     
 
     .logo-icon{
-      width: 100%;
+      width: 100%; height: auto;
       display:grid;
       justify-items: center;
+      img{
+        width: auto; height: 100px; object-fit: cover;
+      }
 
       span{
         font-size: 3em;

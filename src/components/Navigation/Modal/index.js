@@ -3,7 +3,7 @@ import ReactDom from "react-dom";
 import { NavLink } from 'react-router-dom';
 import { isBrowser, isMobile } from 'react-device-detect';
 import { useSpring } from 'react-spring';
-import { AppsIcon } from '../../../media';
+import { AppsIcon, LogoIcon } from '../../../media';
 
 // styled
 import { StyledModal, ModalMenuContainer } from "./ModalCSS";
@@ -76,6 +76,7 @@ const Modal = ({ id, modalClass, modalSize, isOpen, onClose }) => {
               <div><img src={AppsIcon} alt="" /></div>
               <div><img src={AppsIcon} alt="" /></div>
               <div><img src={AppsIcon} alt="" /></div>
+              <div><img src={AppsIcon} alt="" /></div>
             </div>
             <div className="bottom-icons">
               <div><img src={AppsIcon} alt="" /></div>
@@ -85,12 +86,12 @@ const Modal = ({ id, modalClass, modalSize, isOpen, onClose }) => {
           </div>
 
           <div className="grid-menu right-column">
-            <div className="logo-icon"><span>LOGO</span></div>
+            <div className="logo-icon"><img src={LogoIcon} alt="" /></div>
             <div className="tool-pages__links">
               <NavLink onClick={handleClick} exact to={{pathname: "/information", state: -1}}>Information</NavLink>
               <NavLink onClick={handleClick} exact to={{pathname: "/vision", state: -2}}>Vision</NavLink> 
-              <NavLink onClick={handleClick} exact to={{pathname: "/faq", state: -3}}>Have questions? <br/>See FAQ</NavLink> 
-              <NavLink onClick={handleClick} exact to={{pathname: "/tac-pp", state: -4}}>Terms and conditions <br/>Privacy Policy</NavLink> 
+              <NavLink onClick={handleClick} exact to={{pathname: "/faq", state: -3}}>FAQ</NavLink> 
+              <NavLink onClick={handleClick} exact to={{pathname: "/tac-pp", state: -4}}>Terms and conditions</NavLink> 
             </div>
             <div className="bottom-desc">
               <span>Music on/off</span>
