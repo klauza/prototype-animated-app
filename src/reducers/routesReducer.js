@@ -13,7 +13,8 @@ const initialState = {
   animationDirection: 'to_down',
   scroll: {
     web_projects: 0,
-    web_graphics: 0
+    web_graphics: 0,
+    tertio: 0
   },
   tools: {
     music: false,

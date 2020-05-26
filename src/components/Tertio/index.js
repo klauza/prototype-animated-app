@@ -2,10 +2,11 @@ import React, { useRef } from 'react';
 import { Spring, config } from 'react-spring/renderprops';
 import { elementDir } from '../RouteDirections';
 import MetaTags from '../../meta-tags';
+import history from '../../history';
 
 // redux
 import { connect } from 'react-redux';
-import { update_Subpage_Id, update_subpage_scroll } from '../../actions/routesActions';
+import { update_subpage_scroll } from '../../actions/routesActions';
 
 
 import { AbsoluteWrapper } from '../reusable';
@@ -50,7 +51,7 @@ const Header = styled.div`
 `;
 
 
-const Tertio = ({ general: {scroll, routes, animationDirection} }) => {
+const Tertio = ({ update_subpage_scroll, general: {scroll, routes, animationDirection} }) => {
   // meta-tags
   const metaData = {
     title: 'Web Development services - improve your business',
@@ -59,13 +60,25 @@ const Tertio = ({ general: {scroll, routes, animationDirection} }) => {
     robots: "home, index",
     canonicalUrl: window.location.origin
   };
+
+  const updateReduxScrollPosition = (data) => {
+    update_subpage_scroll({...scroll, tertio: data});
+  }
+
   const scrollableDiv = useRef();
 
   React.useEffect(()=>{
     scrollableDiv.current.classList.add('scrollable');
-    scrollableDiv.current.scrollTop = scroll.web_graphics;
+    scrollableDiv.current.scrollTop = scroll.tertio;
   
   }, [])
+
+  React.useEffect(()=>{
+    // fires when component dismounts
+    if(history.location.state === 3) return
+    updateReduxScrollPosition(scrollableDiv.current.scrollTop);
+
+  }, [history.location.state])
 
   return (
     <>
@@ -102,4 +115,4 @@ const Tertio = ({ general: {scroll, routes, animationDirection} }) => {
 const mapStateToProps = (state) => ({
   general: state.general
 })
-export default connect(mapStateToProps, {update_subpage_scroll, update_Subpage_Id})(Tertio)
+export default connect(mapStateToProps, {update_subpage_scroll})(Tertio)
