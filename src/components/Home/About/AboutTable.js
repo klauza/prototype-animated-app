@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTransition, animated } from 'react-spring';
-import { NavLink } from 'react-router-dom';
-// import SVG (temp)
+
+// SVGs
 import { Confused, Sad, Smiley } from '../../../Icons';
 
 const AboutTable = ({ lockAnimation, tableId, setTableId, update_Subpage_Id, routes }) => {

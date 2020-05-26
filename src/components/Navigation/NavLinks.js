@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserView, MobileView, isBrowser } from 'react-device-detect';
+import { isBrowser } from 'react-device-detect';
 
 // import { MenuIcon } from '../../media';
 import { Hamburger } from '../../Icons';
@@ -73,7 +73,7 @@ const NavLinks = ({ handleCheckboxChange, pc_mouse_move, toggleModal, toggleSide
         <ListItem active={loc1===3 ? "white" : "grey"} onClick={()=>handleUpdateAnimation(3)} >Tertio</ListItem>
       </ul>
 
-      {isBrowser && <div className="drag-with-mouse"><label for="pc_mouse_move">Drag app with mouse</label><input type="checkbox" id="pc_mouse_move" name="pc_mouse_move" checked={pc_mouse_move} onChange={handleCheckboxChange} /></div>}
+      {isBrowser && <div className="drag-with-mouse"><label htmlFor="pc_mouse_move">Drag app with mouse</label><input type="checkbox" id="pc_mouse_move" name="pc_mouse_move" checked={pc_mouse_move} onChange={handleCheckboxChange} /></div>}
 
 
     </LinkGroup>
