@@ -2,7 +2,7 @@ import React from 'react';
 import { useTransition, animated } from 'react-spring';
 import { NavLink } from 'react-router-dom';
 // import SVG (temp)
-import { Cyb, Photo, Web } from '../../../Icons';
+import { Confused, Sad, Smiley } from '../../../Icons';
 
 const AboutTable = ({ lockAnimation, tableId, setTableId, update_Subpage_Id, routes }) => {
 
@@ -13,27 +13,24 @@ const AboutTable = ({ lockAnimation, tableId, setTableId, update_Subpage_Id, rou
   const servicesData = [
     {
       id: 0,
-      icon: <Cyb/>,
-      table_text: "WWW",
-      title: "Web Development",
-      contentText: ['React architecture', 'www application', 'google My Business implementation'],
-      path: "/web-development"
+      icon: <Smiley/>,
+      table_text: "HAPPY",
+      title: "HAPPY",
+      contentText: ['Lorem ipsum dolor sit amet.', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit, quod veniam?', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minus, sunt.']
     },
     {
       id: 1,
-      icon: <Photo/>,
-      table_text: "Design",
-      title: "Photography, design",
-      contentText: ["photo editing", "stock photos", "web wireframing - would you like to see wireframes of This page? [example]", "icons"],
-      path: "/photography-design"
+      icon: <Sad/>,
+      table_text: "Sas",
+      title: "SAD",
+      contentText: ["Lorem ipsum dolor sit amet.", "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit, quod veniam?", "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minus, sunt.", "lorem"]
     },
     {
       id: 2,
-      icon: <Web/>,
-      table_text: "Security",
-      title: "Cybersecurity",
-      contentText: ['currently no services available'],
-      path: "/security"
+      icon: <Confused/>,
+      table_text: "CONFUSED",
+      title: "CONFUSED",
+      contentText: ['Lorem, ipsum dolor.']
     }
   ];
   
@@ -56,7 +53,7 @@ const AboutTable = ({ lockAnimation, tableId, setTableId, update_Subpage_Id, rou
                 key={i} 
                 className={`table table-${i+1} ${tableId===i ? "active" : null}`} 
                 onClick={()=>{setTableId(i); update_Subpage_Id({...routes, about: i});}}
-              >  <div className="table-content"><span>{item.table_text}</span>{item.icon}</div> </div> )
+              >  <div className={`table-content color-${tableId===i && tableId}`}><span>{item.table_text}</span>{item.icon}</div> </div> )
           }
         )}
       </div>
@@ -72,8 +69,7 @@ const AboutTable = ({ lockAnimation, tableId, setTableId, update_Subpage_Id, rou
           > 
             <h2>{item.title}</h2>
             {item.contentText.map((itm, i) => <p key={i}>{itm}</p>)}
-            <NavLink exact to={{pathname: item.path, state: item.id+1}}>Learn more</NavLink>
-
+            
           </animated.div>
           )
         })

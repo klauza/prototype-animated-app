@@ -24,17 +24,16 @@ const About = ({ isMobile, update_Subpage_Id, routes, animationDirection }) => {
 
   const items = [
     {
-      content: <h1>About</h1>, 
-      class: "header"
+      content: <h1>LOREM</h1>, 
+      class: `header color-${tableId}`
     }, 
 
     {
       content: 
         <div>
-          <p>I'm an independent coder, photography hobbyist and IT passionate {'</>'} <i>Klauza ltd.</i></p>
-          <p>I offer services to improve your business.</p>
+          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dicta magni autem vel explicabo voluptatem quos, earum repellendus. Possimus, in eius!</p>
         </div>, 
-      class: "paragraph"
+      class: `paragraph color-${tableId}`
     }
     ,
     {

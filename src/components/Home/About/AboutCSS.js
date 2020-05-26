@@ -10,20 +10,33 @@ export const AboutMe = styled.div`
   width: 100%; height: 100%;
 
   
+
+  .color-0{
+    color: green;
+  }
+  .color-1{
+    color: red;
+  }
+  .color-2{
+    color: orange;
+  }
+
+  
   .about__content{
     display: grid; grid-template-rows: 40vh 60vh;
     width: 100%;
 
   
     &--top{
+      padding-top: 30px;
       position: relative;
 
-      .header{
-        color: green;
-      }
 
+
+      h1{
+
+      }
       .paragraph{
-        color: green;
       }
 
       .svg{
@@ -44,7 +57,7 @@ export const AboutMe = styled.div`
       
       .tables{
         width: 100%;
-        height: 50px;
+        height: 30px;
         display: flex; flex-direction: row;
         .table-1, .table-2, .table-3{
           cursor: pointer;
@@ -52,13 +65,15 @@ export const AboutMe = styled.div`
           width: 100%;
           transition: all 0.5s ease;
           &.active{
-            background: red;
+            background: lightgrey;
           }
         }
 
         .table-content{
+          display: flex; flex-direction: row;
+          justify-content: space-around;
           span{
-            font-size: 16px;
+            // align-self: center;
           }
           svg{
             width: 25px; height: 25px;
@@ -67,6 +82,7 @@ export const AboutMe = styled.div`
       }
 
       .content{
+        text-align: center;
         width: 100%; height: 100%;
         padding: 5px;
         background: linear-gradient(to bottom,

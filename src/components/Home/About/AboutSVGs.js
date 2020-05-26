@@ -2,21 +2,21 @@ import React from 'react'
 import { useTransition, animated } from 'react-spring';
 
 // import SVG
-import { Cyb, Photo, Web } from '../../../Icons';
+import { Confused, Sad, Smiley } from '../../../Icons';
 
 const AboutSVGs = ({ lockAnimation, tableId }) => {
 
   const svgs = [
     {
-      svg: <Cyb/>,
+      svg: <Smiley />,
       id: 0
     }, 
     {
-      svg: <Photo/>,
+      svg: <Sad />,
       id: 1
     }, 
     {
-      svg: <Web/>,
+      svg: <Confused />,
       id: 2
     }
     ];

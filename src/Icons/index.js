@@ -1,3 +1,6 @@
+export { default as Confused } from './Confused'
+export { default as Sad } from './Sad'
+export { default as Smiley } from './Smiley'
 export { default as Hamburger } from './Hamburger'
 export { default as Cyb } from './Cyb'
 export { default as Photo } from './Photo'
