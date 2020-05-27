@@ -63,7 +63,7 @@ const Secundo = ({ update_Subpage_Id, update_subpage_scroll, general: {scroll, r
     if(contentID !== null){
       contentTopPosition.current.scrollIntoView({
         behavior: 'smooth',
-        block: 'center'
+        block: 'start'
       })
     }
   }
@@ -93,23 +93,23 @@ const Secundo = ({ update_Subpage_Id, update_subpage_scroll, general: {scroll, r
             </Spring>
 
           </HeroDiv>
+          <h1 ref={contentTopPosition} className="cat-h1">Equipment for your adventure</h1>
 
           <div className={`div-container`}>
             <div onClick={()=>selectContent(0)} className={`section section-1 ${contentID===0 ? "flex" : null} ${contentID !== null && contentID!==0 ? "shaded" : null}`} style={{backgroundColor: "red"}}>
-              <span>0</span>
+              <span>Approach</span>
             </div>
             <div onClick={()=>selectContent(1)} className={`section section-2 ${contentID===1 ? "flex" : null} ${contentID !== null && contentID!==1 ? "shaded" : null}`} style={{backgroundColor: "green"}}>
-              <span>1</span>
+              <span>Positive attitude</span>
             </div>
             <div onClick={()=>selectContent(2)} className={`section section-3 ${contentID===2 ? "flex" : null} ${contentID !== null && contentID!==2 ? "shaded" : null}`} style={{backgroundColor: "blue"}}>
-              <span>2</span>
+              <span>Humor</span>
             </div>
           </div>
 
-          {contentID !== null 
-            ? <Content id={contentID} contentTopPosition={contentTopPosition} /> 
-            : <h1 className="cat-h1">^ Selected category you would like to see</h1>
-          }
+        {contentID !== null && <Content id={contentID} contentTopPosition={contentTopPosition} /> }
+
+
           
           
             

@@ -25,9 +25,21 @@ export const BackButton = styled.button`
   position: absolute;
   top: 60px;
   left: 50%; transform: translateX(-50%);
-  width: 90px; height: 40px; line-height: 40px;
-
-  background: orange; color: #000; font-weight: 700;
+  padding: 10px 25px;
+  cursor: pointer;
+  border-radius: 5px;
+  border: 0;
+  box-shadow: 0 0 3px 0 rgba(0,0,0,.6);
+  background: #5ba3de; color: #fff; font-weight: 700;
+  &:hover{
+    box-shadow: 0 0 5px 0 rgba(0,0,0,.8);
+  }
+  &:active, &:focus{
+    border: 0; outline: 0;
+  }
+  &:active{
+    box-shadow: 0 0 3px 0 rgba(0,0,0,.6);
+  }
 `;
 
 export const ContentMain = styled.div`
@@ -67,8 +79,12 @@ export const HeroTopImage = styled.div`
     position: absolute;
     top: 50%; left: 50%;
     transform: translate(-50%, -50%);
+    background: rgba(0,0,0,.6);
+    width: 100%;
+    text-align: center;
     h1{
-      color: #0FF;
+      padding: 5px;
+      color: #fff;
     }
   }
 
@@ -189,14 +205,15 @@ export const ProjectDiv = styled(animated.div)`
             width: 100%;
           }
           .img-holder{
-            width: 100%;
+            // width: 100%;
             display: flex; flex-direction: row;
             justify-content: space-around;
             border: none;
+            overflow-x: none;
             div{
-              border: 1px solid #000;
-              margin: 5px 2.5px 0;
               width: 125px; height: 125px;
+              margin: 5px 2.5px 0;
+              border: 1px solid #000;
               img{
                 width: 100%; height: 100%; object-fit: cover;
               }
@@ -208,7 +225,15 @@ export const ProjectDiv = styled(animated.div)`
             grid-column: span 2;
             .img-holder{
               div{
-                width: auto; height: auto;
+                width: 125px; height: 125px;
+              }
+            }
+          }
+
+          @media(max-width: 500px){
+            .img-holder{
+              div{
+                // width: auto; height: auto;
               }
             }
           }

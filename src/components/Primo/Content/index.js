@@ -29,6 +29,10 @@ const Content = ({ index, blockFromSwipe, routes, scroll, updt_animation_directi
     updt_animation_direction("to_down");
     setIndex(0);
     update_Subpage_Id({ ...routes, web_dev: 0 }); 
+    
+    // update scroll position
+    updateReduxScrollPosition(scrollableDiv.current.scrollTop);
+
   }
 
 
@@ -37,9 +41,9 @@ const Content = ({ index, blockFromSwipe, routes, scroll, updt_animation_directi
       <div ref={scrollableDiv} style={{overflowY: 'scroll'}}>
         <BackButton onClick={backUp}>Back ^</BackButton>
           
-        <HeroTopImage bg={"https://www.gettyimages.co.uk/gi-resources/images/500px/983794168.jpg"}>
+        <HeroTopImage bg={"https://images.pexels.com/photos/994605/pexels-photo-994605.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"}>
           <div className="hero_top_image--content">
-            <h1>TEXT_TEXT</h1>
+            <h1>Primo - find location where you will be happy!</h1>
           </div>
         </HeroTopImage>     
 

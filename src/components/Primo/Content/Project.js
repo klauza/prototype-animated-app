@@ -22,7 +22,7 @@ const Project = ({ isToggled, project, id, toggle }) => {
       <div className="project__main">
         <div className="project__main-top">
           <div className="image">
-            <img src="https://www.gettyimages.co.uk/gi-resources/images/500px/983794168.jpg" alt="" />
+            <img src={project.main_image} alt="" />
           </div>
 
           <div className="info">
@@ -30,9 +30,9 @@ const Project = ({ isToggled, project, id, toggle }) => {
             <p>{project.desc}</p>
           </div>
 
-          <div className="live-btn">
+          {/* <div className="live-btn">
             <button><a href={project.live_page} rel="noopener noreferrer" target="_blank">Live<br/>page</a></button>
-          </div>
+          </div> */}
         </div>
 
         <Spring from={{ height: 0 }} to={{ height: isToggled===id ? 'auto' : 0 }}>
@@ -43,11 +43,11 @@ const Project = ({ isToggled, project, id, toggle }) => {
                 {project.features.map((feature, k) => <div key={k}>{feature}</div>)}
               </div>
               <div className="technologies">
-                <span>Technologies</span>
-                {project.technologies.map((techn, k) => <div key={k}>{techn}</div>)}
+                <span>Attractions</span>
+                {project.attractions.map((techn, k) => <div key={k}>{techn}</div>)}
               </div>
               <div className="images">
-                <span>Demonstrative images</span>
+                <span>Gallery</span>
                 <div className="img-holder">
                   {project.images.map((img, k) => <div key={k}> <img src={img} alt="" /> </div>)}
                 </div>

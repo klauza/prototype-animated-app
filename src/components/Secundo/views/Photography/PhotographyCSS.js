@@ -4,11 +4,11 @@ export const AnimatedPhotoshop = styled.div`
 
   margin: 0;
   padding: 0;
-  background: lightblue;
+  // background: lightblue;
   // position: fixed;
   overflow: hidden;
   width: 100%;
-  height: 100vh;
+  height: auto;
   user-select: none;
   overscroll-behavior-x: contain;
 

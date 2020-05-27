@@ -57,6 +57,13 @@ export const Wrapper = styled.div`
       transition: all .25s ease;
       filter: brightness(1);
 
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      span{
+        color: #fff;
+      }
       &.shaded{
         filter: brightness(0.5);
       }
@@ -74,4 +81,22 @@ export const AnimatedContent = styled(animated.div)`
   // margin-top: 100px;
   position: absolute;
   top: 0;
+  // background: lightblue;
+  height: 100%;
+
+  p{
+    padding-top: 25px;
+    text-align: center;
+    font-size: 1.5em;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .card_image{
+    border: 5px solid #d4d4d4;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    
+  }
 `;

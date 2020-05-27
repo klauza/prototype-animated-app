@@ -1,5 +1,6 @@
 import React from 'react';
 import { ProjectsWrapper } from '../PrimoCSS';
+import { SmileIcon } from '../../../media';
 
 import Project from './Project';
 
@@ -23,63 +24,68 @@ const ProjectList = ({ animationDirection }) => {
     {
       id: 0,
       live_page: "https://www.google.com",
-      title: 'project_0',
+      title: 'Turkey',
       desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vehicula congue nunc eget aliquet. Sed ut venenatis sapien. Cras ut lacus eget dolor commodo suscipit non in elit.",
-      features: ["auth system", "payment setup", "PWA"],
-      technologies: ["React", "MongoDB", "Webpack", "Express.js"],
-      images: ["https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTPZkTb0pg8FNABUqmBHFFrMnYP0tISPxxSXb_spedbxKkqXtk6&usqp=CAU", "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTPZkTb0pg8FNABUqmBHFFrMnYP0tISPxxSXb_spedbxKkqXtk6&usqp=CAU", "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTPZkTb0pg8FNABUqmBHFFrMnYP0tISPxxSXb_spedbxKkqXtk6&usqp=CAU", "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTPZkTb0pg8FNABUqmBHFFrMnYP0tISPxxSXb_spedbxKkqXtk6&usqp=CAU"]
+      main_image: SmileIcon,
+      features: ["sauna", "5-star restaurant", "free fast wifi"],
+      attractions: ["pool", "kayak trips", "visiting local area"],
+      images: [SmileIcon, SmileIcon, SmileIcon, SmileIcon]
     },
     {
       id: 1,
       live_page: "https://www.google.com",
-      title: 'project_1',
+      title: 'Greece',
       desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vehicula congue nunc eget aliquet. Sed ut venenatis sapien. Cras ut lacus eget dolor commodo suscipit non in elit.",
-      features: ["React"],
-      technologies: ["x"],
-      images: ["https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTPZkTb0pg8FNABUqmBHFFrMnYP0tISPxxSXb_spedbxKkqXtk6&usqp=CAU"]
+      main_image: SmileIcon,
+      features: ["sauna", "5-star restaurant", "free fast wifi"],
+      attractions: ["pool", "kayak trips", "visiting local area"],
+      images: [SmileIcon, SmileIcon, SmileIcon, SmileIcon]
     },
     {
       id: 2,
       live_page: "https://www.google.com",
-      title: 'project_2',
+      title: 'Bulgaria',
       desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vehicula congue nunc eget aliquet. Sed ut venenatis sapien. Cras ut lacus eget dolor commodo suscipit non in elit.",
-      features: ["1"],
-      technologies: ["x"],
-      images: ["https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTPZkTb0pg8FNABUqmBHFFrMnYP0tISPxxSXb_spedbxKkqXtk6&usqp=CAU"]
+      main_image: SmileIcon,
+      features: ["sauna", "5-star restaurant", "free fast wifi"],
+      attractions: ["pool", "kayak trips", "visiting local area"],
+      images: [SmileIcon, SmileIcon, SmileIcon, SmileIcon]
     },
     {
       id: 3,
       live_page: "https://www.google.com",
-      title: 'project_3',
+      title: 'Italy',
       desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vehicula congue nunc eget aliquet. Sed ut venenatis sapien. Cras ut lacus eget dolor commodo suscipit non in elit.",
-      features: ["1"],
-      technologies: ["x"],
-      images: ["https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTPZkTb0pg8FNABUqmBHFFrMnYP0tISPxxSXb_spedbxKkqXtk6&usqp=CAU"]
+      main_image: SmileIcon,
+      features: ["sauna", "5-star restaurant", "free fast wifi"],
+      attractions: ["pool", "kayak trips", "visiting local area"],
+      images: [SmileIcon, SmileIcon, SmileIcon, SmileIcon]
     },
     {
       id: 4,
       live_page: "https://www.google.com",
-      title: 'project_4',
+      title: 'Tunisia',
       desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vehicula congue nunc eget aliquet. Sed ut venenatis sapien. Cras ut lacus eget dolor commodo suscipit non in elit.",
-      features: ["1"],
-      technologies: ["x"],
-      images: ["https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTPZkTb0pg8FNABUqmBHFFrMnYP0tISPxxSXb_spedbxKkqXtk6&usqp=CAU"]
+      main_image: SmileIcon,
+      features: ["sauna", "5-star restaurant", "free fast wifi"],
+      attractions: ["pool", "kayak trips", "visiting local area"],
+      images: [SmileIcon, SmileIcon, SmileIcon, SmileIcon]
     },
     {
       id: 5,
       live_page: "https://www.google.com",
-      title: 'project_5',
+      title: 'Portugal',
       desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vehicula congue nunc eget aliquet. Sed ut venenatis sapien. Cras ut lacus eget dolor commodo suscipit non in elit.",
-      features: ["1"],
-      technologies: ["x"],
-      images: ["https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTPZkTb0pg8FNABUqmBHFFrMnYP0tISPxxSXb_spedbxKkqXtk6&usqp=CAU"]
+      main_image: SmileIcon,
+      features: ["sauna", "5-star restaurant", "free fast wifi"],
+      attractions: ["pool", "kayak trips", "visiting local area"],
+      images: [SmileIcon, SmileIcon, SmileIcon, SmileIcon]
     }
   ]
 
   return (
     <ProjectsWrapper>
 
-         <span> -- Content -- </span>
             {
         data.map((project, id) => { return (
             <Project 

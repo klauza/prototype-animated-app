@@ -41,7 +41,7 @@ const Content = ({ id, contentTopPosition }) => {
   })
 
   return (
-    <div ref={contentTopPosition} style={{height: "100%", marginBottom: "50px", position: "relative"}}>
+    <div style={{height: "100%", marginBottom: "50px", position: "relative"}}>
         {
         contentTransitions.map(({ item, props, key }) => { 
           return <AnimatedContent style={props} key={key} >{item.name}</AnimatedContent>

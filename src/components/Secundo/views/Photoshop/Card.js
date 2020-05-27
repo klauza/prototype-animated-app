@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useSpring, animated } from 'react-spring'
 import { CardWrapper } from './CardCSS';
+import { SmileIcon, SadIcon } from '../../../../media';
 
 function Card() {
   const [flipped, set] = useState(false)
@@ -12,8 +13,8 @@ function Card() {
   })
   return (
     <CardWrapper onClick={() => set(state => !state)}>
-      <animated.div className="c back" style={{ opacity: opacity.interpolate(o => 1 - o), transform }} />
-      <animated.div className="c front" style={{ opacity, transform: transform.interpolate(t => `${t} rotateX(180deg)`) }} />
+      <animated.div className="c back" style={{ background: `url(${SadIcon}) no-repeat`, backgroundPosition: "center", opacity: opacity.interpolate(o => 1 - o), transform }} />
+      <animated.div className="c front" style={{ background: `url(${SmileIcon}) no-repeat`, backgroundPosition: "center", opacity, transform: transform.interpolate(t => `${t} rotateX(180deg)`) }} />
     </CardWrapper>
   )
 }
