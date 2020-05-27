@@ -69,8 +69,8 @@ const Tertio = ({ update_subpage_scroll, general: {scroll, routes, animationDire
             </Spring>
           </Header>
 
-          <TheSlider/>
-          <TheSlider/>
+          <TheSlider funny={true} text="smiling slider" />
+          <TheSlider funny={false} text="not so smiling slider" />
 
         </div>
       </Wrapper>

@@ -19,7 +19,7 @@ const WrappedRoutes = ({ updateFirstStart, appFirstStart, loc1, loc2, location, 
   const onSwipeMove = (position, event) => {
 
     // excluding parts of website we don't want to interfere with while sliding/animating a route
-    if (event.target.classList.contains('swiper-slide')){
+    if (event.target.classList.contains('swiper-prevent')){
       // console.log('break');
       return
     };
@@ -29,7 +29,6 @@ const WrappedRoutes = ({ updateFirstStart, appFirstStart, loc1, loc2, location, 
     };
 
     if(!swipePrevent){
-      console.log(loc1)
       if(position.x < -75  && loc1 !== 3){
         // going left
         updt_animation_direction("to_left")

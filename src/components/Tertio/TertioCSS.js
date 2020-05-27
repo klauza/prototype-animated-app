@@ -5,6 +5,9 @@ export const Wrapper = styled.div`
   color: #fff;
   background: #d4d4d4;
   padding-bottom: 100px;
+  h1{
+    text-align: center;
+  }
 
   .swiper-container{
     margin: 25px 2.5px;
@@ -14,6 +17,22 @@ export const Wrapper = styled.div`
   .scrollable{
     height: 100vh; 
     overflow-y: auto;
+  }
+
+  .swiper-slide{
+    &>*{
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    h1{
+      z-index: 5;
+      color: black;
+      left: 80%;
+    }
+    img{
+      z-index: 4;
+
+    }
   }
 `;
 

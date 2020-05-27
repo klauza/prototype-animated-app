@@ -1,7 +1,8 @@
 import React from 'react';
 import Swiper from 'react-id-swiper';
-
-const Navigation = () => {
+import { SmileIcon, SadIcon } from '../../media';
+ 
+const Navigation = ({funny, text}) => {
 
   const params = {
     navigation: {
@@ -17,14 +18,14 @@ const Navigation = () => {
 
   return (
   <>
-    <h1>Slider</h1>
+    <h1>{text}</h1>
     
-    <Swiper {...params} className="swiper-parent">
-      <div>Slide #1</div>
-      <div>Slide #2</div>
-      <div>Slide #3</div>
-      <div>Slide #4</div>
-      <div>Slide #5</div>
+    <Swiper {...params} className="swiper-prevent">
+      <div><h1 className="swiper-prevent">1</h1><img className="swiper-prevent" src={funny ? SmileIcon : SadIcon} alt="" /></div>
+      <div><h1 className="swiper-prevent" >2</h1><img  className="swiper-prevent" src={funny ? SmileIcon : SadIcon} alt="" /></div>
+      <div><h1 className="swiper-prevent" >3</h1><img  className="swiper-prevent" src={funny ? SmileIcon : SadIcon} alt="" /></div>
+      <div><h1 className="swiper-prevent" >4</h1><img  className="swiper-prevent" src={funny ? SmileIcon : SadIcon} alt="" /></div>
+      <div><h1 className="swiper-prevent" >5</h1><img  className="swiper-prevent" src={funny ? SmileIcon : SadIcon} alt="" /></div>
     </Swiper>
 
   </>
