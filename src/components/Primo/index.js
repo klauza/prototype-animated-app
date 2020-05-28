@@ -110,8 +110,6 @@ const Primo = ({update_Subpage_Id, update_subpage_scroll, updt_animation_directi
     }, 
     {
       section: <Content 
-              Swipe={Swipe}
-              onSwipeMove={onSwipeMove}
               updateReduxScrollPosition={updateReduxScrollPosition}
               handleScroll={handleScroll}
               // index={index} 
@@ -124,6 +122,7 @@ const Primo = ({update_Subpage_Id, update_subpage_scroll, updt_animation_directi
               scroll={scroll}
               index={index}
               animationDirection={animationDirection}
+              tools={tools}
               />,
       id: 1
     }
@@ -143,7 +142,10 @@ const Primo = ({update_Subpage_Id, update_subpage_scroll, updt_animation_directi
     <AbsoluteWrapper>
 
       <div style={{position: "relative"}} onWheel={(e)=>handleScroll(e)}>
-        <Swipe onSwipeMove={onSwipeMove} allowMouseEvents={tools.pc_mouse_move && true}>
+        <Swipe 
+          onSwipeMove={onSwipeMove}
+          allowMouseEvents={tools.pc_mouse_move && true}
+        >
             <div style={{position: "reltaive", width: "100%", height: "100vh"}}>
         
                 {

@@ -6,6 +6,9 @@ import history from '../../history';
 import { Spring, config } from 'react-spring/renderprops';
 import { elementDir } from '../RouteDirections';
 
+import Swipe from 'react-easy-swipe';
+
+
 // content
 import Content from './Content';
 
@@ -17,7 +20,7 @@ import { update_Subpage_Id, update_subpage_scroll } from '../../actions/routesAc
 
 const generalAnimation = config.stiff;
 
-const Secundo = ({ update_Subpage_Id, update_subpage_scroll, general: {scroll, routes, animationDirection} }) => {
+const Secundo = ({ update_Subpage_Id, update_subpage_scroll, general: {tools, scroll, routes, animationDirection} }) => {
   // meta-tags
   const metaData = {
     title: 'Proto Secundo',
@@ -30,12 +33,15 @@ const Secundo = ({ update_Subpage_Id, update_subpage_scroll, general: {scroll, r
   const [contentID, setContentID] = useState(routes.web_design_cat); // || read from redux
   const scrollableDiv = useRef();
 
+  // mouse position
+  const [currPosition, setCurrPosition] = useState(0);
+
   const updateReduxScrollPosition = (data) => {
     update_subpage_scroll({...scroll, web_graphics: data});
   }
 
-
   const contentTopPosition = useRef();
+
 
   useEffect(()=>{
     // adds the scroll class after section's animation
@@ -69,12 +75,50 @@ const Secundo = ({ update_Subpage_Id, update_subpage_scroll, general: {scroll, r
   }
 
 
+
+  const onPointerUp = () => {
+    if(tools.pc_mouse_move){
+      setCurrPosition(0);
+    } else return
+  }
+
+  const onSwipeMove = (position, event) => {
+    console.log(position.y)
+    // setCurrPosition(position.y);
+
+    let distance = position.y - currPosition;
+
+    setCurrPosition(position.y); // setting next
+
+    
+    if(currPosition > position.y){
+      // setCurrPosition(0);   // reset
+      console.log('down')
+    }
+
+    
+
+    scrollableDiv.current.scrollTop = scrollableDiv.current.scrollTop - distance;
+  }
+
+
+
   return (
     <>
     <MetaTags metaData={metaData} />
     <AbsoluteWrapper>
       <Wrapper isLegit={contentID}>
-        <div ref={scrollableDiv} style={{overflowY: 'scroll', overflowX: 'hidden'}}>
+
+      <Swipe 
+        // onSwipeStart={onSwipeStart}
+        // onSwipeUp={onSwipeUp}
+        onSwipeMove={onSwipeMove} 
+        allowMouseEvents={tools.pc_mouse_move && true} 
+      >
+        <div ref={scrollableDiv} style={{overflowY: 'scroll', overflowX: 'hidden'}} 
+          onPointerUp={onPointerUp} 
+          
+          >
           
 
           <HeroDiv>
@@ -106,7 +150,7 @@ const Secundo = ({ update_Subpage_Id, update_subpage_scroll, general: {scroll, r
               <span>Humor</span>
             </div>
           </div>
-
+       
         {contentID !== null && <Content id={contentID} contentTopPosition={contentTopPosition} /> }
 
 
@@ -114,6 +158,7 @@ const Secundo = ({ update_Subpage_Id, update_subpage_scroll, general: {scroll, r
           
             
         </div>
+      </Swipe>
       </Wrapper>
     </AbsoluteWrapper>
     </>

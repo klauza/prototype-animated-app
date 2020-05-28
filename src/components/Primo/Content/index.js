@@ -1,11 +1,15 @@
-import React from 'react';
+import React, {useState} from 'react';
 import ProjectList from './ProjectList';
 import history from '../../../history';
 
+import Swipe from 'react-easy-swipe';
+
 import { ContentMain, BackButton, HeroTopImage, Wrapper } from '../PrimoCSS';
 
+const Content = ({ tools, index, blockFromSwipe, routes, scroll, updt_animation_direction, setIndex, update_Subpage_Id, animationDirection, updateReduxScrollPosition}) => {
 
-const Content = ({ index, blockFromSwipe, routes, scroll, updt_animation_direction, setIndex, update_Subpage_Id, animationDirection, updateReduxScrollPosition}) => {
+  // mouse position
+  const [currPosition, setCurrPosition] = useState(0);
 
   const scrollableDiv = React.useRef();
 
@@ -35,27 +39,60 @@ const Content = ({ index, blockFromSwipe, routes, scroll, updt_animation_directi
 
   }
 
+  // mouse drag functions
+  const onPointerUp = () => {
+    if(tools.pc_mouse_move){
+      setCurrPosition(0);
+    } else return
+  }
+
+  const onSwipeMove = (position, event) => {
+    console.log(position.y)
+    // setCurrPosition(position.y);
+
+    let distance = position.y - currPosition;
+
+    setCurrPosition(position.y); // setting next
+
+    if(currPosition > position.y){
+      // setCurrPosition(0);   // reset
+      console.log('down')
+    }
+    scrollableDiv.current.scrollTop = scrollableDiv.current.scrollTop - distance;
+  }
+
 
   return (
     <ContentMain>  
-      <div ref={scrollableDiv} style={{overflowY: 'scroll'}}>
-        <BackButton onClick={backUp}>Back ^</BackButton>
-          
-        <HeroTopImage bg={"https://images.pexels.com/photos/994605/pexels-photo-994605.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"}>
-          <div className="hero_top_image--content">
-            <h1>Primo - find location where you will be happy!</h1>
-          </div>
-        </HeroTopImage>     
 
-        <Wrapper>
-      
+      <Swipe 
+        onSwipeMove={onSwipeMove} 
+        allowMouseEvents={tools.pc_mouse_move && true} 
+      >
+        <div 
+          ref={scrollableDiv} 
+          style={{overflowY: 'scroll'}}
+          onPointerUp={onPointerUp}
+        >
+          <BackButton onClick={backUp}>Back ^</BackButton>
+            
+          <HeroTopImage bg={"https://images.pexels.com/photos/994605/pexels-photo-994605.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"}>
+            <div className="hero_top_image--content">
+              <h1>Primo - find location where you will be happy!</h1>
+            </div>
+          </HeroTopImage>     
+
+          <Wrapper>
+        
 
 
 
-          <ProjectList animationDirection={animationDirection} />
+            <ProjectList animationDirection={animationDirection} />
 
-        </Wrapper>
-      </div>
+          </Wrapper>
+        </div>
+
+      </Swipe>
       
     </ContentMain>
   )
