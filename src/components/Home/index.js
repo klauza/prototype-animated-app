@@ -28,7 +28,7 @@ const VerticalComponent = styled(animated.div)`
   position: absolute; bottom: 0; top:0;
 `;
 
-const Home = ({update_Subpage_Id, updt_animation_direction, general: {routes, animationDirection}}) => {
+const Home = ({update_Subpage_Id, updt_animation_direction, general: {tools, routes, animationDirection}}) => {
   // meta-tags
   const metaData = {
     title: 'Proto Home',
@@ -40,10 +40,12 @@ const Home = ({update_Subpage_Id, updt_animation_direction, general: {routes, an
 
   const [index, setIndex] = useState(routes.home);  // read index from Redux
   const [blockSwipe, setBlockSwipe] = useState(false);
-
+  
   // PC SWIPE/mouse-SCROLL
   // need those params if imported: updt_animation_direction, setIndex, update_Subpage_Id, blockFromSwipe
   const handleScroll = (e) => {
+    
+
     if(!blockSwipe){
 
       let direction;
@@ -156,7 +158,7 @@ const Home = ({update_Subpage_Id, updt_animation_direction, general: {routes, an
     <MetaTags metaData={metaData} />
     <AbsoluteWrapper>
 
-      <Swipe onSwipeMove={onSwipeMove} onSwipeEnd={()=>{setBlockSwipe(false)}}>
+      <Swipe onSwipeMove={onSwipeMove} onSwipeEnd={()=>{setBlockSwipe(false)}} allowMouseEvents={tools.pc_mouse_move && true}>
         <ExternalWrapper onWheel={(e)=>handleScroll(e)}>
 
           <div style={{position: "reltaive", width: "100%", height: "100vh"}}>

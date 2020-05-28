@@ -78,7 +78,14 @@ function App() {
 
       
         
-      <WrappedRoutes updateState={updateState} updateFirstStart={updateFirstStart} appFirstStart={appFirstStart} loc1={loc1} loc2={loc2} location={location} />
+      <WrappedRoutes 
+        updateState={updateState} 
+        updateFirstStart={updateFirstStart} 
+        appFirstStart={appFirstStart} 
+        loc1={loc1} 
+        loc2={loc2} 
+        location={location} 
+      />
       
       {/* <Footer /> */}
 

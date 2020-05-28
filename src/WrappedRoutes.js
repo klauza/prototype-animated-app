@@ -7,23 +7,38 @@ import history from './history';
 import { connect } from 'react-redux';
 import { updt_animation_direction } from './actions/routesActions';
 
-const WrappedRoutes = ({ updateFirstStart, appFirstStart, loc1, loc2, location, updt_animation_direction, updateState }) => {
+const WrappedRoutes = ({ updateFirstStart, appFirstStart, loc1, loc2, location, updt_animation_direction, updateState, general: {tools} }) => {
 
   const [swipePrevent, setSwipePrevent] = React.useState(false);
+  const [tempClick, setTempClick] = React.useState(null);
   
   useEffect(()=>{
-    // document.addEventListener("keydown", handlePCSwipe)
-    // document.addEventListener("keyup", handlePCSwipeOff)
-  }, [])
+
+      if(tools.pc_mouse_move){
+        document.getElementsByTagName("body")[0].style.cursor="grab";
+      } else if(!tools.pc_mouse_move){
+        document.getElementsByTagName("body")[0].style.cursor="default";
+      }
+
+  }, [tools.pc_mouse_move])
+  
   
   const onSwipeMove = (position, event) => {
-
+    // console.log(event.target);
     // excluding parts of website we don't want to interfere with while sliding/animating a route
     if (event.target.classList.contains('swiper-prevent')){
       // console.log('break');
       return
     };
+    if (event.target.classList.contains('swiper-slide')){
+      // console.log('break');
+      return
+    };
     if (event.target.classList.contains('prevent_page_swing')){
+      // console.log('break');
+      return
+    };
+    if (tempClick.contains('prevent_page_swing') || tempClick.contains('swiper-slide') || tempClick.contains('prevent_page_swing') ){
       // console.log('break');
       return
     };
@@ -106,22 +121,34 @@ const WrappedRoutes = ({ updateFirstStart, appFirstStart, loc1, loc2, location, 
       }, 750)
     }
 
-    
-    // const handlePCSwipeOff = () => {
-    //   document.getElementsByTagName("body")[0].style.cursor="default";
-    // }
-    // const handlePCSwipe = (e) => {
-    //   if(e.which === 18) document.getElementsByTagName("body")[0].style.cursor="grab";
-    // }
 
+
+    const updateTempClick = (e) => {
+      // for drag prevent
+      setTempClick(e.target.classList);
+    }
+    const removeTempClick = (e) => {
+      setTempClick(null);
+    }
+
+
+
+
+    // console.log(tempClick)
   return (
-    
-    <Swipe onSwipeMove={onSwipeMove}>
+    <Swipe 
+      onSwipeMove={onSwipeMove} 
+      allowMouseEvents={tools.pc_mouse_move && true} 
+      onPointerDown={window.PointerEvent && updateTempClick}
+      onPointerUp={window.PointerEvent && removeTempClick}
+      // updateScroll={tools.pc_mouse_move && updateScroll}
+    >
       <Routes updateFirstStart={updateFirstStart} appFirstStart={appFirstStart} loc1={loc1} loc2={loc2} location={location} />
     </Swipe>
-
   )
 }
 
-
-export default connect(null, {updt_animation_direction})(WrappedRoutes)
+const mapStateToProps = (state) => ({
+  general: state.general
+})
+export default connect(mapStateToProps, {updt_animation_direction})(WrappedRoutes)

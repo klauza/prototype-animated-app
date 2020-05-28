@@ -24,7 +24,7 @@ const VerticalComponent = styled(animated.div)`
 `;
 
 
-const Primo = ({update_Subpage_Id, update_subpage_scroll, updt_animation_direction, general: {scroll, routes, animationDirection}}) => {
+const Primo = ({update_Subpage_Id, update_subpage_scroll, updt_animation_direction, general: {tools, scroll, routes, animationDirection}}) => {
   // meta-tags
   const metaData = {
     title: 'Proto Primo',
@@ -143,7 +143,7 @@ const Primo = ({update_Subpage_Id, update_subpage_scroll, updt_animation_directi
     <AbsoluteWrapper>
 
       <div style={{position: "relative"}} onWheel={(e)=>handleScroll(e)}>
-        <Swipe onSwipeMove={onSwipeMove}>
+        <Swipe onSwipeMove={onSwipeMove} allowMouseEvents={tools.pc_mouse_move && true}>
             <div style={{position: "reltaive", width: "100%", height: "100vh"}}>
         
                 {
