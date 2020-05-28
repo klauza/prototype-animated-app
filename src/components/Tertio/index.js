@@ -42,14 +42,14 @@ const Tertio = ({ update_subpage_scroll, general: {tools, scroll, routes, animat
   React.useEffect(()=>{
     scrollableDiv.current.classList.add('scrollable');
     scrollableDiv.current.scrollTop = scroll.tertio;
-  
+  //eslint-disable-next-line
   }, [])
 
   React.useEffect(()=>{
     // fires when component dismounts
     if(history.location.state === 3) return
     updateReduxScrollPosition(scrollableDiv.current.scrollTop);
-
+//eslint-disable-next-line
   }, [history.location.state])
 
   
@@ -61,19 +61,13 @@ const Tertio = ({ update_subpage_scroll, general: {tools, scroll, routes, animat
   }
 
   const onSwipeMove = (position, event) => {
-    console.log(position.y)
-    // setCurrPosition(position.y);
-
-    let distance = position.y - currPosition;
-
-    setCurrPosition(position.y); // setting next
-
-    if(currPosition > position.y){
-      // setCurrPosition(0);   // reset
-      console.log('down')
-    }
-
-    scrollableDiv.current.scrollTop = scrollableDiv.current.scrollTop - distance;
+    if(tools.pc_mouse_move){
+      let distance = position.y - currPosition;
+  
+      setCurrPosition(position.y); // setting next
+    
+      scrollableDiv.current.scrollTop = scrollableDiv.current.scrollTop - distance;
+    } else return
   }
 
   return (
@@ -83,7 +77,7 @@ const Tertio = ({ update_subpage_scroll, general: {tools, scroll, routes, animat
       <Wrapper>
 
         <Swipe 
-          onSwipeMove={onSwipeMove} 
+          onSwipeMove={onSwipeMove}
           allowMouseEvents={tools.pc_mouse_move && true} 
         >
           <div 

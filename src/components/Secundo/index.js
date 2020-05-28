@@ -83,22 +83,13 @@ const Secundo = ({ update_Subpage_Id, update_subpage_scroll, general: {tools, sc
   }
 
   const onSwipeMove = (position, event) => {
-    console.log(position.y)
-    // setCurrPosition(position.y);
+    if(tools.pc_mouse_move){
+      let distance = position.y - currPosition;
 
-    let distance = position.y - currPosition;
+      setCurrPosition(position.y); // setting next
 
-    setCurrPosition(position.y); // setting next
-
-    
-    if(currPosition > position.y){
-      // setCurrPosition(0);   // reset
-      console.log('down')
+      scrollableDiv.current.scrollTop = scrollableDiv.current.scrollTop - distance;
     }
-
-    
-
-    scrollableDiv.current.scrollTop = scrollableDiv.current.scrollTop - distance;
   }
 
 
