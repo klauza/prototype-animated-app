@@ -16,8 +16,10 @@ const WrappedRoutes = ({ updateFirstStart, appFirstStart, loc1, loc2, location, 
 
       if(tools.pc_mouse_move){
         document.getElementsByTagName("body")[0].style.cursor="grab";
+        document.getElementsByTagName("body")[0].style.userSelect="none";
       } else if(!tools.pc_mouse_move){
         document.getElementsByTagName("body")[0].style.cursor="default";
+        document.getElementsByTagName("body")[0].style.userSelect="auto";
       }
 
   }, [tools.pc_mouse_move])
