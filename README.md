@@ -1,5 +1,7 @@
 ## About
 
+Project archived, but flagged as public with [live page](https://klauza-portfolio.netlify.app/).
+
 The project's goal is to smoothly animate between routes on top of React with a feeling of being a native app. This project is a prototype, features might not work as expected.
 
 <br/>
