@@ -1,6 +1,6 @@
 ## About
 
-A cross platform animated project 
+The project's goal is to smoothly animate between routes on top of React with a feeling of being a native app. This project is a prototype, features might not work as expected.
 
 <br/>
 
